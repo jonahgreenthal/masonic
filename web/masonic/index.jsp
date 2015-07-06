@@ -45,7 +45,7 @@
 						<td><a href="tossup-edit.jsp?question_id=<%= lclTU.getId() %>"><%= lclTU.getLabel() %></a></td>
 						<td><span title="<%= lclTU.getCategory().getName() %>"><%= lclTU.getCategory().getShortName() %></span></td>
 						<td><span title="Last updated: <%= lclUpdatedDTF.format(lclTU.getUpdated()) %>"><%= lclTU.getStatus().getShortName() %></span></td>
-						<td><%= lclTU.getInternalNote() == null ? "&nbsp;" : "<span class=\"stealth-tool-tip\" title=\"" + WebDataFilter.scrub(lclTU.getInternalNote()) + "\">yes</span>" %></td>
+						<td><%= lclTU.getInternalNote() == null ? "&nbsp;" : "<span title=\"" + WebDataFilter.scrub(lclTU.getInternalNote()) + "\">Yes</span>" %></td>
 						<td><%= lclTU.isUsed() ? lclTU.getPlacement().getPacketSet().getShortName() : "-" %></td>
 					</tr><%
 				}
@@ -74,7 +74,7 @@
 						<td><a href="team-question-edit.jsp?question_id=<%= lclTQ.getId() %>"><%= lclTQ.getLabel() %></a></td>
 						<td><span title="<%= lclTQ.getCategory().getName() %>"><%= lclTQ.getCategory().getShortName() %></span></td>
 						<td><span title="Last updated: <%= lclUpdatedDTF.format(lclTQ.getUpdated()) %>"><%= lclTQ.getStatus().getShortName() %></span></td>
-						<td><%= lclTQ.getInternalNote() == null ? "&nbsp;" : "<span class=\"stealth-tool-tip\" title=\"" + WebDataFilter.scrub(lclTQ.getInternalNote()) + "\">yes</span>" %></td>
+						<td><%= lclTQ.getInternalNote() == null ? "&nbsp;" : "<span title=\"" + WebDataFilter.scrub(lclTQ.getInternalNote()) + "\">Yes</span>" %></td>
 						<td><%= lclTQ.isUsed() ? lclTQ.getPlacement().getPacketSet().getShortName() : "-" %></td>
 					</tr><%
 				}
