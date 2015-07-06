@@ -14,7 +14,7 @@ hs_err_pid*
 
 
 # Configuration files that shouldn't be public
-etc/scobolsolo/authentication.properties
+etc/masonic/authentication.properties
 etc/server.properties
 
 # Libraries that aren't licensed for public posting
@@ -31,7 +31,7 @@ data/uploaded/**
 data/generated-spreadsheets/**
 
 # Logs
-scobolsolo.log
+masonic.log
 
 # Development stuff
 ant/**
