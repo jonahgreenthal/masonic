@@ -6,6 +6,7 @@
 <%@ page import="com.masonic.application.PacketSet" %>
 <%@ page import="com.masonic.application.Question" %>
 <%@ page import="com.masonic.application.QuestionFactory" %>
+<%@ page import="com.masonic.application.QuestionStatus" %>
 <%@ page import="com.masonic.application.Tossup" %>
 <%@ page import="com.masonic.application.TossupFactory" %>
 <%@ page import="com.masonic.menu.Menus" %>
@@ -52,15 +53,22 @@ if (lclOF.hasErrors()) {
 	<div class="small-2 columns">
 		<%= lclOF.label("Writer", "Writer").css("right inline") %>
 	</div>
-	<div class="small-10 medium-4 columns">
+	<div class="small-10 medium-2 columns">
 		<%= lclOF.dropdown("Writer", Account.NameComparator.getInstance()) %>
 	</div>
 	
 	<div class="small-2 columns">
 		<%= lclOF.label("Label", "Label").css("right inline") %>
 	</div>
-	<div class="small-10 medium-4 columns">
+	<div class="small-10 medium-2 columns">
 		<%= lclOF.text("Label", 30) %>
+	</div>
+	
+	<div class="small-2 columns">
+		<%= lclOF.label("Status", "Status").css("right inline") %>
+	</div>
+	<div class="small-10 medium-2 columns">
+		<%= lclOF.dropdown("Status", QuestionStatus.SequenceComparator.getInstance()) %>
 	</div>
 </div>
 
