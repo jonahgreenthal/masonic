@@ -1,0 +1,122 @@
+<Project Name="Masonic">
+	<Package>com.masonic</Package>
+	<ApplicationSubpackage>application</ApplicationSubpackage>
+	<PersistenceSubpackage>persistence</PersistenceSubpackage>
+	
+	<Author><![CDATA[<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>]]></Author>
+	<Database
+		Url="jdbc:postgresql://127.0.0.1:5432/masonic"
+		Driver="net.sourceforge.jtds.jdbc.Driver"
+		JNDIName="java:comp/env/MasonicDataSource"
+		DefaultDatabase="masonic"
+		DefaultOwner="masonic"
+	>
+		<Schema>masonic</Schema>
+		
+		<Comparators>
+			<Column>id</Column>
+			<Column>sequence</Column>
+			<Column>code</Column>
+			<Column>name</Column>
+			<Column>short_name</Column>
+			<Column>inserted</Column>
+			<Column>updated</Column>
+		</Comparators>
+		
+		<Filters>
+			<Column>active</Column>
+		</Filters>
+		
+		
+		<Mappings HttpRequestFactories="True" FluentMutators="True">
+			<Mapping Table="Account" />
+			
+			<Mapping Table="Packet_Set">
+				<Column Name="completed" Inverse="True" />
+				<Comparator Name="StandardComparator">
+					<Column Name="completed" />
+					<Column Name="deadline" />
+				</Comparator>
+			</Mapping>
+			
+			<Mapping Table="Packet">
+				<Column Name="sequence" Ordering="True" />
+				<Comparator Name="StandardComparator">
+					<Child Name="PacketSet" Comparator="StandardComparator" />
+					<Column Name="sequence" />
+				</Comparator>
+			</Mapping>
+			
+			<Mapping Table="Section">
+				<Comparator Name="StandardComparator">
+					<Child Name="Packet" Comparator="SequenceComparator" />
+					<Column Name="sequence" />
+				</Comparator>
+			</Mapping>
+			
+			<Mapping Table="Category_Group">
+				<Column Name="sequence" Ordering="True" />
+			</Mapping>
+			
+			<Mapping Table="Category">
+				<Column Name="sequence" Ordering="True" />
+				<Comparator Name="StandardComparator">
+					<Child Name="CategoryGroup" Comparator="SequenceComparator" />
+					<Column Name="sequence" />
+				</Comparator>
+			</Mapping>
+			
+			<Mapping Table="Question_Type">
+				<Column Name="sequence" Ordering="True" />
+			</Mapping>
+			
+			<Mapping Table="Question" Abstract="True">
+				<Polymorphism Type="Subtable">
+					<ConcreteTypeMethod>
+						<Dereference Table="question_type" />
+						<Column Name="table_name" Method="Table" />
+					</ConcreteTypeMethod>
+				</Polymorphism>
+			</Mapping>
+			
+			<Mapping Table="Question_Status">
+				<Column Name="sequence" Ordering="True" />
+			</Mapping>
+			
+			<Mapping Table="Tossup" />
+			
+			<Mapping Table="Team_Question" />
+			
+			<Mapping Table="Placement">
+				<Comparator Name="StandardComparator">
+					<Child Name="Section" Comparator="SequenceComparator" />
+					<Column Name="sequence" />
+				</Comparator>
+			</Mapping>
+		</Mappings>
+		
+		
+		<!-- One-to-one relationships -->
+		<Reference>
+			<Source Type="Placement">
+				<Column>question_id</Column>
+			</Source>
+			<Target Type="Question" OneToOne="True" />
+		</Reference>
+		
+		<!-- Rename some references -->
+		<Reference Field="Writer">
+			<Source Type="Question">
+				<Column>writer_account_id</Column>
+			</Source>
+			<Target Type="Account" />
+		</Reference>
+		
+		<Reference Field="Status">
+			<Source Type="Question">
+				<Column>question_status_code</Column>
+			</Source>
+			<Target Type="QuestionStatus" />
+		</Reference>
+	</Database>
+</Project>

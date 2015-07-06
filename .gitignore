@@ -1,0 +1,96 @@
+<<<<<<< HEAD
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+
+# Configuration files that shouldn't be public
+etc/scobolsolo/authentication.properties
+etc/server.properties
+
+# Libraries that aren't licensed for public posting
+lib/siliconage.jar
+lib/opal.jar
+doclib/siliconage-src.jar
+doclib/opal-src.jar
+
+# Runtime stuff
+tomcat/**
+
+# Production files
+data/uploaded/**
+data/generated-spreadsheets/**
+
+# Logs
+scobolsolo.log
+
+# Development stuff
+ant/**
+build.csh
+src/com/masonic/StandaloneTest.java
+
+=======
+*.DS_Store
+*.gem
+*.orig
+*.rbc
+*.rbenv-version
+*.ruby-version
+*.scssc
+*.sublime-*
+*.swp
+*.swo
+.bundle
+.config
+.grunt
+.idea
+.sass-cache/*
+.yardoc
+
+bower_components
+dist
+/docs2/public/*
+vendor
+_yardoc
+coverage
+docs/public/*
+InstalledFiles
+lib/bundler/man
+marketing/.sass-cache/*
+node_modules
+pkg
+rdoc
+spec/reports
+
+test/
+test/.sass-cache/*
+test/css
+test/css/styles.css
+*.orig
+node_modules
+docs/public/*
+*.scssc
+*.rbenv-version
+*.ruby-version
+/docs2/public/*
+.settings
+.project
+test/scss/output-test
+test/tmp
+test/version_tmp
+tmp
+
+
+pizza/
+docs/*
+npm-debug.log
+>>>>>>> c56c315e1d7ef24618b82f19423be38af9199658
