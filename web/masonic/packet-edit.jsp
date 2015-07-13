@@ -14,7 +14,6 @@
 <%@ page import="com.masonic.application.QuestionType" %>
 <%@ page import="com.masonic.application.Section" %>
 <%@ page import="com.masonic.application.SectionFactory" %>
-<%@ page import="com.masonic.opalforms.nce.QuestionNCE" %>
 <%@ page import="com.masonic.opalforms.specialhandler.QuestionHandler" %>
 <%@ page import="com.masonic.opalforms.updater.PacketPlacementUpdater" %>
 <%@ page import="com.masonic.opalforms.updater.PlacementDuplicateTeamQuestions" %>
@@ -176,7 +175,7 @@ if (lclOF.hasErrors()) {
 												new DatabaseQuery("SELECT Q.* FROM Question Q WHERE NOT EXISTS (SELECT * FROM Placement PL WHERE PL.question_id = Q.id) AND Q.category_code = ? ORDER BY Q.label", lclPL.getCategory().getCode())
 											);
 											
-											%><%= lclOF.getPriorInput().dropdown("/Placement_" + lclPL.getId() + "_Question", lclCandidates, lclPLOF.getUserFacing().getQuestion(), QuestionNCE.getInstance()) %><%
+											%><%= lclOF.getPriorInput().dropdown("/Placement_" + lclPL.getId() + "_Question", lclCandidates, lclPLOF.getUserFacing().getQuestion(), Question.NCE.getInstance()) %><%
 										}
 									%></td>
 									<td><%= lclPLOF.delete() %></td>
