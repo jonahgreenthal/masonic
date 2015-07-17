@@ -11,4 +11,6 @@ import com.masonic.persistence.QuestionTypeUserFacing;
  */
 
 public interface QuestionType extends QuestionTypeUserFacing {
+	/* Developers may add default and static methods to this interface without fear of them being overwritten
+	by subsequent re-generation of the Opals (and related classes). */
 }

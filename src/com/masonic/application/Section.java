@@ -11,4 +11,6 @@ import com.masonic.persistence.SectionUserFacing;
  */
 
 public interface Section extends SectionUserFacing {
+	/* Developers may add default and static methods to this interface without fear of them being overwritten
+	by subsequent re-generation of the Opals (and related classes). */
 }
