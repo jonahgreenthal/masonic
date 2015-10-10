@@ -1,13 +1,8 @@
 package com.masonic.persistence;
 
-import java.io.PrintWriter;
-import java.io.PrintStream;
+import com.masonic.application.Placement;
 
-import com.opal.*;
-
-import com.masonic.application.*;
-
-@StoreGeneratedPrimaryKey
+@com.opal.StoreGeneratedPrimaryKey
 public final class PlacementOpal extends com.opal.UpdatableOpal<Placement> {
 
 	private PlacementOpal() {
@@ -15,7 +10,7 @@ public final class PlacementOpal extends com.opal.UpdatableOpal<Placement> {
 		setUserFacing(null);
 	}
 
-	public PlacementOpal(OpalFactory<Placement, PlacementOpal> argOpalFactory, Object[] argValues) {
+	public PlacementOpal(com.opal.OpalFactory<Placement, PlacementOpal> argOpalFactory, Object[] argValues) {
 		super(argOpalFactory, argValues);
 	}
 
@@ -51,7 +46,7 @@ public final class PlacementOpal extends com.opal.UpdatableOpal<Placement> {
 		true,
 	};
 
-	/* package */ static final FieldValidator[] ourFieldValidators = new FieldValidator[] {
+	/* package */ static final com.opal.FieldValidator[] ourFieldValidators = new com.opal.FieldValidator[] {
 		null,
 		null,
 		null,
@@ -71,12 +66,12 @@ public final class PlacementOpal extends com.opal.UpdatableOpal<Placement> {
 	public static boolean[] getStaticFieldNullability() { return ourFieldNullability; }
 
 	@Override
-	public FieldValidator[] getFieldValidators() { return ourFieldValidators; }
+	public com.opal.FieldValidator[] getFieldValidators() { return ourFieldValidators; }
 
 	@Override
 	public boolean[] getFieldNullability() { return ourFieldNullability; }
 
-	public static FieldValidator[] getStaticFieldValidators() { return ourFieldValidators; }
+	public static com.opal.FieldValidator[] getStaticFieldValidators() { return ourFieldValidators; }
 
 
 	public synchronized java.lang.Integer getIdAsObject() {
@@ -197,7 +192,7 @@ public final class PlacementOpal extends com.opal.UpdatableOpal<Placement> {
 	}
 
 	@Override
-	protected void copyFieldsToInternal(UpdatableOpal<Placement> argTarget) {
+	protected void copyFieldsToInternal(com.opal.UpdatableOpal<Placement> argTarget) {
 		Object[] lclValues = getReadValueSet();
 		Object[] lclTargetNewValues = argTarget.getNewValues();
 		/* Field 0 (Id) is database generated. */
@@ -226,7 +221,7 @@ public final class PlacementOpal extends com.opal.UpdatableOpal<Placement> {
 	@Override
 	public java.util.Set<com.opal.TransactionAware> getRequiredPriorCommits() {
 		java.util.Set<com.opal.TransactionAware> lclTAs = null;
-		UpdatableOpal<?> lclUO;
+		com.opal.UpdatableOpal<?> lclUO;
 		lclUO = myNewCategoryOpal;
 		if ((lclUO != null) && lclUO.isNew()) {
 			lclTAs = new com.siliconage.util.Fast3Set<>();
@@ -251,22 +246,31 @@ public final class PlacementOpal extends com.opal.UpdatableOpal<Placement> {
 
 	@Override
 	public java.util.Set<com.opal.TransactionAware> getRequiredSubsequentCommits() {
+		if (isNew()) {
+			return java.util.Collections.emptySet();
+		}
 		java.util.Set<com.opal.TransactionAware> lclTAs = null;
-		UpdatableOpal<?> lclUO;
-		lclUO = myOldCategoryOpal;
-		if ((lclUO != null) && lclUO.isDeleted()) {
+		com.opal.UpdatableOpal<?> lclUO;
+		if ((lclUO = myOldCategoryOpal) == CategoryOpal.NOT_YET_LOADED) {
+			lclUO = myOldCategoryOpal = retrieveCategoryOpal(getOldValues());
+		}
+		if (lclUO != null && lclUO.isDeleted()) {
 			lclTAs = new com.siliconage.util.Fast3Set<>();
 			lclTAs.add(lclUO);
 		}
-		lclUO = myOldQuestionOpal;
-		if ((lclUO != null) && lclUO.isDeleted()) {
+		if ((lclUO = myOldQuestionOpal) == QuestionOpal.NOT_YET_LOADED) {
+			lclUO = myOldQuestionOpal = retrieveQuestionOpal(getOldValues());
+		}
+		if (lclUO != null && lclUO.isDeleted()) {
 			if (lclTAs == null) {
 				lclTAs = new com.siliconage.util.Fast3Set<>();
 			}
 			lclTAs.add(lclUO);
 		}
-		lclUO = myOldSectionOpal;
-		if ((lclUO != null) && lclUO.isDeleted()) {
+		if ((lclUO = myOldSectionOpal) == SectionOpal.NOT_YET_LOADED) {
+			lclUO = myOldSectionOpal = retrieveSectionOpal(getOldValues());
+		}
+		if (lclUO != null && lclUO.isDeleted()) {
 			if (lclTAs == null) {
 				lclTAs = new com.siliconage.util.Fast3Set<>();
 			}
@@ -289,21 +293,21 @@ public final class PlacementOpal extends com.opal.UpdatableOpal<Placement> {
 	protected String[] getFieldNames() { return ourFieldNames; }
 
 	@Override
-	public synchronized void output(final PrintWriter argPW) {
-		argPW.println("Id = " + getIdAsObject());
-		argPW.println("SectionId = " + getSectionIdAsObject());
-		argPW.println("CategoryCode = " + getCategoryCode());
-		argPW.println("Sequence = " + getSequenceAsObject());
-		argPW.println("QuestionId = " + getQuestionIdAsObject());
+	public synchronized void output(final java.io.PrintStream argOutput) {
+		argOutput.println("Id = " + getIdAsObject());
+		argOutput.println("SectionId = " + getSectionIdAsObject());
+		argOutput.println("CategoryCode = " + getCategoryCode());
+		argOutput.println("Sequence = " + getSequenceAsObject());
+		argOutput.println("QuestionId = " + getQuestionIdAsObject());
 	}
 
 	@Override
-	public synchronized void output(final PrintStream argPS) {
-		argPS.println("Id = " + getIdAsObject());
-		argPS.println("SectionId = " + getSectionIdAsObject());
-		argPS.println("CategoryCode = " + getCategoryCode());
-		argPS.println("Sequence = " + getSequenceAsObject());
-		argPS.println("QuestionId = " + getQuestionIdAsObject());
+	public synchronized void output(final java.io.PrintWriter argOutput) {
+		argOutput.println("Id = " + getIdAsObject());
+		argOutput.println("SectionId = " + getSectionIdAsObject());
+		argOutput.println("CategoryCode = " + getCategoryCode());
+		argOutput.println("Sequence = " + getSequenceAsObject());
+		argOutput.println("QuestionId = " + getQuestionIdAsObject());
 	}
 
 	private SectionOpal myOldSectionOpal;

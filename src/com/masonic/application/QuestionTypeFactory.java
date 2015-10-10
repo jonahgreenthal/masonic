@@ -1,6 +1,5 @@
 package com.masonic.application;
 
-import com.opal.*;
 import com.masonic.persistence.QuestionTypeOpalFactory;
 import com.masonic.persistence.QuestionTypeOpal;
 import com.masonic.persistence.OpalFactoryFactory;
@@ -16,7 +15,7 @@ public class QuestionTypeFactory extends com.opal.AbstractFactory<QuestionType, 
 
 	public QuestionTypeOpalFactory getQuestionTypeOpalFactory() { return (QuestionTypeOpalFactory) getOpalFactory(); }
 
-	protected QuestionTypeFactory(OpalFactory<QuestionType, QuestionTypeOpal> argOpalFactory) {
+	protected QuestionTypeFactory(com.opal.OpalFactory<QuestionType, QuestionTypeOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 

@@ -1,6 +1,5 @@
 package com.masonic.persistence;
 
-import com.opal.*;
 
 /**
  * represents a {@code CategoryGroup} from the persistent store
@@ -15,7 +14,7 @@ import com.opal.*;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
-public interface CategoryGroupUserFacing extends IdentityUserFacing, Comparable<com.masonic.application.CategoryGroup> {
+public interface CategoryGroupUserFacing extends com.opal.IdentityUserFacing, Comparable<com.masonic.application.CategoryGroup> {
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Code}
@@ -33,8 +32,8 @@ public interface CategoryGroupUserFacing extends IdentityUserFacing, Comparable<
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code code} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argCode is null
-	 * @throws ArgumentTooLongException if {@code argCode} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argCode is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argCode} is longer than 32 characters
 	 * <p>The database column {@code code} is limited to 32 characters.</p>
 	 *
 	 */
@@ -58,8 +57,8 @@ public interface CategoryGroupUserFacing extends IdentityUserFacing, Comparable<
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code name} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argName is null
-	 * @throws ArgumentTooLongException if {@code argName} is longer than 256 characters
+	 * @throws com.opal.IllegalNullArgumentException if argName is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argName} is longer than 256 characters
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
@@ -83,8 +82,8 @@ public interface CategoryGroupUserFacing extends IdentityUserFacing, Comparable<
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code short_name} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argShortName is null
-	 * @throws ArgumentTooLongException if {@code argShortName} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argShortName is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argShortName} is longer than 32 characters
 	 * <p>The database column {@code short_name} is limited to 32 characters.</p>
 	 *
 	 */
@@ -124,7 +123,7 @@ public interface CategoryGroupUserFacing extends IdentityUserFacing, Comparable<
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code sequence} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argSequence is null
+	 * @throws com.opal.IllegalNullArgumentException if argSequence is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.CategoryGroup setSequence(java.lang.Integer argSequence);
@@ -142,12 +141,12 @@ public interface CategoryGroupUserFacing extends IdentityUserFacing, Comparable<
 
 	public java.util.stream.Stream<com.masonic.application.Category> streamCategory();
 
-	public void addCategory(com.masonic.application.Category argCategory);
-	public void removeCategory(com.masonic.application.Category argCategory);
-	public void clearCategory();
+	public com.masonic.application.CategoryGroup addCategory(com.masonic.application.Category argCategory);
+	public com.masonic.application.CategoryGroup removeCategory(com.masonic.application.Category argCategory);
+	public com.masonic.application.CategoryGroup clearCategory();
 
 	default public <T extends java.util.Collection<? super com.masonic.application.Category>> T acquireCategory(T argC) {
-		if (argC == null) { throw new IllegalArgumentException("Target Collection is null."); }
+		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Category> lclI = createCategoryIterator();
 		while (lclI.hasNext()) {
 			argC.add(lclI.next());

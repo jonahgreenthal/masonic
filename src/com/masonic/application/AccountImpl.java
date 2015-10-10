@@ -126,13 +126,15 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 	to this object. */
 
 	@Override
-	public void addWriterQuestion(Question argQuestion) {
+	public com.masonic.application.Account addWriterQuestion(Question argQuestion) {
 		getAccountOpal().addWriterQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
+		return this;
 	}
 
 	@Override
-	public void removeWriterQuestion(Question argQuestion) {
+	public com.masonic.application.Account removeWriterQuestion(Question argQuestion) {
 		getAccountOpal().removeWriterQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
+		return this;
 	}
 
 	@Override
@@ -151,7 +153,7 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 	}
 
 	@Override
-	public void clearWriterQuestion() {
+	public com.masonic.application.Account clearWriterQuestion() {
 		throw new UnsupportedOperationException();
 	}
 

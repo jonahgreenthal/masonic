@@ -162,13 +162,15 @@ public class SectionImpl extends com.opal.AbstractIdentityImpl<Section, SectionO
 	to this object. */
 
 	@Override
-	public void addPlacement(Placement argPlacement) {
+	public com.masonic.application.Section addPlacement(Placement argPlacement) {
 		getSectionOpal().addPlacementOpal(((PlacementImpl) argPlacement).getPlacementOpal());
+		return this;
 	}
 
 	@Override
-	public void removePlacement(Placement argPlacement) {
+	public com.masonic.application.Section removePlacement(Placement argPlacement) {
 		getSectionOpal().removePlacementOpal(((PlacementImpl) argPlacement).getPlacementOpal());
+		return this;
 	}
 
 	@Override
@@ -187,7 +189,7 @@ public class SectionImpl extends com.opal.AbstractIdentityImpl<Section, SectionO
 	}
 
 	@Override
-	public void clearPlacement() {
+	public com.masonic.application.Section clearPlacement() {
 		throw new UnsupportedOperationException();
 	}
 

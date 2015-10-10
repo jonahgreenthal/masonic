@@ -1,6 +1,5 @@
 package com.masonic.persistence;
 
-import com.opal.*;
 
 /**
  * represents a {@code QuestionType} from the persistent store
@@ -15,7 +14,7 @@ import com.opal.*;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
-public interface QuestionTypeUserFacing extends IdentityUserFacing, Comparable<com.masonic.application.QuestionType> {
+public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Comparable<com.masonic.application.QuestionType> {
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Code}
@@ -33,8 +32,8 @@ public interface QuestionTypeUserFacing extends IdentityUserFacing, Comparable<c
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code code} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argCode is null
-	 * @throws ArgumentTooLongException if {@code argCode} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argCode is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argCode} is longer than 32 characters
 	 * <p>The database column {@code code} is limited to 32 characters.</p>
 	 *
 	 */
@@ -58,8 +57,8 @@ public interface QuestionTypeUserFacing extends IdentityUserFacing, Comparable<c
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code name} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argName is null
-	 * @throws ArgumentTooLongException if {@code argName} is longer than 256 characters
+	 * @throws com.opal.IllegalNullArgumentException if argName is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argName} is longer than 256 characters
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
@@ -83,8 +82,8 @@ public interface QuestionTypeUserFacing extends IdentityUserFacing, Comparable<c
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code short_name} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argShortName is null
-	 * @throws ArgumentTooLongException if {@code argShortName} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argShortName is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argShortName} is longer than 32 characters
 	 * <p>The database column {@code short_name} is limited to 32 characters.</p>
 	 *
 	 */
@@ -124,7 +123,7 @@ public interface QuestionTypeUserFacing extends IdentityUserFacing, Comparable<c
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code sequence} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argSequence is null
+	 * @throws com.opal.IllegalNullArgumentException if argSequence is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.QuestionType setSequence(java.lang.Integer argSequence);
@@ -153,8 +152,8 @@ public interface QuestionTypeUserFacing extends IdentityUserFacing, Comparable<c
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code table_name} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argTableName is null
-	 * @throws ArgumentTooLongException if {@code argTableName} is longer than 256 characters
+	 * @throws com.opal.IllegalNullArgumentException if argTableName is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argTableName} is longer than 256 characters
 	 * <p>The database column {@code table_name} is limited to 256 characters.</p>
 	 *
 	 */
@@ -192,7 +191,7 @@ public interface QuestionTypeUserFacing extends IdentityUserFacing, Comparable<c
 	 *
 	 * @param argSectionHeader the new value of {@code SectionHeader}.  May be <code>null</code>.
 	 * @return itself, so that mutator calls can be chained fluently
-	 * @throws ArgumentTooLongException if {@code argSectionHeader} is longer than 256 characters
+	 * @throws com.opal.ArgumentTooLongException if {@code argSectionHeader} is longer than 256 characters
 	 * <p>The database column {@code section_header} is limited to 256 characters.</p>
 	 *
 	 */
@@ -215,8 +214,8 @@ public interface QuestionTypeUserFacing extends IdentityUserFacing, Comparable<c
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code scoring_note} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argScoringNote is null
-	 * @throws ArgumentTooLongException if {@code argScoringNote} is longer than 256 characters
+	 * @throws com.opal.IllegalNullArgumentException if argScoringNote is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argScoringNote} is longer than 256 characters
 	 * <p>The database column {@code scoring_note} is limited to 256 characters.</p>
 	 *
 	 */
@@ -229,12 +228,12 @@ public interface QuestionTypeUserFacing extends IdentityUserFacing, Comparable<c
 
 	public java.util.stream.Stream<com.masonic.application.Question> streamQuestion();
 
-	public void addQuestion(com.masonic.application.Question argQuestion);
-	public void removeQuestion(com.masonic.application.Question argQuestion);
-	public void clearQuestion();
+	public com.masonic.application.QuestionType addQuestion(com.masonic.application.Question argQuestion);
+	public com.masonic.application.QuestionType removeQuestion(com.masonic.application.Question argQuestion);
+	public com.masonic.application.QuestionType clearQuestion();
 
 	default public <T extends java.util.Collection<? super com.masonic.application.Question>> T acquireQuestion(T argC) {
-		if (argC == null) { throw new IllegalArgumentException("Target Collection is null."); }
+		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Question> lclI = createQuestionIterator();
 		while (lclI.hasNext()) {
 			argC.add(lclI.next());
@@ -258,12 +257,12 @@ public interface QuestionTypeUserFacing extends IdentityUserFacing, Comparable<c
 
 	public java.util.stream.Stream<com.masonic.application.Section> streamSection();
 
-	public void addSection(com.masonic.application.Section argSection);
-	public void removeSection(com.masonic.application.Section argSection);
-	public void clearSection();
+	public com.masonic.application.QuestionType addSection(com.masonic.application.Section argSection);
+	public com.masonic.application.QuestionType removeSection(com.masonic.application.Section argSection);
+	public com.masonic.application.QuestionType clearSection();
 
 	default public <T extends java.util.Collection<? super com.masonic.application.Section>> T acquireSection(T argC) {
-		if (argC == null) { throw new IllegalArgumentException("Target Collection is null."); }
+		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Section> lclI = createSectionIterator();
 		while (lclI.hasNext()) {
 			argC.add(lclI.next());

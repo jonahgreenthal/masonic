@@ -1,11 +1,6 @@
 package com.masonic.persistence;
 
-import java.io.PrintWriter;
-import java.io.PrintStream;
-
-import com.opal.*;
-
-import com.masonic.application.*;
+import com.masonic.application.Tossup;
 
 public final class TossupOpal extends com.opal.UpdatableOpal<Tossup> {
 
@@ -14,7 +9,7 @@ public final class TossupOpal extends com.opal.UpdatableOpal<Tossup> {
 		setUserFacing(null);
 	}
 
-	public TossupOpal(OpalFactory<Tossup, TossupOpal> argOpalFactory, Object[] argValues) {
+	public TossupOpal(com.opal.OpalFactory<Tossup, TossupOpal> argOpalFactory, Object[] argValues) {
 		super(argOpalFactory, argValues);
 	}
 
@@ -26,7 +21,7 @@ public final class TossupOpal extends com.opal.UpdatableOpal<Tossup> {
 
 	@Override
 	protected void createSuperclassOpals() {
-		setQuestionOpal(QuestionFactory.getInstance().getQuestionOpalFactory().createAsSuperOpal(getUserFacing()));
+		setQuestionOpal(com.masonic.application.QuestionFactory.getInstance().getQuestionOpalFactory().createAsSuperOpal(getUserFacing()));
 	}
 
 	/* package */ static final String[] ourFieldNames = new String[] {
@@ -47,7 +42,7 @@ public final class TossupOpal extends com.opal.UpdatableOpal<Tossup> {
 		false,
 	};
 
-	/* package */ static final FieldValidator[] ourFieldValidators = new FieldValidator[] {
+	/* package */ static final com.opal.FieldValidator[] ourFieldValidators = new com.opal.FieldValidator[] {
 		null,
 		null,
 		null,
@@ -65,12 +60,12 @@ public final class TossupOpal extends com.opal.UpdatableOpal<Tossup> {
 	public static boolean[] getStaticFieldNullability() { return ourFieldNullability; }
 
 	@Override
-	public FieldValidator[] getFieldValidators() { return ourFieldValidators; }
+	public com.opal.FieldValidator[] getFieldValidators() { return ourFieldValidators; }
 
 	@Override
 	public boolean[] getFieldNullability() { return ourFieldNullability; }
 
-	public static FieldValidator[] getStaticFieldValidators() { return ourFieldValidators; }
+	public static com.opal.FieldValidator[] getStaticFieldValidators() { return ourFieldValidators; }
 
 
 	public synchronized java.lang.Integer getQuestionIdAsObject() {
@@ -137,7 +132,7 @@ public final class TossupOpal extends com.opal.UpdatableOpal<Tossup> {
 	}
 
 	@Override
-	protected void copyFieldsToInternal(UpdatableOpal<Tossup> argTarget) {
+	protected void copyFieldsToInternal(com.opal.UpdatableOpal<Tossup> argTarget) {
 		Object[] lclValues = getReadValueSet();
 		Object[] lclTargetNewValues = argTarget.getNewValues();
 		/* Field 0 (QuestionId) is part of a unique key. */
@@ -158,7 +153,7 @@ public final class TossupOpal extends com.opal.UpdatableOpal<Tossup> {
 	@Override
 	public java.util.Set<com.opal.TransactionAware> getRequiredPriorCommits() {
 		java.util.Set<com.opal.TransactionAware> lclTAs = null;
-		UpdatableOpal<?> lclUO;
+		com.opal.UpdatableOpal<?> lclUO;
 		lclUO = myNewQuestionOpal;
 		if ((lclUO != null) && lclUO.isNew()) {
 			lclTAs = new com.siliconage.util.Fast3Set<>();
@@ -169,10 +164,15 @@ public final class TossupOpal extends com.opal.UpdatableOpal<Tossup> {
 
 	@Override
 	public java.util.Set<com.opal.TransactionAware> getRequiredSubsequentCommits() {
+		if (isNew()) {
+			return java.util.Collections.emptySet();
+		}
 		java.util.Set<com.opal.TransactionAware> lclTAs = null;
-		UpdatableOpal<?> lclUO;
-		lclUO = myOldQuestionOpal;
-		if ((lclUO != null) && lclUO.isDeleted()) {
+		com.opal.UpdatableOpal<?> lclUO;
+		if ((lclUO = myOldQuestionOpal) == QuestionOpal.NOT_YET_LOADED) {
+			lclUO = myOldQuestionOpal = retrieveQuestionOpal(getOldValues());
+		}
+		if (lclUO != null && lclUO.isDeleted()) {
 			lclTAs = new com.siliconage.util.Fast3Set<>();
 			lclTAs.add(lclUO);
 		}
@@ -193,17 +193,17 @@ public final class TossupOpal extends com.opal.UpdatableOpal<Tossup> {
 	protected String[] getFieldNames() { return ourFieldNames; }
 
 	@Override
-	public synchronized void output(final PrintWriter argPW) {
-		argPW.println("QuestionId = " + getQuestionIdAsObject());
-		argPW.println("Text = " + getText());
-		argPW.println("Answer = " + getAnswer());
+	public synchronized void output(final java.io.PrintStream argOutput) {
+		argOutput.println("QuestionId = " + getQuestionIdAsObject());
+		argOutput.println("Text = " + getText());
+		argOutput.println("Answer = " + getAnswer());
 	}
 
 	@Override
-	public synchronized void output(final PrintStream argPS) {
-		argPS.println("QuestionId = " + getQuestionIdAsObject());
-		argPS.println("Text = " + getText());
-		argPS.println("Answer = " + getAnswer());
+	public synchronized void output(final java.io.PrintWriter argOutput) {
+		argOutput.println("QuestionId = " + getQuestionIdAsObject());
+		argOutput.println("Text = " + getText());
+		argOutput.println("Answer = " + getAnswer());
 	}
 
 	private QuestionOpal myOldQuestionOpal;

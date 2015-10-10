@@ -1,6 +1,5 @@
 package com.masonic.persistence;
 
-import com.opal.*;
 
 /**
  * represents a {@code TeamQuestion} from the persistent store
@@ -49,7 +48,7 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code question_id} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argQuestionId is null
+	 * @throws com.opal.IllegalNullArgumentException if argQuestionId is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.TeamQuestion setQuestionId(java.lang.Integer argQuestionId);
@@ -78,8 +77,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code introduction} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argIntroduction is null
-	 * @throws ArgumentTooLongException if {@code argIntroduction} is longer than 2147483647 characters
+	 * @throws com.opal.IllegalNullArgumentException if argIntroduction is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argIntroduction} is longer than 2147483647 characters
 	 * <p>The database column {@code introduction} is limited to 2147483647 characters.</p>
 	 *
 	 */
@@ -103,8 +102,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code part_1_text} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argPart1Text is null
-	 * @throws ArgumentTooLongException if {@code argPart1Text} is longer than 2147483647 characters
+	 * @throws com.opal.IllegalNullArgumentException if argPart1Text is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argPart1Text} is longer than 2147483647 characters
 	 * <p>The database column {@code part_1_text} is limited to 2147483647 characters.</p>
 	 *
 	 */
@@ -128,8 +127,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code part_1_answer} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argPart1Answer is null
-	 * @throws ArgumentTooLongException if {@code argPart1Answer} is longer than 2147483647 characters
+	 * @throws com.opal.IllegalNullArgumentException if argPart1Answer is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argPart1Answer} is longer than 2147483647 characters
 	 * <p>The database column {@code part_1_answer} is limited to 2147483647 characters.</p>
 	 *
 	 */
@@ -153,8 +152,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code part_2_text} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argPart2Text is null
-	 * @throws ArgumentTooLongException if {@code argPart2Text} is longer than 2147483647 characters
+	 * @throws com.opal.IllegalNullArgumentException if argPart2Text is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argPart2Text} is longer than 2147483647 characters
 	 * <p>The database column {@code part_2_text} is limited to 2147483647 characters.</p>
 	 *
 	 */
@@ -178,8 +177,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code part_2_answer} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argPart2Answer is null
-	 * @throws ArgumentTooLongException if {@code argPart2Answer} is longer than 2147483647 characters
+	 * @throws com.opal.IllegalNullArgumentException if argPart2Answer is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argPart2Answer} is longer than 2147483647 characters
 	 * <p>The database column {@code part_2_answer} is limited to 2147483647 characters.</p>
 	 *
 	 */
@@ -203,8 +202,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code part_3_text} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argPart3Text is null
-	 * @throws ArgumentTooLongException if {@code argPart3Text} is longer than 2147483647 characters
+	 * @throws com.opal.IllegalNullArgumentException if argPart3Text is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argPart3Text} is longer than 2147483647 characters
 	 * <p>The database column {@code part_3_text} is limited to 2147483647 characters.</p>
 	 *
 	 */
@@ -228,8 +227,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code part_3_answer} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argPart3Answer is null
-	 * @throws ArgumentTooLongException if {@code argPart3Answer} is longer than 2147483647 characters
+	 * @throws com.opal.IllegalNullArgumentException if argPart3Answer is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argPart3Answer} is longer than 2147483647 characters
 	 * <p>The database column {@code part_3_answer} is limited to 2147483647 characters.</p>
 	 *
 	 */

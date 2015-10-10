@@ -1,6 +1,5 @@
 package com.masonic.application;
 
-import com.opal.*;
 import com.masonic.persistence.TeamQuestionOpalFactory;
 import com.masonic.persistence.TeamQuestionOpal;
 import com.masonic.persistence.OpalFactoryFactory;
@@ -16,7 +15,7 @@ public class TeamQuestionFactory extends com.opal.AbstractFactory<TeamQuestion, 
 
 	public TeamQuestionOpalFactory getTeamQuestionOpalFactory() { return (TeamQuestionOpalFactory) getOpalFactory(); }
 
-	protected TeamQuestionFactory(OpalFactory<TeamQuestion, TeamQuestionOpal> argOpalFactory) {
+	protected TeamQuestionFactory(com.opal.OpalFactory<TeamQuestion, TeamQuestionOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 

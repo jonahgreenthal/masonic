@@ -2,7 +2,12 @@ package com.masonic.persistence.postgres;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.opal.*;
+
+import com.opal.OpalCache;
+import com.opal.OpalKey;
+import com.opal.OpalUtility;
+import com.opal.PersistenceException;
+
 import com.masonic.application.Placement;
 import com.masonic.application.PlacementImpl;
 import com.masonic.persistence.PlacementOpal;
@@ -111,7 +116,7 @@ public class PostgresPlacementOpalFactory extends com.opal.AbstractDatabaseIdent
 	protected void registerOpal(PlacementOpal argOpal, Object[] argValues) {
 		if (argValues == null) { throw new IllegalStateException(); }
 		if (argValues.length != 5) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<PlacementOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			lclOC.addOpal(new IdOpalKey((java.lang.Integer) argValues[0]), argOpal, true);
 			if (true && argValues[4] != null) {
@@ -126,7 +131,7 @@ public class PostgresPlacementOpalFactory extends com.opal.AbstractDatabaseIdent
 		Object[] lclOldValues = argOpal.getOldValues();
 		if (lclOldValues == null) { throw new IllegalStateException(); }
 		if (lclOldValues.length != 5) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<PlacementOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			lclOC.removeOpal(new IdOpalKey((java.lang.Integer) lclOldValues[0]));
 			if (true && lclOldValues[4] != null) {
@@ -145,7 +150,7 @@ public class PostgresPlacementOpalFactory extends com.opal.AbstractDatabaseIdent
 		Object[] lclNewValues = argOpal.getNewValues();
 		if (lclNewValues == null) { throw new IllegalStateException(); }
 		if (lclNewValues.length != 5) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<PlacementOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			OpalKey<PlacementOpal> lclOldKey = null;
 			OpalKey<PlacementOpal> lclNewKey = null;

@@ -1,6 +1,5 @@
 package com.masonic.persistence;
 
-import com.opal.*;
 
 /**
  * represents a {@code Section} from the persistent store
@@ -15,7 +14,7 @@ import com.opal.*;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
-public interface SectionUserFacing extends IdentityUserFacing {
+public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Id}
@@ -49,7 +48,7 @@ public interface SectionUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code id} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argId is null
+	 * @throws com.opal.IllegalNullArgumentException if argId is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.Section setId(java.lang.Integer argId);
@@ -94,7 +93,7 @@ public interface SectionUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code packet_id} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argPacketId is null
+	 * @throws com.opal.IllegalNullArgumentException if argPacketId is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.Section setPacketId(java.lang.Integer argPacketId);
@@ -123,8 +122,8 @@ public interface SectionUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code question_type_code} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argQuestionTypeCode is null
-	 * @throws ArgumentTooLongException if {@code argQuestionTypeCode} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argQuestionTypeCode is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argQuestionTypeCode} is longer than 32 characters
 	 * <p>The database column {@code question_type_code} is limited to 32 characters.</p>
 	 *
 	 */
@@ -164,7 +163,7 @@ public interface SectionUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code sequence} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argSequence is null
+	 * @throws com.opal.IllegalNullArgumentException if argSequence is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.Section setSequence(java.lang.Integer argSequence);
@@ -193,8 +192,8 @@ public interface SectionUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code name} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argName is null
-	 * @throws ArgumentTooLongException if {@code argName} is longer than 256 characters
+	 * @throws com.opal.IllegalNullArgumentException if argName is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argName} is longer than 256 characters
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
@@ -218,8 +217,8 @@ public interface SectionUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code short_name} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argShortName is null
-	 * @throws ArgumentTooLongException if {@code argShortName} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argShortName is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argShortName} is longer than 32 characters
 	 * <p>The database column {@code short_name} is limited to 32 characters.</p>
 	 *
 	 */
@@ -259,7 +258,7 @@ public interface SectionUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code extras} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argExtras is null
+	 * @throws com.opal.IllegalNullArgumentException if argExtras is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.Section setExtras(java.lang.Boolean argExtras);
@@ -274,7 +273,7 @@ public interface SectionUserFacing extends IdentityUserFacing {
 
 	/**
 	 * @return the {@code com.masonic.application.QuestionType}
-	 * The returned {@code com.masonic.application.QuestionType} is the {@link UserFacing} object corresponding to the entry in {@code question_type} that is referenced by {@code section_to_question_type}.
+	 * The returned {@code com.masonic.application.QuestionType} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code question_type} that is referenced by {@code section_to_question_type}.
 	 *
 	 */
 	public com.masonic.application.QuestionType getQuestionType();
@@ -282,7 +281,7 @@ public interface SectionUserFacing extends IdentityUserFacing {
 
 	/**
 	 * @return the {@code com.masonic.application.Packet}
-	 * The returned {@code com.masonic.application.Packet} is the {@link UserFacing} object corresponding to the entry in {@code packet} that is referenced by {@code section_to_packet}.
+	 * The returned {@code com.masonic.application.Packet} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code packet} that is referenced by {@code section_to_packet}.
 	 *
 	 */
 	public com.masonic.application.Packet getPacket();
@@ -293,12 +292,12 @@ public interface SectionUserFacing extends IdentityUserFacing {
 
 	public java.util.stream.Stream<com.masonic.application.Placement> streamPlacement();
 
-	public void addPlacement(com.masonic.application.Placement argPlacement);
-	public void removePlacement(com.masonic.application.Placement argPlacement);
-	public void clearPlacement();
+	public com.masonic.application.Section addPlacement(com.masonic.application.Placement argPlacement);
+	public com.masonic.application.Section removePlacement(com.masonic.application.Placement argPlacement);
+	public com.masonic.application.Section clearPlacement();
 
 	default public <T extends java.util.Collection<? super com.masonic.application.Placement>> T acquirePlacement(T argC) {
-		if (argC == null) { throw new IllegalArgumentException("Target Collection is null."); }
+		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Placement> lclI = createPlacementIterator();
 		while (lclI.hasNext()) {
 			argC.add(lclI.next());

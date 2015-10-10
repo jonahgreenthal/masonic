@@ -1,11 +1,6 @@
 package com.masonic.persistence;
 
-import java.io.PrintWriter;
-import java.io.PrintStream;
-
-import com.opal.*;
-
-import com.masonic.application.*;
+import com.masonic.application.Category;
 
 public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 
@@ -14,7 +9,7 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 		setUserFacing(null);
 	}
 
-	public CategoryOpal(OpalFactory<Category, CategoryOpal> argOpalFactory, Object[] argValues) {
+	public CategoryOpal(com.opal.OpalFactory<Category, CategoryOpal> argOpalFactory, Object[] argValues) {
 		super(argOpalFactory, argValues);
 	}
 
@@ -48,7 +43,7 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 		false,
 	};
 
-	/* package */ static final FieldValidator[] ourFieldValidators = new FieldValidator[] {
+	/* package */ static final com.opal.FieldValidator[] ourFieldValidators = new com.opal.FieldValidator[] {
 		null,
 		null,
 		null,
@@ -68,12 +63,12 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 	public static boolean[] getStaticFieldNullability() { return ourFieldNullability; }
 
 	@Override
-	public FieldValidator[] getFieldValidators() { return ourFieldValidators; }
+	public com.opal.FieldValidator[] getFieldValidators() { return ourFieldValidators; }
 
 	@Override
 	public boolean[] getFieldNullability() { return ourFieldNullability; }
 
-	public static FieldValidator[] getStaticFieldValidators() { return ourFieldValidators; }
+	public static com.opal.FieldValidator[] getStaticFieldValidators() { return ourFieldValidators; }
 
 
 	public synchronized java.lang.String getCode() {
@@ -229,7 +224,7 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 	}
 
 	@Override
-	protected void copyFieldsToInternal(UpdatableOpal<Category> argTarget) {
+	protected void copyFieldsToInternal(com.opal.UpdatableOpal<Category> argTarget) {
 		Object[] lclValues = getReadValueSet();
 		Object[] lclTargetNewValues = argTarget.getNewValues();
 		/* Field 0 (Code) is part of a unique key. */
@@ -252,7 +247,7 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 	@Override
 	public java.util.Set<com.opal.TransactionAware> getRequiredPriorCommits() {
 		java.util.Set<com.opal.TransactionAware> lclTAs = null;
-		UpdatableOpal<?> lclUO;
+		com.opal.UpdatableOpal<?> lclUO;
 		lclUO = myNewCategoryGroupOpal;
 		if ((lclUO != null) && lclUO.isNew()) {
 			lclTAs = new com.siliconage.util.Fast3Set<>();
@@ -263,10 +258,15 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 
 	@Override
 	public java.util.Set<com.opal.TransactionAware> getRequiredSubsequentCommits() {
+		if (isNew()) {
+			return java.util.Collections.emptySet();
+		}
 		java.util.Set<com.opal.TransactionAware> lclTAs = null;
-		UpdatableOpal<?> lclUO;
-		lclUO = myOldCategoryGroupOpal;
-		if ((lclUO != null) && lclUO.isDeleted()) {
+		com.opal.UpdatableOpal<?> lclUO;
+		if ((lclUO = myOldCategoryGroupOpal) == CategoryGroupOpal.NOT_YET_LOADED) {
+			lclUO = myOldCategoryGroupOpal = retrieveCategoryGroupOpal(getOldValues());
+		}
+		if (lclUO != null && lclUO.isDeleted()) {
 			lclTAs = new com.siliconage.util.Fast3Set<>();
 			lclTAs.add(lclUO);
 		}
@@ -287,21 +287,21 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 	protected String[] getFieldNames() { return ourFieldNames; }
 
 	@Override
-	public synchronized void output(final PrintWriter argPW) {
-		argPW.println("Code = " + getCode());
-		argPW.println("Name = " + getName());
-		argPW.println("ShortName = " + getShortName());
-		argPW.println("Sequence = " + getSequenceAsObject());
-		argPW.println("CategoryGroupCode = " + getCategoryGroupCode());
+	public synchronized void output(final java.io.PrintStream argOutput) {
+		argOutput.println("Code = " + getCode());
+		argOutput.println("Name = " + getName());
+		argOutput.println("ShortName = " + getShortName());
+		argOutput.println("Sequence = " + getSequenceAsObject());
+		argOutput.println("CategoryGroupCode = " + getCategoryGroupCode());
 	}
 
 	@Override
-	public synchronized void output(final PrintStream argPS) {
-		argPS.println("Code = " + getCode());
-		argPS.println("Name = " + getName());
-		argPS.println("ShortName = " + getShortName());
-		argPS.println("Sequence = " + getSequenceAsObject());
-		argPS.println("CategoryGroupCode = " + getCategoryGroupCode());
+	public synchronized void output(final java.io.PrintWriter argOutput) {
+		argOutput.println("Code = " + getCode());
+		argOutput.println("Name = " + getName());
+		argOutput.println("ShortName = " + getShortName());
+		argOutput.println("Sequence = " + getSequenceAsObject());
+		argOutput.println("CategoryGroupCode = " + getCategoryGroupCode());
 	}
 
 	private CategoryGroupOpal myOldCategoryGroupOpal;
@@ -365,7 +365,7 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 				}
 				myNewQuestionOpalHashSet = new java.util.HashSet<>(myOldQuestionOpalHashSet);
 				if (myQuestionOpalCachedOperations != null) {
-					OpalUtility.handleCachedOperations(myQuestionOpalCachedOperations, myNewQuestionOpalHashSet);
+					com.opal.OpalUtility.handleCachedOperations(myQuestionOpalCachedOperations, myNewQuestionOpalHashSet);
 					myQuestionOpalCachedOperations = null;
 				}
 			}
@@ -389,7 +389,7 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 		if (myNewQuestionOpalHashSet == null) {
 			if (myOldQuestionOpalHashSet == null) {
 				if (myQuestionOpalCachedOperations == null) { myQuestionOpalCachedOperations = new java.util.ArrayList<>(); }
-				myQuestionOpalCachedOperations.add(new CachedOperation<>(CachedOperation.ADD, argQuestionOpal));
+				myQuestionOpalCachedOperations.add(new com.opal.CachedOperation<>(com.opal.CachedOperation.ADD, argQuestionOpal));
 			} else {
 				myNewQuestionOpalHashSet = new java.util.HashSet<>(myOldQuestionOpalHashSet);
 				myNewQuestionOpalHashSet.add(argQuestionOpal);
@@ -410,7 +410,7 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 		if (myNewQuestionOpalHashSet == null) {
 			if (myOldQuestionOpalHashSet == null) {
 				if (myQuestionOpalCachedOperations == null) { myQuestionOpalCachedOperations = new java.util.ArrayList<>(); }
-				myQuestionOpalCachedOperations.add(new CachedOperation<>(CachedOperation.REMOVE, argQuestionOpal));
+				myQuestionOpalCachedOperations.add(new com.opal.CachedOperation<>(com.opal.CachedOperation.REMOVE, argQuestionOpal));
 			} else {
 				myNewQuestionOpalHashSet = new java.util.HashSet<>(myOldQuestionOpalHashSet);
 				myNewQuestionOpalHashSet.remove(argQuestionOpal);
@@ -449,7 +449,7 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 				}
 				myNewPlacementOpalHashSet = new java.util.HashSet<>(myOldPlacementOpalHashSet);
 				if (myPlacementOpalCachedOperations != null) {
-					OpalUtility.handleCachedOperations(myPlacementOpalCachedOperations, myNewPlacementOpalHashSet);
+					com.opal.OpalUtility.handleCachedOperations(myPlacementOpalCachedOperations, myNewPlacementOpalHashSet);
 					myPlacementOpalCachedOperations = null;
 				}
 			}
@@ -473,7 +473,7 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 		if (myNewPlacementOpalHashSet == null) {
 			if (myOldPlacementOpalHashSet == null) {
 				if (myPlacementOpalCachedOperations == null) { myPlacementOpalCachedOperations = new java.util.ArrayList<>(); }
-				myPlacementOpalCachedOperations.add(new CachedOperation<>(CachedOperation.ADD, argPlacementOpal));
+				myPlacementOpalCachedOperations.add(new com.opal.CachedOperation<>(com.opal.CachedOperation.ADD, argPlacementOpal));
 			} else {
 				myNewPlacementOpalHashSet = new java.util.HashSet<>(myOldPlacementOpalHashSet);
 				myNewPlacementOpalHashSet.add(argPlacementOpal);
@@ -494,7 +494,7 @@ public final class CategoryOpal extends com.opal.UpdatableOpal<Category> {
 		if (myNewPlacementOpalHashSet == null) {
 			if (myOldPlacementOpalHashSet == null) {
 				if (myPlacementOpalCachedOperations == null) { myPlacementOpalCachedOperations = new java.util.ArrayList<>(); }
-				myPlacementOpalCachedOperations.add(new CachedOperation<>(CachedOperation.REMOVE, argPlacementOpal));
+				myPlacementOpalCachedOperations.add(new com.opal.CachedOperation<>(com.opal.CachedOperation.REMOVE, argPlacementOpal));
 			} else {
 				myNewPlacementOpalHashSet = new java.util.HashSet<>(myOldPlacementOpalHashSet);
 				myNewPlacementOpalHashSet.remove(argPlacementOpal);

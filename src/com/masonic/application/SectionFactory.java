@@ -1,6 +1,5 @@
 package com.masonic.application;
 
-import com.opal.*;
 import com.masonic.persistence.SectionOpalFactory;
 import com.masonic.persistence.SectionOpal;
 import com.masonic.persistence.OpalFactoryFactory;
@@ -16,7 +15,7 @@ public class SectionFactory extends com.opal.AbstractFactory<Section, SectionOpa
 
 	public SectionOpalFactory getSectionOpalFactory() { return (SectionOpalFactory) getOpalFactory(); }
 
-	protected SectionFactory(OpalFactory<Section, SectionOpal> argOpalFactory) {
+	protected SectionFactory(com.opal.OpalFactory<Section, SectionOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 

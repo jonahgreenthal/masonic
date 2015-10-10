@@ -86,13 +86,15 @@ public class QuestionStatusImpl extends com.opal.AbstractIdentityImpl<QuestionSt
 	to this object. */
 
 	@Override
-	public void addQuestion(Question argQuestion) {
+	public com.masonic.application.QuestionStatus addQuestion(Question argQuestion) {
 		getQuestionStatusOpal().addQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
+		return this;
 	}
 
 	@Override
-	public void removeQuestion(Question argQuestion) {
+	public com.masonic.application.QuestionStatus removeQuestion(Question argQuestion) {
 		getQuestionStatusOpal().removeQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
+		return this;
 	}
 
 	@Override
@@ -111,7 +113,7 @@ public class QuestionStatusImpl extends com.opal.AbstractIdentityImpl<QuestionSt
 	}
 
 	@Override
-	public void clearQuestion() {
+	public com.masonic.application.QuestionStatus clearQuestion() {
 		throw new UnsupportedOperationException();
 	}
 

@@ -1,6 +1,5 @@
 package com.masonic.persistence;
 
-import com.opal.*;
 
 /**
  * represents a {@code Placement} from the persistent store
@@ -15,7 +14,7 @@ import com.opal.*;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
-public interface PlacementUserFacing extends IdentityUserFacing {
+public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Id}
@@ -49,7 +48,7 @@ public interface PlacementUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code id} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argId is null
+	 * @throws com.opal.IllegalNullArgumentException if argId is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.Placement setId(java.lang.Integer argId);
@@ -94,7 +93,7 @@ public interface PlacementUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code section_id} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argSectionId is null
+	 * @throws com.opal.IllegalNullArgumentException if argSectionId is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.Placement setSectionId(java.lang.Integer argSectionId);
@@ -123,8 +122,8 @@ public interface PlacementUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code category_code} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argCategoryCode is null
-	 * @throws ArgumentTooLongException if {@code argCategoryCode} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argCategoryCode is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argCategoryCode} is longer than 32 characters
 	 * <p>The database column {@code category_code} is limited to 32 characters.</p>
 	 *
 	 */
@@ -164,7 +163,7 @@ public interface PlacementUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code sequence} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argSequence is null
+	 * @throws com.opal.IllegalNullArgumentException if argSequence is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.Placement setSequence(java.lang.Integer argSequence);
@@ -214,7 +213,7 @@ public interface PlacementUserFacing extends IdentityUserFacing {
 	 * <p>The underlying database table allows a {@code NULL} value for this column; calling this method when the value is null will result in an Exception.  To test for a null value, use the Object accessor mentioned above.</p>
 	 *
 	 * @return the primitive value of {@code QuestionId} (of the current {@link com.opal.TransactionContext})
-	 * @throws NullValueException when the internal value is null
+	 * @throws com.opal.NullValueException when the internal value is null
 	 */
 	default public int getQuestionId() throws com.opal.NullValueException {
 		java.lang.Integer lclO = getQuestionIdAsObject();
@@ -252,7 +251,7 @@ public interface PlacementUserFacing extends IdentityUserFacing {
 
 	/**
 	 * @return the {@code com.masonic.application.Section}
-	 * The returned {@code com.masonic.application.Section} is the {@link UserFacing} object corresponding to the entry in {@code section} that is referenced by {@code placement_to_section}.
+	 * The returned {@code com.masonic.application.Section} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code section} that is referenced by {@code placement_to_section}.
 	 *
 	 */
 	public com.masonic.application.Section getSection();
@@ -260,7 +259,7 @@ public interface PlacementUserFacing extends IdentityUserFacing {
 
 	/**
 	 * @return the {@code com.masonic.application.Question}
-	 * The returned {@code com.masonic.application.Question} is the {@link UserFacing} object corresponding to the entry in {@code question} that is referenced by {@code placement_to_question}.
+	 * The returned {@code com.masonic.application.Question} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code question} that is referenced by {@code placement_to_question}.
 	 *
 	 */
 	public com.masonic.application.Question getQuestion();
@@ -268,7 +267,7 @@ public interface PlacementUserFacing extends IdentityUserFacing {
 
 	/**
 	 * @return the {@code com.masonic.application.Category}
-	 * The returned {@code com.masonic.application.Category} is the {@link UserFacing} object corresponding to the entry in {@code category} that is referenced by {@code placement_to_category}.
+	 * The returned {@code com.masonic.application.Category} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code category} that is referenced by {@code placement_to_category}.
 	 *
 	 */
 	public com.masonic.application.Category getCategory();

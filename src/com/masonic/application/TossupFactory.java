@@ -1,6 +1,5 @@
 package com.masonic.application;
 
-import com.opal.*;
 import com.masonic.persistence.TossupOpalFactory;
 import com.masonic.persistence.TossupOpal;
 import com.masonic.persistence.OpalFactoryFactory;
@@ -16,7 +15,7 @@ public class TossupFactory extends com.opal.AbstractFactory<Tossup, TossupOpal> 
 
 	public TossupOpalFactory getTossupOpalFactory() { return (TossupOpalFactory) getOpalFactory(); }
 
-	protected TossupFactory(OpalFactory<Tossup, TossupOpal> argOpalFactory) {
+	protected TossupFactory(com.opal.OpalFactory<Tossup, TossupOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 

@@ -2,7 +2,12 @@ package com.masonic.persistence.postgres;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.opal.*;
+
+import com.opal.OpalCache;
+import com.opal.OpalKey;
+import com.opal.OpalUtility;
+import com.opal.PersistenceException;
+
 import com.masonic.application.Tossup;
 import com.masonic.application.TossupImpl;
 import com.masonic.persistence.TossupOpal;
@@ -95,7 +100,7 @@ public class PostgresTossupOpalFactory extends com.opal.AbstractDatabaseIdentity
 	protected void registerOpal(TossupOpal argOpal, Object[] argValues) {
 		if (argValues == null) { throw new IllegalStateException(); }
 		if (argValues.length != 3) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<TossupOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			lclOC.addOpal(new QuestionIdOpalKey((java.lang.Integer) argValues[0]), argOpal, true);
 		}
@@ -106,7 +111,7 @@ public class PostgresTossupOpalFactory extends com.opal.AbstractDatabaseIdentity
 		Object[] lclOldValues = argOpal.getOldValues();
 		if (lclOldValues == null) { throw new IllegalStateException(); }
 		if (lclOldValues.length != 3) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<TossupOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			lclOC.removeOpal(new QuestionIdOpalKey((java.lang.Integer) lclOldValues[0]));
 		}
@@ -121,7 +126,7 @@ public class PostgresTossupOpalFactory extends com.opal.AbstractDatabaseIdentity
 		Object[] lclNewValues = argOpal.getNewValues();
 		if (lclNewValues == null) { throw new IllegalStateException(); }
 		if (lclNewValues.length != 3) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<TossupOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			OpalKey<TossupOpal> lclOldKey = null;
 			OpalKey<TossupOpal> lclNewKey = null;

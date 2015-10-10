@@ -1,6 +1,5 @@
 package com.masonic.persistence;
 
-import com.opal.*;
 
 /**
  * represents a {@code Account} from the persistent store
@@ -15,7 +14,7 @@ import com.opal.*;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
-public interface AccountUserFacing extends IdentityUserFacing {
+public interface AccountUserFacing extends com.opal.IdentityUserFacing {
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Id}
@@ -49,7 +48,7 @@ public interface AccountUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code id} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argId is null
+	 * @throws com.opal.IllegalNullArgumentException if argId is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.Account setId(java.lang.Integer argId);
@@ -78,8 +77,8 @@ public interface AccountUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code name} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argName is null
-	 * @throws ArgumentTooLongException if {@code argName} is longer than 256 characters
+	 * @throws com.opal.IllegalNullArgumentException if argName is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argName} is longer than 256 characters
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
@@ -103,8 +102,8 @@ public interface AccountUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code email_address} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argEmailAddress is null
-	 * @throws ArgumentTooLongException if {@code argEmailAddress} is longer than 256 characters
+	 * @throws com.opal.IllegalNullArgumentException if argEmailAddress is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argEmailAddress} is longer than 256 characters
 	 * <p>The database column {@code email_address} is limited to 256 characters.</p>
 	 *
 	 */
@@ -128,8 +127,8 @@ public interface AccountUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code username} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argUsername is null
-	 * @throws ArgumentTooLongException if {@code argUsername} is longer than 64 characters
+	 * @throws com.opal.IllegalNullArgumentException if argUsername is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argUsername} is longer than 64 characters
 	 * <p>The database column {@code username} is limited to 64 characters.</p>
 	 *
 	 */
@@ -153,8 +152,8 @@ public interface AccountUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code password_hash} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argPasswordHash is null
-	 * @throws ArgumentTooLongException if {@code argPasswordHash} is longer than 60 characters
+	 * @throws com.opal.IllegalNullArgumentException if argPasswordHash is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argPasswordHash} is longer than 60 characters
 	 * <p>The database column {@code password_hash} is limited to 60 characters.</p>
 	 *
 	 */
@@ -194,7 +193,7 @@ public interface AccountUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code administrator} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argAdministrator is null
+	 * @throws com.opal.IllegalNullArgumentException if argAdministrator is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.Account setAdministrator(java.lang.Boolean argAdministrator);
@@ -239,7 +238,7 @@ public interface AccountUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code active} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argActive is null
+	 * @throws com.opal.IllegalNullArgumentException if argActive is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.Account setActive(java.lang.Boolean argActive);
@@ -257,12 +256,12 @@ public interface AccountUserFacing extends IdentityUserFacing {
 
 	public java.util.stream.Stream<com.masonic.application.Question> streamWriterQuestion();
 
-	public void addWriterQuestion(com.masonic.application.Question argQuestion);
-	public void removeWriterQuestion(com.masonic.application.Question argQuestion);
-	public void clearWriterQuestion();
+	public com.masonic.application.Account addWriterQuestion(com.masonic.application.Question argQuestion);
+	public com.masonic.application.Account removeWriterQuestion(com.masonic.application.Question argQuestion);
+	public com.masonic.application.Account clearWriterQuestion();
 
 	default public <T extends java.util.Collection<? super com.masonic.application.Question>> T acquireWriterQuestion(T argC) {
-		if (argC == null) { throw new IllegalArgumentException("Target Collection is null."); }
+		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Question> lclI = createWriterQuestionIterator();
 		while (lclI.hasNext()) {
 			argC.add(lclI.next());

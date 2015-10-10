@@ -1,13 +1,8 @@
 package com.masonic.persistence;
 
-import java.io.PrintWriter;
-import java.io.PrintStream;
+import com.masonic.application.Question;
 
-import com.opal.*;
-
-import com.masonic.application.*;
-
-@StoreGeneratedPrimaryKey
+@com.opal.StoreGeneratedPrimaryKey
 public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 	public static final java.lang.String ourDefaultQuestionStatusCode = "DRAFTED";
 
@@ -16,7 +11,7 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 		setUserFacing(null);
 	}
 
-	public QuestionOpal(OpalFactory<Question, QuestionOpal> argOpalFactory, Object[] argValues) {
+	public QuestionOpal(com.opal.OpalFactory<Question, QuestionOpal> argOpalFactory, Object[] argValues) {
 		super(argOpalFactory, argValues);
 	}
 
@@ -77,7 +72,7 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 		false,
 	};
 
-	/* package */ static final FieldValidator[] ourFieldValidators = new FieldValidator[] {
+	/* package */ static final com.opal.FieldValidator[] ourFieldValidators = new com.opal.FieldValidator[] {
 		null,
 		null,
 		null,
@@ -102,12 +97,12 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 	public static boolean[] getStaticFieldNullability() { return ourFieldNullability; }
 
 	@Override
-	public FieldValidator[] getFieldValidators() { return ourFieldValidators; }
+	public com.opal.FieldValidator[] getFieldValidators() { return ourFieldValidators; }
 
 	@Override
 	public boolean[] getFieldNullability() { return ourFieldNullability; }
 
-	public static FieldValidator[] getStaticFieldValidators() { return ourFieldValidators; }
+	public static com.opal.FieldValidator[] getStaticFieldValidators() { return ourFieldValidators; }
 
 
 	public synchronized java.lang.Integer getIdAsObject() {
@@ -304,7 +299,7 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 	}
 
 	@Override
-	protected void copyFieldsToInternal(UpdatableOpal<Question> argTarget) {
+	protected void copyFieldsToInternal(com.opal.UpdatableOpal<Question> argTarget) {
 		Object[] lclValues = getReadValueSet();
 		Object[] lclTargetNewValues = argTarget.getNewValues();
 		/* Field 0 (Id) is database generated. */
@@ -344,7 +339,7 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 	@Override
 	public java.util.Set<com.opal.TransactionAware> getRequiredPriorCommits() {
 		java.util.Set<com.opal.TransactionAware> lclTAs = null;
-		UpdatableOpal<?> lclUO;
+		com.opal.UpdatableOpal<?> lclUO;
 		lclUO = myNewIntendedPacketSetOpal;
 		if ((lclUO != null) && lclUO.isNew()) {
 			lclTAs = new com.siliconage.util.Fast3Set<>();
@@ -383,36 +378,49 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 
 	@Override
 	public java.util.Set<com.opal.TransactionAware> getRequiredSubsequentCommits() {
+		if (isNew()) {
+			return java.util.Collections.emptySet();
+		}
 		java.util.Set<com.opal.TransactionAware> lclTAs = null;
-		UpdatableOpal<?> lclUO;
-		lclUO = myOldIntendedPacketSetOpal;
-		if ((lclUO != null) && lclUO.isDeleted()) {
+		com.opal.UpdatableOpal<?> lclUO;
+		if ((lclUO = myOldIntendedPacketSetOpal) == PacketSetOpal.NOT_YET_LOADED) {
+			lclUO = myOldIntendedPacketSetOpal = retrieveIntendedPacketSetOpal(getOldValues());
+		}
+		if (lclUO != null && lclUO.isDeleted()) {
 			lclTAs = new com.siliconage.util.Fast3Set<>();
 			lclTAs.add(lclUO);
 		}
-		lclUO = myOldStatusOpal;
-		if ((lclUO != null) && lclUO.isDeleted()) {
+		if ((lclUO = myOldStatusOpal) == QuestionStatusOpal.NOT_YET_LOADED) {
+			lclUO = myOldStatusOpal = retrieveStatusOpal(getOldValues());
+		}
+		if (lclUO != null && lclUO.isDeleted()) {
 			if (lclTAs == null) {
 				lclTAs = new com.siliconage.util.Fast3Set<>();
 			}
 			lclTAs.add(lclUO);
 		}
-		lclUO = myOldCategoryOpal;
-		if ((lclUO != null) && lclUO.isDeleted()) {
+		if ((lclUO = myOldCategoryOpal) == CategoryOpal.NOT_YET_LOADED) {
+			lclUO = myOldCategoryOpal = retrieveCategoryOpal(getOldValues());
+		}
+		if (lclUO != null && lclUO.isDeleted()) {
 			if (lclTAs == null) {
 				lclTAs = new com.siliconage.util.Fast3Set<>();
 			}
 			lclTAs.add(lclUO);
 		}
-		lclUO = myOldQuestionTypeOpal;
-		if ((lclUO != null) && lclUO.isDeleted()) {
+		if ((lclUO = myOldQuestionTypeOpal) == QuestionTypeOpal.NOT_YET_LOADED) {
+			lclUO = myOldQuestionTypeOpal = retrieveQuestionTypeOpal(getOldValues());
+		}
+		if (lclUO != null && lclUO.isDeleted()) {
 			if (lclTAs == null) {
 				lclTAs = new com.siliconage.util.Fast3Set<>();
 			}
 			lclTAs.add(lclUO);
 		}
-		lclUO = myOldWriterOpal;
-		if ((lclUO != null) && lclUO.isDeleted()) {
+		if ((lclUO = myOldWriterOpal) == AccountOpal.NOT_YET_LOADED) {
+			lclUO = myOldWriterOpal = retrieveWriterOpal(getOldValues());
+		}
+		if (lclUO != null && lclUO.isDeleted()) {
 			if (lclTAs == null) {
 				lclTAs = new com.siliconage.util.Fast3Set<>();
 			}
@@ -435,31 +443,31 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 	protected String[] getFieldNames() { return ourFieldNames; }
 
 	@Override
-	public synchronized void output(final PrintWriter argPW) {
-		argPW.println("Id = " + getIdAsObject());
-		argPW.println("CategoryCode = " + getCategoryCode());
-		argPW.println("InternalNote = " + getInternalNote());
-		argPW.println("ExternalNote = " + getExternalNote());
-		argPW.println("QuestionTypeCode = " + getQuestionTypeCode());
-		argPW.println("Label = " + getLabel());
-		argPW.println("WriterAccountId = " + getWriterAccountIdAsObject());
-		argPW.println("Updated = " + getUpdated());
-		argPW.println("IntendedPacketSetCode = " + getIntendedPacketSetCode());
-		argPW.println("QuestionStatusCode = " + getQuestionStatusCode());
+	public synchronized void output(final java.io.PrintStream argOutput) {
+		argOutput.println("Id = " + getIdAsObject());
+		argOutput.println("CategoryCode = " + getCategoryCode());
+		argOutput.println("InternalNote = " + getInternalNote());
+		argOutput.println("ExternalNote = " + getExternalNote());
+		argOutput.println("QuestionTypeCode = " + getQuestionTypeCode());
+		argOutput.println("Label = " + getLabel());
+		argOutput.println("WriterAccountId = " + getWriterAccountIdAsObject());
+		argOutput.println("Updated = " + getUpdated());
+		argOutput.println("IntendedPacketSetCode = " + getIntendedPacketSetCode());
+		argOutput.println("QuestionStatusCode = " + getQuestionStatusCode());
 	}
 
 	@Override
-	public synchronized void output(final PrintStream argPS) {
-		argPS.println("Id = " + getIdAsObject());
-		argPS.println("CategoryCode = " + getCategoryCode());
-		argPS.println("InternalNote = " + getInternalNote());
-		argPS.println("ExternalNote = " + getExternalNote());
-		argPS.println("QuestionTypeCode = " + getQuestionTypeCode());
-		argPS.println("Label = " + getLabel());
-		argPS.println("WriterAccountId = " + getWriterAccountIdAsObject());
-		argPS.println("Updated = " + getUpdated());
-		argPS.println("IntendedPacketSetCode = " + getIntendedPacketSetCode());
-		argPS.println("QuestionStatusCode = " + getQuestionStatusCode());
+	public synchronized void output(final java.io.PrintWriter argOutput) {
+		argOutput.println("Id = " + getIdAsObject());
+		argOutput.println("CategoryCode = " + getCategoryCode());
+		argOutput.println("InternalNote = " + getInternalNote());
+		argOutput.println("ExternalNote = " + getExternalNote());
+		argOutput.println("QuestionTypeCode = " + getQuestionTypeCode());
+		argOutput.println("Label = " + getLabel());
+		argOutput.println("WriterAccountId = " + getWriterAccountIdAsObject());
+		argOutput.println("Updated = " + getUpdated());
+		argOutput.println("IntendedPacketSetCode = " + getIntendedPacketSetCode());
+		argOutput.println("QuestionStatusCode = " + getQuestionStatusCode());
 	}
 
 	private QuestionStatusOpal myOldStatusOpal;

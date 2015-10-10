@@ -2,7 +2,12 @@ package com.masonic.persistence.postgres;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.opal.*;
+
+import com.opal.OpalCache;
+import com.opal.OpalKey;
+import com.opal.OpalUtility;
+import com.opal.PersistenceException;
+
 import com.masonic.application.QuestionType;
 import com.masonic.application.QuestionTypeImpl;
 import com.masonic.persistence.QuestionTypeOpal;
@@ -99,7 +104,7 @@ public class PostgresQuestionTypeOpalFactory extends com.opal.AbstractDatabaseId
 	protected void registerOpal(QuestionTypeOpal argOpal, Object[] argValues) {
 		if (argValues == null) { throw new IllegalStateException(); }
 		if (argValues.length != 7) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<QuestionTypeOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			lclOC.addOpal(new CodeOpalKey((java.lang.String) argValues[0]), argOpal, true);
 			lclOC.addOpal(new NameOpalKey((java.lang.String) argValues[1]), argOpal, true);
@@ -112,7 +117,7 @@ public class PostgresQuestionTypeOpalFactory extends com.opal.AbstractDatabaseId
 		Object[] lclOldValues = argOpal.getOldValues();
 		if (lclOldValues == null) { throw new IllegalStateException(); }
 		if (lclOldValues.length != 7) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<QuestionTypeOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			lclOC.removeOpal(new CodeOpalKey((java.lang.String) lclOldValues[0]));
 			lclOC.removeOpal(new NameOpalKey((java.lang.String) lclOldValues[1]));
@@ -129,7 +134,7 @@ public class PostgresQuestionTypeOpalFactory extends com.opal.AbstractDatabaseId
 		Object[] lclNewValues = argOpal.getNewValues();
 		if (lclNewValues == null) { throw new IllegalStateException(); }
 		if (lclNewValues.length != 7) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<QuestionTypeOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			OpalKey<QuestionTypeOpal> lclOldKey = null;
 			OpalKey<QuestionTypeOpal> lclNewKey = null;

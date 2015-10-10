@@ -1,6 +1,5 @@
 package com.masonic.persistence;
 
-import com.opal.*;
 
 /**
  * represents a {@code Tossup} from the persistent store
@@ -49,7 +48,7 @@ public interface TossupUserFacing extends com.masonic.application.Question {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code question_id} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argQuestionId is null
+	 * @throws com.opal.IllegalNullArgumentException if argQuestionId is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.Tossup setQuestionId(java.lang.Integer argQuestionId);
@@ -78,8 +77,8 @@ public interface TossupUserFacing extends com.masonic.application.Question {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code text} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argText is null
-	 * @throws ArgumentTooLongException if {@code argText} is longer than 2147483647 characters
+	 * @throws com.opal.IllegalNullArgumentException if argText is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argText} is longer than 2147483647 characters
 	 * <p>The database column {@code text} is limited to 2147483647 characters.</p>
 	 *
 	 */
@@ -103,8 +102,8 @@ public interface TossupUserFacing extends com.masonic.application.Question {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code answer} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argAnswer is null
-	 * @throws ArgumentTooLongException if {@code argAnswer} is longer than 2147483647 characters
+	 * @throws com.opal.IllegalNullArgumentException if argAnswer is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argAnswer} is longer than 2147483647 characters
 	 * <p>The database column {@code answer} is limited to 2147483647 characters.</p>
 	 *
 	 */

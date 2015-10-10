@@ -1,6 +1,5 @@
 package com.masonic.application;
 
-import com.opal.*;
 import com.masonic.persistence.AccountOpalFactory;
 import com.masonic.persistence.AccountOpal;
 import com.masonic.persistence.OpalFactoryFactory;
@@ -16,7 +15,7 @@ public class AccountFactory extends com.opal.AbstractFactory<Account, AccountOpa
 
 	public AccountOpalFactory getAccountOpalFactory() { return (AccountOpalFactory) getOpalFactory(); }
 
-	protected AccountFactory(OpalFactory<Account, AccountOpal> argOpalFactory) {
+	protected AccountFactory(com.opal.OpalFactory<Account, AccountOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 

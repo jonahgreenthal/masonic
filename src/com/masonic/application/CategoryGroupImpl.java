@@ -86,13 +86,15 @@ public class CategoryGroupImpl extends com.opal.AbstractIdentityImpl<CategoryGro
 	to this object. */
 
 	@Override
-	public void addCategory(Category argCategory) {
+	public com.masonic.application.CategoryGroup addCategory(Category argCategory) {
 		getCategoryGroupOpal().addCategoryOpal(((CategoryImpl) argCategory).getCategoryOpal());
+		return this;
 	}
 
 	@Override
-	public void removeCategory(Category argCategory) {
+	public com.masonic.application.CategoryGroup removeCategory(Category argCategory) {
 		getCategoryGroupOpal().removeCategoryOpal(((CategoryImpl) argCategory).getCategoryOpal());
+		return this;
 	}
 
 	@Override
@@ -111,7 +113,7 @@ public class CategoryGroupImpl extends com.opal.AbstractIdentityImpl<CategoryGro
 	}
 
 	@Override
-	public void clearCategory() {
+	public com.masonic.application.CategoryGroup clearCategory() {
 		throw new UnsupportedOperationException();
 	}
 

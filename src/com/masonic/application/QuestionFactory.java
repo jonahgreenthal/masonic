@@ -1,11 +1,10 @@
 package com.masonic.application;
 
-import com.opal.*;
 import com.masonic.persistence.QuestionOpalFactory;
 import com.masonic.persistence.QuestionOpal;
 import com.masonic.persistence.OpalFactoryFactory;
 
-public class QuestionFactory extends com.opal.AbstractFactory<Question, QuestionOpal> implements com.opal.FactoryPolymorphicCreator<Question, com.masonic.application.QuestionType>, com.opal.IdentityFactory<Question> {
+public class QuestionFactory extends com.opal.AbstractFactory<Question, QuestionOpal>implements com.opal.IdentityFactory<Question> {
 	/** This static variable holds the Singleton instance of the Factory for application
 		objects of this type.  It is private, but can be accessed via the getInstance() method.
 	*/
@@ -16,18 +15,13 @@ public class QuestionFactory extends com.opal.AbstractFactory<Question, Question
 
 	public QuestionOpalFactory getQuestionOpalFactory() { return (QuestionOpalFactory) getOpalFactory(); }
 
-	protected QuestionFactory(OpalFactory<Question, QuestionOpal> argOpalFactory) {
+	protected QuestionFactory(com.opal.OpalFactory<Question, QuestionOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 
 	@Override
 	public Class<Question> getUserFacingInterface() {
 		return Question.class;
-	}
-
-	@Override
-	public Question create(com.masonic.application.QuestionType argType) {
-		return getQuestionOpalFactory().create(argType).getUserFacing();
 	}
 
 	public Question forId(java.lang.Integer argId) {

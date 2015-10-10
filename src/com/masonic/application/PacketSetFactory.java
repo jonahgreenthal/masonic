@@ -1,6 +1,5 @@
 package com.masonic.application;
 
-import com.opal.*;
 import com.masonic.persistence.PacketSetOpalFactory;
 import com.masonic.persistence.PacketSetOpal;
 import com.masonic.persistence.OpalFactoryFactory;
@@ -16,7 +15,7 @@ public class PacketSetFactory extends com.opal.AbstractFactory<PacketSet, Packet
 
 	public PacketSetOpalFactory getPacketSetOpalFactory() { return (PacketSetOpalFactory) getOpalFactory(); }
 
-	protected PacketSetFactory(OpalFactory<PacketSet, PacketSetOpal> argOpalFactory) {
+	protected PacketSetFactory(com.opal.OpalFactory<PacketSet, PacketSetOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 

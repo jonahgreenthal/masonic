@@ -26,16 +26,16 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 	}
 
 	@Override
-	protected void outputSuperclassOpalFields(java.io.PrintStream argPS) {
-		if (argPS != null) {
-			getQuestionOpal().output(argPS);
+	protected void outputSuperclassOpalFields(java.io.PrintStream argOutput) {
+		if (argOutput != null) {
+			getQuestionOpal().output(argOutput);
 		}
 	}
 
 	@Override
-	protected void outputSuperclassOpalFields(java.io.PrintWriter argPW) {
-		if (argPW != null) {
-			getQuestionOpal().output(argPW);
+	protected void outputSuperclassOpalFields(java.io.PrintWriter argOutput) {
+		if (argOutput != null) {
+			getQuestionOpal().output(argOutput);
 		}
 	}
 

@@ -118,13 +118,15 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 	to this object. */
 
 	@Override
-	public void addSection(Section argSection) {
+	public com.masonic.application.Packet addSection(Section argSection) {
 		getPacketOpal().addSectionOpal(((SectionImpl) argSection).getSectionOpal());
+		return this;
 	}
 
 	@Override
-	public void removeSection(Section argSection) {
+	public com.masonic.application.Packet removeSection(Section argSection) {
 		getPacketOpal().removeSectionOpal(((SectionImpl) argSection).getSectionOpal());
+		return this;
 	}
 
 	@Override
@@ -143,7 +145,7 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 	}
 
 	@Override
-	public void clearSection() {
+	public com.masonic.application.Packet clearSection() {
 		throw new UnsupportedOperationException();
 	}
 

@@ -119,13 +119,15 @@ public class QuestionTypeImpl extends com.opal.AbstractIdentityImpl<QuestionType
 	to this object. */
 
 	@Override
-	public void addQuestion(Question argQuestion) {
+	public com.masonic.application.QuestionType addQuestion(Question argQuestion) {
 		getQuestionTypeOpal().addQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
+		return this;
 	}
 
 	@Override
-	public void removeQuestion(Question argQuestion) {
+	public com.masonic.application.QuestionType removeQuestion(Question argQuestion) {
 		getQuestionTypeOpal().removeQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
+		return this;
 	}
 
 	@Override
@@ -144,18 +146,20 @@ public class QuestionTypeImpl extends com.opal.AbstractIdentityImpl<QuestionType
 	}
 
 	@Override
-	public void clearQuestion() {
+	public com.masonic.application.QuestionType clearQuestion() {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public void addSection(Section argSection) {
+	public com.masonic.application.QuestionType addSection(Section argSection) {
 		getQuestionTypeOpal().addSectionOpal(((SectionImpl) argSection).getSectionOpal());
+		return this;
 	}
 
 	@Override
-	public void removeSection(Section argSection) {
+	public com.masonic.application.QuestionType removeSection(Section argSection) {
 		getQuestionTypeOpal().removeSectionOpal(((SectionImpl) argSection).getSectionOpal());
+		return this;
 	}
 
 	@Override
@@ -174,7 +178,7 @@ public class QuestionTypeImpl extends com.opal.AbstractIdentityImpl<QuestionType
 	}
 
 	@Override
-	public void clearSection() {
+	public com.masonic.application.QuestionType clearSection() {
 		throw new UnsupportedOperationException();
 	}
 

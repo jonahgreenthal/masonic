@@ -1,6 +1,5 @@
 package com.masonic.persistence;
 
-import com.opal.*;
 
 /**
  * represents a {@code PacketSet} from the persistent store
@@ -15,7 +14,7 @@ import com.opal.*;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
-public interface PacketSetUserFacing extends IdentityUserFacing {
+public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Code}
@@ -33,8 +32,8 @@ public interface PacketSetUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code code} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argCode is null
-	 * @throws ArgumentTooLongException if {@code argCode} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argCode is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argCode} is longer than 32 characters
 	 * <p>The database column {@code code} is limited to 32 characters.</p>
 	 *
 	 */
@@ -58,8 +57,8 @@ public interface PacketSetUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code name} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argName is null
-	 * @throws ArgumentTooLongException if {@code argName} is longer than 256 characters
+	 * @throws com.opal.IllegalNullArgumentException if argName is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argName} is longer than 256 characters
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
@@ -83,8 +82,8 @@ public interface PacketSetUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code short_name} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argShortName is null
-	 * @throws ArgumentTooLongException if {@code argShortName} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argShortName is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argShortName} is longer than 32 characters
 	 * <p>The database column {@code short_name} is limited to 32 characters.</p>
 	 *
 	 */
@@ -155,7 +154,7 @@ public interface PacketSetUserFacing extends IdentityUserFacing {
 	 *
 	 * @param argNote the new value of {@code Note}.  May be <code>null</code>.
 	 * @return itself, so that mutator calls can be chained fluently
-	 * @throws ArgumentTooLongException if {@code argNote} is longer than 2147483647 characters
+	 * @throws com.opal.ArgumentTooLongException if {@code argNote} is longer than 2147483647 characters
 	 * <p>The database column {@code note} is limited to 2147483647 characters.</p>
 	 *
 	 */
@@ -203,7 +202,7 @@ public interface PacketSetUserFacing extends IdentityUserFacing {
 	 * @return itself, so that mutator calls can be chained fluently
 	 * <p>The database column {@code completed} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argCompleted is null
+	 * @throws com.opal.IllegalNullArgumentException if argCompleted is null
 	 */
 	@com.opal.annotation.NotNull
 	public com.masonic.application.PacketSet setCompleted(java.lang.Boolean argCompleted);
@@ -221,12 +220,12 @@ public interface PacketSetUserFacing extends IdentityUserFacing {
 
 	public java.util.stream.Stream<com.masonic.application.Question> streamIntendedQuestion();
 
-	public void addIntendedQuestion(com.masonic.application.Question argQuestion);
-	public void removeIntendedQuestion(com.masonic.application.Question argQuestion);
-	public void clearIntendedQuestion();
+	public com.masonic.application.PacketSet addIntendedQuestion(com.masonic.application.Question argQuestion);
+	public com.masonic.application.PacketSet removeIntendedQuestion(com.masonic.application.Question argQuestion);
+	public com.masonic.application.PacketSet clearIntendedQuestion();
 
 	default public <T extends java.util.Collection<? super com.masonic.application.Question>> T acquireIntendedQuestion(T argC) {
-		if (argC == null) { throw new IllegalArgumentException("Target Collection is null."); }
+		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Question> lclI = createIntendedQuestionIterator();
 		while (lclI.hasNext()) {
 			argC.add(lclI.next());
@@ -250,12 +249,12 @@ public interface PacketSetUserFacing extends IdentityUserFacing {
 
 	public java.util.stream.Stream<com.masonic.application.Packet> streamPacket();
 
-	public void addPacket(com.masonic.application.Packet argPacket);
-	public void removePacket(com.masonic.application.Packet argPacket);
-	public void clearPacket();
+	public com.masonic.application.PacketSet addPacket(com.masonic.application.Packet argPacket);
+	public com.masonic.application.PacketSet removePacket(com.masonic.application.Packet argPacket);
+	public com.masonic.application.PacketSet clearPacket();
 
 	default public <T extends java.util.Collection<? super com.masonic.application.Packet>> T acquirePacket(T argC) {
-		if (argC == null) { throw new IllegalArgumentException("Target Collection is null."); }
+		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Packet> lclI = createPacketIterator();
 		while (lclI.hasNext()) {
 			argC.add(lclI.next());

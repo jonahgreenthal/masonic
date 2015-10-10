@@ -1,11 +1,6 @@
 package com.masonic.persistence;
 
-import java.io.PrintWriter;
-import java.io.PrintStream;
-
-import com.opal.*;
-
-import com.masonic.application.*;
+import com.masonic.application.TeamQuestion;
 
 public final class TeamQuestionOpal extends com.opal.UpdatableOpal<TeamQuestion> {
 
@@ -14,7 +9,7 @@ public final class TeamQuestionOpal extends com.opal.UpdatableOpal<TeamQuestion>
 		setUserFacing(null);
 	}
 
-	public TeamQuestionOpal(OpalFactory<TeamQuestion, TeamQuestionOpal> argOpalFactory, Object[] argValues) {
+	public TeamQuestionOpal(com.opal.OpalFactory<TeamQuestion, TeamQuestionOpal> argOpalFactory, Object[] argValues) {
 		super(argOpalFactory, argValues);
 	}
 
@@ -26,7 +21,7 @@ public final class TeamQuestionOpal extends com.opal.UpdatableOpal<TeamQuestion>
 
 	@Override
 	protected void createSuperclassOpals() {
-		setQuestionOpal(QuestionFactory.getInstance().getQuestionOpalFactory().createAsSuperOpal(getUserFacing()));
+		setQuestionOpal(com.masonic.application.QuestionFactory.getInstance().getQuestionOpalFactory().createAsSuperOpal(getUserFacing()));
 	}
 
 	/* package */ static final String[] ourFieldNames = new String[] {
@@ -62,7 +57,7 @@ public final class TeamQuestionOpal extends com.opal.UpdatableOpal<TeamQuestion>
 		false,
 	};
 
-	/* package */ static final FieldValidator[] ourFieldValidators = new FieldValidator[] {
+	/* package */ static final com.opal.FieldValidator[] ourFieldValidators = new com.opal.FieldValidator[] {
 		null,
 		null,
 		null,
@@ -85,12 +80,12 @@ public final class TeamQuestionOpal extends com.opal.UpdatableOpal<TeamQuestion>
 	public static boolean[] getStaticFieldNullability() { return ourFieldNullability; }
 
 	@Override
-	public FieldValidator[] getFieldValidators() { return ourFieldValidators; }
+	public com.opal.FieldValidator[] getFieldValidators() { return ourFieldValidators; }
 
 	@Override
 	public boolean[] getFieldNullability() { return ourFieldNullability; }
 
-	public static FieldValidator[] getStaticFieldValidators() { return ourFieldValidators; }
+	public static com.opal.FieldValidator[] getStaticFieldValidators() { return ourFieldValidators; }
 
 
 	public synchronized java.lang.Integer getQuestionIdAsObject() {
@@ -222,7 +217,7 @@ public final class TeamQuestionOpal extends com.opal.UpdatableOpal<TeamQuestion>
 	}
 
 	@Override
-	protected void copyFieldsToInternal(UpdatableOpal<TeamQuestion> argTarget) {
+	protected void copyFieldsToInternal(com.opal.UpdatableOpal<TeamQuestion> argTarget) {
 		Object[] lclValues = getReadValueSet();
 		Object[] lclTargetNewValues = argTarget.getNewValues();
 		/* Field 0 (QuestionId) is part of a unique key. */
@@ -248,7 +243,7 @@ public final class TeamQuestionOpal extends com.opal.UpdatableOpal<TeamQuestion>
 	@Override
 	public java.util.Set<com.opal.TransactionAware> getRequiredPriorCommits() {
 		java.util.Set<com.opal.TransactionAware> lclTAs = null;
-		UpdatableOpal<?> lclUO;
+		com.opal.UpdatableOpal<?> lclUO;
 		lclUO = myNewQuestionOpal;
 		if ((lclUO != null) && lclUO.isNew()) {
 			lclTAs = new com.siliconage.util.Fast3Set<>();
@@ -259,10 +254,15 @@ public final class TeamQuestionOpal extends com.opal.UpdatableOpal<TeamQuestion>
 
 	@Override
 	public java.util.Set<com.opal.TransactionAware> getRequiredSubsequentCommits() {
+		if (isNew()) {
+			return java.util.Collections.emptySet();
+		}
 		java.util.Set<com.opal.TransactionAware> lclTAs = null;
-		UpdatableOpal<?> lclUO;
-		lclUO = myOldQuestionOpal;
-		if ((lclUO != null) && lclUO.isDeleted()) {
+		com.opal.UpdatableOpal<?> lclUO;
+		if ((lclUO = myOldQuestionOpal) == QuestionOpal.NOT_YET_LOADED) {
+			lclUO = myOldQuestionOpal = retrieveQuestionOpal(getOldValues());
+		}
+		if (lclUO != null && lclUO.isDeleted()) {
 			lclTAs = new com.siliconage.util.Fast3Set<>();
 			lclTAs.add(lclUO);
 		}
@@ -283,27 +283,27 @@ public final class TeamQuestionOpal extends com.opal.UpdatableOpal<TeamQuestion>
 	protected String[] getFieldNames() { return ourFieldNames; }
 
 	@Override
-	public synchronized void output(final PrintWriter argPW) {
-		argPW.println("QuestionId = " + getQuestionIdAsObject());
-		argPW.println("Introduction = " + getIntroduction());
-		argPW.println("Part1Text = " + getPart1Text());
-		argPW.println("Part1Answer = " + getPart1Answer());
-		argPW.println("Part2Text = " + getPart2Text());
-		argPW.println("Part2Answer = " + getPart2Answer());
-		argPW.println("Part3Text = " + getPart3Text());
-		argPW.println("Part3Answer = " + getPart3Answer());
+	public synchronized void output(final java.io.PrintStream argOutput) {
+		argOutput.println("QuestionId = " + getQuestionIdAsObject());
+		argOutput.println("Introduction = " + getIntroduction());
+		argOutput.println("Part1Text = " + getPart1Text());
+		argOutput.println("Part1Answer = " + getPart1Answer());
+		argOutput.println("Part2Text = " + getPart2Text());
+		argOutput.println("Part2Answer = " + getPart2Answer());
+		argOutput.println("Part3Text = " + getPart3Text());
+		argOutput.println("Part3Answer = " + getPart3Answer());
 	}
 
 	@Override
-	public synchronized void output(final PrintStream argPS) {
-		argPS.println("QuestionId = " + getQuestionIdAsObject());
-		argPS.println("Introduction = " + getIntroduction());
-		argPS.println("Part1Text = " + getPart1Text());
-		argPS.println("Part1Answer = " + getPart1Answer());
-		argPS.println("Part2Text = " + getPart2Text());
-		argPS.println("Part2Answer = " + getPart2Answer());
-		argPS.println("Part3Text = " + getPart3Text());
-		argPS.println("Part3Answer = " + getPart3Answer());
+	public synchronized void output(final java.io.PrintWriter argOutput) {
+		argOutput.println("QuestionId = " + getQuestionIdAsObject());
+		argOutput.println("Introduction = " + getIntroduction());
+		argOutput.println("Part1Text = " + getPart1Text());
+		argOutput.println("Part1Answer = " + getPart1Answer());
+		argOutput.println("Part2Text = " + getPart2Text());
+		argOutput.println("Part2Answer = " + getPart2Answer());
+		argOutput.println("Part3Text = " + getPart3Text());
+		argOutput.println("Part3Answer = " + getPart3Answer());
 	}
 
 	private QuestionOpal myOldQuestionOpal;

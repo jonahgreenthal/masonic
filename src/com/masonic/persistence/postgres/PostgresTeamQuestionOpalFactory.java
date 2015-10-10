@@ -2,7 +2,12 @@ package com.masonic.persistence.postgres;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.opal.*;
+
+import com.opal.OpalCache;
+import com.opal.OpalKey;
+import com.opal.OpalUtility;
+import com.opal.PersistenceException;
+
 import com.masonic.application.TeamQuestion;
 import com.masonic.application.TeamQuestionImpl;
 import com.masonic.persistence.TeamQuestionOpal;
@@ -100,7 +105,7 @@ public class PostgresTeamQuestionOpalFactory extends com.opal.AbstractDatabaseId
 	protected void registerOpal(TeamQuestionOpal argOpal, Object[] argValues) {
 		if (argValues == null) { throw new IllegalStateException(); }
 		if (argValues.length != 8) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<TeamQuestionOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			lclOC.addOpal(new QuestionIdOpalKey((java.lang.Integer) argValues[0]), argOpal, true);
 		}
@@ -111,7 +116,7 @@ public class PostgresTeamQuestionOpalFactory extends com.opal.AbstractDatabaseId
 		Object[] lclOldValues = argOpal.getOldValues();
 		if (lclOldValues == null) { throw new IllegalStateException(); }
 		if (lclOldValues.length != 8) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<TeamQuestionOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			lclOC.removeOpal(new QuestionIdOpalKey((java.lang.Integer) lclOldValues[0]));
 		}
@@ -126,7 +131,7 @@ public class PostgresTeamQuestionOpalFactory extends com.opal.AbstractDatabaseId
 		Object[] lclNewValues = argOpal.getNewValues();
 		if (lclNewValues == null) { throw new IllegalStateException(); }
 		if (lclNewValues.length != 8) { throw new IllegalStateException(); }
-		OpalCache lclOC = getOpalCache();
+		OpalCache<TeamQuestionOpal> lclOC = getCache();
 		synchronized (lclOC) {
 			OpalKey<TeamQuestionOpal> lclOldKey = null;
 			OpalKey<TeamQuestionOpal> lclNewKey = null;

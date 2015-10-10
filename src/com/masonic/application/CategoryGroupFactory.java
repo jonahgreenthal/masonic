@@ -1,6 +1,5 @@
 package com.masonic.application;
 
-import com.opal.*;
 import com.masonic.persistence.CategoryGroupOpalFactory;
 import com.masonic.persistence.CategoryGroupOpal;
 import com.masonic.persistence.OpalFactoryFactory;
@@ -16,7 +15,7 @@ public class CategoryGroupFactory extends com.opal.AbstractFactory<CategoryGroup
 
 	public CategoryGroupOpalFactory getCategoryGroupOpalFactory() { return (CategoryGroupOpalFactory) getOpalFactory(); }
 
-	protected CategoryGroupFactory(OpalFactory<CategoryGroup, CategoryGroupOpal> argOpalFactory) {
+	protected CategoryGroupFactory(com.opal.OpalFactory<CategoryGroup, CategoryGroupOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 

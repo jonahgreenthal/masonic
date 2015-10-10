@@ -103,13 +103,15 @@ public class PacketSetImpl extends com.opal.AbstractIdentityImpl<PacketSet, Pack
 	to this object. */
 
 	@Override
-	public void addIntendedQuestion(Question argQuestion) {
+	public com.masonic.application.PacketSet addIntendedQuestion(Question argQuestion) {
 		getPacketSetOpal().addIntendedQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
+		return this;
 	}
 
 	@Override
-	public void removeIntendedQuestion(Question argQuestion) {
+	public com.masonic.application.PacketSet removeIntendedQuestion(Question argQuestion) {
 		getPacketSetOpal().removeIntendedQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
+		return this;
 	}
 
 	@Override
@@ -128,18 +130,20 @@ public class PacketSetImpl extends com.opal.AbstractIdentityImpl<PacketSet, Pack
 	}
 
 	@Override
-	public void clearIntendedQuestion() {
+	public com.masonic.application.PacketSet clearIntendedQuestion() {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public void addPacket(Packet argPacket) {
+	public com.masonic.application.PacketSet addPacket(Packet argPacket) {
 		getPacketSetOpal().addPacketOpal(((PacketImpl) argPacket).getPacketOpal());
+		return this;
 	}
 
 	@Override
-	public void removePacket(Packet argPacket) {
+	public com.masonic.application.PacketSet removePacket(Packet argPacket) {
 		getPacketSetOpal().removePacketOpal(((PacketImpl) argPacket).getPacketOpal());
+		return this;
 	}
 
 	@Override
@@ -158,7 +162,7 @@ public class PacketSetImpl extends com.opal.AbstractIdentityImpl<PacketSet, Pack
 	}
 
 	@Override
-	public void clearPacket() {
+	public com.masonic.application.PacketSet clearPacket() {
 		throw new UnsupportedOperationException();
 	}
 

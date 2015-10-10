@@ -1,9 +1,24 @@
 package com.masonic.persistence.postgres;
+
 import javax.sql.DataSource;
 import javax.naming.NamingException;
 import javax.naming.InitialContext;
+
 import com.opal.PersistenceException;
-import com.masonic.persistence.*;
+
+import com.masonic.persistence.AccountOpalFactory;
+import com.masonic.persistence.CategoryGroupOpalFactory;
+import com.masonic.persistence.CategoryOpalFactory;
+import com.masonic.persistence.OpalFactoryFactory;
+import com.masonic.persistence.PacketOpalFactory;
+import com.masonic.persistence.PacketSetOpalFactory;
+import com.masonic.persistence.PlacementOpalFactory;
+import com.masonic.persistence.QuestionOpalFactory;
+import com.masonic.persistence.QuestionStatusOpalFactory;
+import com.masonic.persistence.QuestionTypeOpalFactory;
+import com.masonic.persistence.SectionOpalFactory;
+import com.masonic.persistence.TeamQuestionOpalFactory;
+import com.masonic.persistence.TossupOpalFactory;
 
 public class PostgresOpalFactoryFactory extends OpalFactoryFactory {
 	private static final PostgresOpalFactoryFactory ourInstance = new PostgresOpalFactoryFactory();

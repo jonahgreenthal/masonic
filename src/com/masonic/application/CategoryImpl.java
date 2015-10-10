@@ -112,13 +112,15 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 	to this object. */
 
 	@Override
-	public void addQuestion(Question argQuestion) {
+	public com.masonic.application.Category addQuestion(Question argQuestion) {
 		getCategoryOpal().addQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
+		return this;
 	}
 
 	@Override
-	public void removeQuestion(Question argQuestion) {
+	public com.masonic.application.Category removeQuestion(Question argQuestion) {
 		getCategoryOpal().removeQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
+		return this;
 	}
 
 	@Override
@@ -137,18 +139,20 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 	}
 
 	@Override
-	public void clearQuestion() {
+	public com.masonic.application.Category clearQuestion() {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public void addPlacement(Placement argPlacement) {
+	public com.masonic.application.Category addPlacement(Placement argPlacement) {
 		getCategoryOpal().addPlacementOpal(((PlacementImpl) argPlacement).getPlacementOpal());
+		return this;
 	}
 
 	@Override
-	public void removePlacement(Placement argPlacement) {
+	public com.masonic.application.Category removePlacement(Placement argPlacement) {
 		getCategoryOpal().removePlacementOpal(((PlacementImpl) argPlacement).getPlacementOpal());
+		return this;
 	}
 
 	@Override
@@ -167,7 +171,7 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 	}
 
 	@Override
-	public void clearPlacement() {
+	public com.masonic.application.Category clearPlacement() {
 		throw new UnsupportedOperationException();
 	}
 

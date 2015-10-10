@@ -1,6 +1,5 @@
 package com.masonic.persistence;
 
-import com.opal.*;
 
 /**
  * represents a {@code Question} from the persistent store
@@ -15,7 +14,7 @@ import com.opal.*;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
-public interface QuestionUserFacing extends IdentityUserFacing {
+public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Id}
@@ -48,7 +47,7 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 	 * @param argId the new value of {@code Id}.  May not be <code>null</code>.
 	 * <p>The database column {@code id} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argId is null
+	 * @throws com.opal.IllegalNullArgumentException if argId is null
 	 */
 	@com.opal.annotation.NotNull
 	public void setId(java.lang.Integer argId);
@@ -75,8 +74,8 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 	 * @param argCategoryCode the new value of {@code CategoryCode}.  May not be <code>null</code>.
 	 * <p>The database column {@code category_code} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argCategoryCode is null
-	 * @throws ArgumentTooLongException if {@code argCategoryCode} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argCategoryCode is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argCategoryCode} is longer than 32 characters
 	 * <p>The database column {@code category_code} is limited to 32 characters.</p>
 	 *
 	 */
@@ -113,7 +112,7 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 	 * sets the {@code InternalNote} to the value of {@code argInternalNote}
 	 *
 	 * @param argInternalNote the new value of {@code InternalNote}.  May be <code>null</code>.
-	 * @throws ArgumentTooLongException if {@code argInternalNote} is longer than 2147483647 characters
+	 * @throws com.opal.ArgumentTooLongException if {@code argInternalNote} is longer than 2147483647 characters
 	 * <p>The database column {@code internal_note} is limited to 2147483647 characters.</p>
 	 *
 	 */
@@ -149,7 +148,7 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 	 * sets the {@code ExternalNote} to the value of {@code argExternalNote}
 	 *
 	 * @param argExternalNote the new value of {@code ExternalNote}.  May be <code>null</code>.
-	 * @throws ArgumentTooLongException if {@code argExternalNote} is longer than 2147483647 characters
+	 * @throws com.opal.ArgumentTooLongException if {@code argExternalNote} is longer than 2147483647 characters
 	 * <p>The database column {@code external_note} is limited to 2147483647 characters.</p>
 	 *
 	 */
@@ -171,8 +170,8 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 	 * @param argQuestionTypeCode the new value of {@code QuestionTypeCode}.  May not be <code>null</code>.
 	 * <p>The database column {@code question_type_code} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argQuestionTypeCode is null
-	 * @throws ArgumentTooLongException if {@code argQuestionTypeCode} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argQuestionTypeCode is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argQuestionTypeCode} is longer than 32 characters
 	 * <p>The database column {@code question_type_code} is limited to 32 characters.</p>
 	 *
 	 */
@@ -195,8 +194,8 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 	 * @param argLabel the new value of {@code Label}.  May not be <code>null</code>.
 	 * <p>The database column {@code label} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argLabel is null
-	 * @throws ArgumentTooLongException if {@code argLabel} is longer than 256 characters
+	 * @throws com.opal.IllegalNullArgumentException if argLabel is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argLabel} is longer than 256 characters
 	 * <p>The database column {@code label} is limited to 256 characters.</p>
 	 *
 	 */
@@ -235,7 +234,7 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 	 * @param argWriterAccountId the new value of {@code WriterAccountId}.  May not be <code>null</code>.
 	 * <p>The database column {@code writer_account_id} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argWriterAccountId is null
+	 * @throws com.opal.IllegalNullArgumentException if argWriterAccountId is null
 	 */
 	@com.opal.annotation.NotNull
 	public void setWriterAccountId(java.lang.Integer argWriterAccountId);
@@ -262,7 +261,7 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 	 * @param argUpdated the new value of {@code Updated}.  May not be <code>null</code>.
 	 * <p>The database column {@code updated} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argUpdated is null
+	 * @throws com.opal.IllegalNullArgumentException if argUpdated is null
 	 */
 	@com.opal.annotation.NotNull
 	public void setUpdated(java.time.LocalDateTime argUpdated);
@@ -296,7 +295,7 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 	 * sets the {@code IntendedPacketSetCode} to the value of {@code argIntendedPacketSetCode}
 	 *
 	 * @param argIntendedPacketSetCode the new value of {@code IntendedPacketSetCode}.  May be <code>null</code>.
-	 * @throws ArgumentTooLongException if {@code argIntendedPacketSetCode} is longer than 32 characters
+	 * @throws com.opal.ArgumentTooLongException if {@code argIntendedPacketSetCode} is longer than 32 characters
 	 * <p>The database column {@code intended_packet_set_code} is limited to 32 characters.</p>
 	 *
 	 */
@@ -318,8 +317,8 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 	 * @param argQuestionStatusCode the new value of {@code QuestionStatusCode}.  May not be <code>null</code>.
 	 * <p>The database column {@code question_status_code} to which this field is mapped is {@code NOT NULL}.</p>
 	 *
-	 * @throws IllegalNullArgumentException if argQuestionStatusCode is null
-	 * @throws ArgumentTooLongException if {@code argQuestionStatusCode} is longer than 32 characters
+	 * @throws com.opal.IllegalNullArgumentException if argQuestionStatusCode is null
+	 * @throws com.opal.ArgumentTooLongException if {@code argQuestionStatusCode} is longer than 32 characters
 	 * <p>The database column {@code question_status_code} is limited to 32 characters.</p>
 	 *
 	 */
@@ -329,7 +328,7 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 
 	/**
 	 * @return the {@code com.masonic.application.QuestionStatus}
-	 * The returned {@code com.masonic.application.QuestionStatus} is the {@link UserFacing} object corresponding to the entry in {@code question_status} that is referenced by {@code question_question_status_code_fkey}.
+	 * The returned {@code com.masonic.application.QuestionStatus} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code question_status} that is referenced by {@code question_question_status_code_fkey}.
 	 *
 	 */
 	public com.masonic.application.QuestionStatus getStatus();
@@ -337,7 +336,7 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 
 	/**
 	 * @return the {@code com.masonic.application.PacketSet}
-	 * The returned {@code com.masonic.application.PacketSet} is the {@link UserFacing} object corresponding to the entry in {@code packet_set} that is referenced by {@code question_intended_packet_set_code_fkey}.
+	 * The returned {@code com.masonic.application.PacketSet} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code packet_set} that is referenced by {@code question_intended_packet_set_code_fkey}.
 	 *
 	 */
 	public com.masonic.application.PacketSet getIntendedPacketSet();
@@ -345,7 +344,7 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 
 	/**
 	 * @return the {@code com.masonic.application.Account}
-	 * The returned {@code com.masonic.application.Account} is the {@link UserFacing} object corresponding to the entry in {@code account} that is referenced by {@code question_writer_account_id_fkey}.
+	 * The returned {@code com.masonic.application.Account} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code account} that is referenced by {@code question_writer_account_id_fkey}.
 	 *
 	 */
 	public com.masonic.application.Account getWriter();
@@ -353,7 +352,7 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 
 	/**
 	 * @return the {@code com.masonic.application.Category}
-	 * The returned {@code com.masonic.application.Category} is the {@link UserFacing} object corresponding to the entry in {@code category} that is referenced by {@code question_to_category}.
+	 * The returned {@code com.masonic.application.Category} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code category} that is referenced by {@code question_to_category}.
 	 *
 	 */
 	public com.masonic.application.Category getCategory();
@@ -361,7 +360,7 @@ public interface QuestionUserFacing extends IdentityUserFacing {
 
 	/**
 	 * @return the {@code com.masonic.application.QuestionType}
-	 * The returned {@code com.masonic.application.QuestionType} is the {@link UserFacing} object corresponding to the entry in {@code question_type} that is referenced by {@code question_to_question_type}.
+	 * The returned {@code com.masonic.application.QuestionType} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code question_type} that is referenced by {@code question_to_question_type}.
 	 *
 	 */
 	public com.masonic.application.QuestionType getQuestionType();

@@ -1,6 +1,5 @@
 package com.masonic.application;
 
-import com.opal.*;
 import com.masonic.persistence.PlacementOpalFactory;
 import com.masonic.persistence.PlacementOpal;
 import com.masonic.persistence.OpalFactoryFactory;
@@ -16,7 +15,7 @@ public class PlacementFactory extends com.opal.AbstractFactory<Placement, Placem
 
 	public PlacementOpalFactory getPlacementOpalFactory() { return (PlacementOpalFactory) getOpalFactory(); }
 
-	protected PlacementFactory(OpalFactory<Placement, PlacementOpal> argOpalFactory) {
+	protected PlacementFactory(com.opal.OpalFactory<Placement, PlacementOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 
