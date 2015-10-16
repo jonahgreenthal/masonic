@@ -9,7 +9,6 @@
 <%@ page import="com.masonic.application.Tossup" %>
 <%@ page import="com.masonic.application.TossupFactory" %>
 <%@ page import="com.masonic.menu.Menus" %>
-<%@ page import="com.masonic.opalforms.compare.QuestionPlacementComparator" %>
 
 <jsp:include page="/template/header.jsp">
 	<jsp:param name="pageTitle" value="Home" />
@@ -36,7 +35,7 @@
 			</thead>
 			<tbody class="small"><%
 				List<Tossup> lclTUs = TossupFactory.getInstance().acquireAll(new ArrayList<>());
-				lclTUs.sort(Question.UpdatedComparator.getInstance().reversed().thenComparing(QuestionPlacementComparator.getInstance()));
+				lclTUs.sort(Question.UpdatedComparator.getInstance().reversed().thenComparing(Question.PLACEMENT_COMPARATOR));
 				
 				DateTimeFormatter lclUpdatedDTF = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
 				
@@ -67,7 +66,7 @@
 			</thead>
 			<tbody class="small"><%
 				List<TeamQuestion> lclTQs = TeamQuestionFactory.getInstance().acquireAll(new ArrayList<>());
-				lclTQs.sort(Question.UpdatedComparator.getInstance().reversed().thenComparing(QuestionPlacementComparator.getInstance()));
+				lclTQs.sort(Question.UpdatedComparator.getInstance().reversed().thenComparing(Question.PLACEMENT_COMPARATOR));
 				
 				for (TeamQuestion lclTQ : lclTQs) {
 					%><tr>

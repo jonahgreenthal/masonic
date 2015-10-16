@@ -1,5 +1,7 @@
 package com.masonic.application;
 
+import java.util.Comparator;
+
 import com.siliconage.web.form.FunctionalNameCodeExtractor;
 import com.siliconage.web.form.NullSafeNameCodeExtractor;
 
@@ -14,6 +16,8 @@ import com.masonic.persistence.QuestionUserFacing;
  */
 
 public interface Question extends QuestionUserFacing {
+	public static final Comparator<Question> PLACEMENT_COMPARATOR = Comparator.<Question>comparingInt(argQ -> argQ.isUsed() ? 0 : 1).thenComparingInt(Question::getId);
+	
 	default boolean isUsed() {
 		return getPlacement() != null;
 	}
