@@ -42,14 +42,14 @@ if (lclOF.hasErrors()) {
 
 %><div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("Name", "Name").css("right inline") %>
+		<%= lclOF.label("Name", "Name").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-4 columns">
 		<%= lclOF.text("Name", 30) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("ShortName", "Short name").css("right inline") %>
+		<%= lclOF.label("ShortName", "Short name").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-4 columns">
 		<%= lclOF.text("ShortName", 30) %>
@@ -58,14 +58,14 @@ if (lclOF.hasErrors()) {
 
 <div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("Code", "Code").css("right inline") %>
+		<%= lclOF.label("Code", "Code").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-4 columns">
 		<%= lclOF.text("Code", 30) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Deadline", "Deadline").css("right inline") %>
+		<%= lclOF.label("Deadline", "Deadline").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-4 columns">
 			<%= lclOF.date("Deadline").placeholder("yyyy-mm-dd") %>
@@ -74,14 +74,14 @@ if (lclOF.hasErrors()) {
 
 <div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("Note", "Note").css("right inline") %>
+		<%= lclOF.label("Note", "Note").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-4 columns">
 		<%= lclOF.textarea("Note", 60, 2) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Completed", "Completed?").css("right inline") %>
+		<%= lclOF.label("Completed", "Completed?").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-4 columns">
 		<%= HTMLUtility.switchWidget(lclOF, "Completed") %>

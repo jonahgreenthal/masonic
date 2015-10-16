@@ -1,6 +1,7 @@
 package com.masonic.application;
 
-import com.siliconage.web.form.NameCodeExtractor;
+import com.siliconage.web.form.FunctionalNameCodeExtractor;
+import com.siliconage.web.form.NullSafeNameCodeExtractor;
 
 import com.masonic.persistence.QuestionUserFacing;
 
@@ -17,25 +18,8 @@ public interface Question extends QuestionUserFacing {
 		return getPlacement() != null;
 	}
 	
-	public static class NCE extends NameCodeExtractor<Question> {
-		private static final NCE ourInstance = new NCE();
-		
-		public static NCE getInstance() {
-			return ourInstance;
-		}
-		
-		private NCE() {
-			super();
-		}
-		
-		@Override
-		public String extractCodeInternal(Question argQ) {
-			return String.valueOf(argQ.getId());
-		}
-		
-		@Override
-		public String extractNameInternal(Question argQ) {
-			return argQ.getLabel();
-		}
-	}
+	public static final NullSafeNameCodeExtractor<Question> NCE = new FunctionalNameCodeExtractor<>(
+		argQ -> argQ.getIdAsObject().toString(),
+		Question::getLabel
+	);
 }

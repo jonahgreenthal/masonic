@@ -1,5 +1,11 @@
 package com.masonic.application;
 
+import java.security.Principal;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Validate;
+
 import com.masonic.persistence.AccountUserFacing;
 
 /**
@@ -11,6 +17,35 @@ import com.masonic.persistence.AccountUserFacing;
  */
 
 public interface Account extends AccountUserFacing {
-	/* Developers may add default and static methods to this interface without fear of them being overwritten
-	by subsequent re-generation of the Opals (and related classes). */
+	public static Account determineCurrent(final HttpServletRequest argRequest) {
+		Validate.notNull(argRequest);
+		
+		final Principal lclPrincipal = argRequest.getUserPrincipal();
+		if (lclPrincipal == null) {
+			return null;
+		}
+		
+		final String lclUsername = StringUtils.trimToNull(lclPrincipal.getName());
+		if (lclUsername == null) {
+			return null;
+		}
+		
+		final Account lclA = AccountFactory.getInstance().forUsername(lclUsername);
+		
+		if (lclA != null && lclA.isActive()) {
+			return lclA;
+		} else {
+			return null;
+		}
+	}
+	
+	public static Account demand(final HttpServletRequest argRequest) {
+		final Account lclA = determineCurrent(argRequest);
+		
+		if (lclA == null) {
+			throw new IllegalStateException("No user is logged in");
+		}
+		
+		return lclA;
+	}
 }

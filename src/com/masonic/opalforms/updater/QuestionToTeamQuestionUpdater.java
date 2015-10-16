@@ -8,10 +8,10 @@ import org.apache.commons.lang3.Validate;
 import com.opal.cma.OpalFormUpdater;
 import com.opal.cma.Validator;
 
+import com.masonic.application.Account;
 import com.masonic.application.QuestionStatusFactory;
 import com.masonic.application.QuestionTypeFactory;
 import com.masonic.application.TeamQuestion;
-import com.masonic.AccountUtility;
 
 public class QuestionToTeamQuestionUpdater extends OpalFormUpdater<TeamQuestion> {
 	public QuestionToTeamQuestionUpdater(final HttpServletRequest argRequest, final String argPrefix, final String argParameterName) {
@@ -31,7 +31,7 @@ public class QuestionToTeamQuestionUpdater extends OpalFormUpdater<TeamQuestion>
 		final TeamQuestion lclTQ = Validate.notNull(getUserFacing());
 		
 		if (lclTQ.isNew()) {
-			lclTQ.setWriter(AccountUtility.demandLoggedInAccount(getRequest()));
+			lclTQ.setWriter(Account.demand(getRequest()));
 			lclTQ.setQuestionType(QuestionTypeFactory.TEAM_QUESTION());
 		}
 		

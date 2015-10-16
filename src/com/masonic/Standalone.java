@@ -63,7 +63,6 @@ public abstract class Standalone {
 	public static void shutdown() {
 		ourLogger.debug("Shutting down TransactionManager.");
 		TransactionManager.getInstance().shutdown();
-		OpalCache.getInstance().shutdown();
 		ourLogger.debug("Shut down TransactionManager.");
 	}
 }

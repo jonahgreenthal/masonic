@@ -53,21 +53,21 @@ if (lclOF.hasErrors()) {
 
 %><div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("Name", "Name").css("right inline") %>
+		<%= lclOF.label("Name", "Name").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-3 columns">
 		<%= lclOF.text("Name", 30) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("ShortName", "Short name").css("right inline") %>
+		<%= lclOF.label("ShortName", "Short name").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-3 columns">
 		<%= lclOF.text("ShortName", 30) %>
 	</div>
 	
 	<div class="small-1 column">
-		<%= lclOF.label("Sequence", "Sequence").css("right inline") %>
+		<%= lclOF.label("Sequence", "Sequence").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-1 column">
 		<%= lclOF.text("Sequence", 2) %>
@@ -93,14 +93,14 @@ if (lclOF.hasErrors()) {
 			<h3><%= lclSOF.isNew() ? "New section" : lclS.getName() %></h3>
 			<div class="row">
 				<div class="small-2 columns">
-					<%= lclSOF.label("Name", "Name").css("right inline") %>
+					<%= lclSOF.label("Name", "Name").addCssClass("right inline") %>
 				</div>
 				<div class="small-10 medium-4 columns">
 					<%= lclSOF.text("Name", 30) %>
 				</div>
 				
 				<div class="small-2 columns">
-					<%= lclSOF.label("ShortName", "Short name").css("right inline") %>
+					<%= lclSOF.label("ShortName", "Short name").addCssClass("right inline") %>
 				</div>
 				<div class="small-10 medium-4 columns">
 					<%= lclSOF.text("ShortName", 30) %>
@@ -109,21 +109,21 @@ if (lclOF.hasErrors()) {
 			
 			<div class="row">
 				<div class="small-2 columns">
-					<%= lclSOF.label("QuestionType", "Question type").css("right inline") %>
+					<%= lclSOF.label("QuestionType", "Question type").addCssClass("right inline") %>
 				</div>
 				<div class="small-10 medium-2 columns">
 					<%= lclSOF.dropdown("QuestionType", QuestionType.SequenceComparator.getInstance()) %>
 				</div>
 				
 				<div class="small-2 columns">
-					<%= lclSOF.label("Extras", "Extras?").css("right inline") %>
+					<%= lclSOF.label("Extras", "Extras?").addCssClass("right inline") %>
 				</div>
 				<div class="small-10 medium-2 columns">
 					<%= lclSOF.checkbox("Extras").style("vertical-align: sub;") %>
 				</div>
 				
 				<div class="small-2 columns">
-					<%= lclSOF.label("Sequence", "Sequence").css("right inline") %>
+					<%= lclSOF.label("Sequence", "Sequence").addCssClass("right inline") %>
 				</div>
 				<div class="small-10 medium-2 columns">
 					<%= lclSOF.text("Sequence", 2) %>
@@ -175,7 +175,7 @@ if (lclOF.hasErrors()) {
 												new DatabaseQuery("SELECT Q.* FROM Question Q WHERE NOT EXISTS (SELECT * FROM Placement PL WHERE PL.question_id = Q.id) AND Q.category_code = ? ORDER BY Q.label", lclPL.getCategory().getCode())
 											);
 											
-											%><%= lclOF.getPriorInput().dropdown("/Placement_" + lclPL.getId() + "_Question", lclCandidates, lclPLOF.getUserFacing().getQuestion(), Question.NCE.getInstance()) %><%
+											%><%= lclOF.getPriorInput().dropdown("/Placement_" + lclPL.getId() + "_Question", lclCandidates, lclPLOF.getUserFacing().getQuestion(), Question.NCE) %><%
 										}
 									%></td>
 									<td><%= lclPLOF.delete() %></td>

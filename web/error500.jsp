@@ -1,7 +1,6 @@
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="com.masonic.application.Account" %>
 <%@ page import="com.masonic.menu.Menus" %>
-<%@ page import="com.masonic.AccountUtility" %>
 <%@ page import="com.masonic.Utility" %>
 
 <jsp:include page="/template/header.jsp">
@@ -14,7 +13,7 @@
 <div class="row">
 	<div class="small-12 columns">
 		<p>Your request produced an internal error. Please try again. If the error persists, please notify <%= Utility.getAdminContact() %>.</p><%
-		Account lclA = AccountUtility.getLoggedInAccount(request);
+		Account lclA = Account.determineCurrent(request);
 		boolean lclShouldSeeStackTrace = lclA != null;
 		
 		Throwable lclT = (Throwable) request.getAttribute("javax.servlet.error.exception");

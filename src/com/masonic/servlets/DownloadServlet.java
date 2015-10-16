@@ -12,7 +12,6 @@ import org.apache.commons.lang3.Validate;
 
 import com.opal.TransactionContext;
 
-import com.masonic.AccountUtility;
 import com.masonic.application.Account;
 
 public abstract class DownloadServlet extends HttpServlet {
@@ -60,7 +59,7 @@ public abstract class DownloadServlet extends HttpServlet {
 		ensureNoActiveTransactionContext(true);
 		
 		/* Turn the username into an Account. */
-		final Account lclUser = AccountUtility.getLoggedInAccount(argRequest);
+		final Account lclUser = Account.determineCurrent(argRequest);
 		/* Is there actually a logged-in user? */
 		if (lclUser == null) {
 			/* Yes. Does this servlet require the user to be logged in? */

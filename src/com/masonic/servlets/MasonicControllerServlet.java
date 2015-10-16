@@ -22,7 +22,6 @@ import com.siliconage.web.ControllerServlet;
 import com.opal.TransactionContext;
 
 import com.masonic.application.Account;
-import com.masonic.AccountUtility;
 
 public abstract class MasonicControllerServlet extends ControllerServlet {
 	private static final long serialVersionUID = 1L;
@@ -72,7 +71,7 @@ public abstract class MasonicControllerServlet extends ControllerServlet {
 			ensureNoActiveTransactionContext(true);
 			
 			/* Turn the username into an Masonic Account. */
-			final Account lclAccount = AccountUtility.getLoggedInAccount(argRequest);
+			final Account lclAccount = Account.determineCurrent(argRequest);
 			/* Is there actually a logged-in user? */
 			if (lclAccount == null) {
 				/* Yes. Does this servlet require the user to be logged in? */

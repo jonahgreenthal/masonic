@@ -11,7 +11,6 @@
 <%@ page import="com.masonic.application.TeamQuestionFactory" %>
 <%@ page import="com.masonic.menu.Menus" %>
 <%@ page import="com.masonic.opalforms.updater.QuestionToTeamQuestionUpdater" %>
-<%@ page import="com.masonic.AccountUtility" %>
 <%@ page import="com.masonic.HTMLUtility" %>
 
 <%
@@ -26,7 +25,7 @@ lclOF.setUpdaterClass(QuestionToTeamQuestionUpdater.class);
 lclOF.setDeleteURI("/masonic/question-delete-confirmation.jsp");
 TeamQuestion lclTQ = lclOF.getUserFacing();
 
-Account lclUser = AccountUtility.demandLoggedInAccount(request);
+Account lclUser = Account.demand(request);
 if (!lclUser.isAdministrator()) {
 	lclOF.disable("Writer");
 }
@@ -51,21 +50,21 @@ if (lclOF.hasErrors()) {
 
 %><div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("Writer", "Writer").css("right inline") %>
+		<%= lclOF.label("Writer", "Writer").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-2 columns">
 		<%= lclOF.dropdown("Writer", Account.NameComparator.getInstance()) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Label", "Label").css("right inline") %>
+		<%= lclOF.label("Label", "Label").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-2 columns">
 		<%= lclOF.text("Label", 30) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Status", "Status").css("right inline") %>
+		<%= lclOF.label("Status", "Status").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-2 columns">
 		<%= lclOF.dropdown("Status", QuestionStatus.SequenceComparator.getInstance()) %>
@@ -74,14 +73,14 @@ if (lclOF.hasErrors()) {
 
 <div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("Category", "Category").css("right inline") %>
+		<%= lclOF.label("Category", "Category").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-4 columns">
 		<%= lclOF.dropdown("Category", Category.StandardComparator.getInstance()).namer(Category::getNameWithGroupName) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("IntendedPacketSet", "Intended Packet Set").css("right inline") %>
+		<%= lclOF.label("IntendedPacketSet", "Intended Packet Set").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-4 columns">
 		<%= lclOF.dropdown("IntendedPacketSet", PacketSet.StandardComparator.getInstance()).filter(PacketSet::isNotCompleted) %>
@@ -94,49 +93,49 @@ if (lclOF.hasErrors()) {
 
 <div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("Introduction", "Introduction").css("right inline") %>
+		<%= lclOF.label("Introduction", "Introduction").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 columns">
 		<%= lclOF.textarea("Introduction", 60, 2) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Part1Text", "Part 1 Text").css("right inline") %>
+		<%= lclOF.label("Part1Text", "Part 1 Text").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 columns">
 		<%= lclOF.textarea("Part1Text", 60, 2) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Part1Answer", "Part 1 Answer").css("right inline") %>
+		<%= lclOF.label("Part1Answer", "Part 1 Answer").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 columns">
 		<%= lclOF.textarea("Part1Answer", 60, 1) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Part2Text", "Part 2 Text").css("right inline") %>
+		<%= lclOF.label("Part2Text", "Part 2 Text").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 columns">
 		<%= lclOF.textarea("Part2Text", 60, 2) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Part2Answer", "Part 2 Answer").css("right inline") %>
+		<%= lclOF.label("Part2Answer", "Part 2 Answer").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 columns">
 		<%= lclOF.textarea("Part2Answer", 60, 1) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Part3Text", "Part 3 Text").css("right inline") %>
+		<%= lclOF.label("Part3Text", "Part 3 Text").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 columns">
 		<%= lclOF.textarea("Part3Text", 60, 2) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Part3Answer", "Part 3 Answer").css("right inline") %>
+		<%= lclOF.label("Part3Answer", "Part 3 Answer").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 columns">
 		<%= lclOF.textarea("Part3Answer", 60, 1) %>
@@ -158,7 +157,7 @@ if (lclOF.hasErrors()) {
 
 <div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("InternalNote", "Internal Note").css("right inline") %>
+		<%= lclOF.label("InternalNote", "Internal Note").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 columns">
 		<%= lclOF.textarea("InternalNote", 60, 4) %>

@@ -11,7 +11,6 @@
 <%@ page import="com.masonic.application.TossupFactory" %>
 <%@ page import="com.masonic.menu.Menus" %>
 <%@ page import="com.masonic.opalforms.updater.QuestionToTossupUpdater" %>
-<%@ page import="com.masonic.AccountUtility" %>
 <%@ page import="com.masonic.HTMLUtility" %>
 
 <%
@@ -26,7 +25,7 @@ lclOF.setUpdaterClass(QuestionToTossupUpdater.class);
 lclOF.setDeleteURI("/masonic/question-delete-confirmation.jsp");
 Tossup lclTU = lclOF.getUserFacing();
 
-Account lclUser = AccountUtility.demandLoggedInAccount(request);
+Account lclUser = Account.demand(request);
 if (!lclUser.isAdministrator()) {
 	lclOF.disable("Writer");
 }
@@ -51,21 +50,21 @@ if (lclOF.hasErrors()) {
 
 %><div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("Writer", "Writer").css("right inline") %>
+		<%= lclOF.label("Writer", "Writer").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-2 columns">
 		<%= lclOF.dropdown("Writer", Account.NameComparator.getInstance()) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Label", "Label").css("right inline") %>
+		<%= lclOF.label("Label", "Label").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-2 columns">
 		<%= lclOF.text("Label", 30) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Status", "Status").css("right inline") %>
+		<%= lclOF.label("Status", "Status").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-2 columns">
 		<%= lclOF.dropdown("Status", QuestionStatus.SequenceComparator.getInstance()) %>
@@ -74,14 +73,14 @@ if (lclOF.hasErrors()) {
 
 <div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("Category", "Category").css("right inline") %>
+		<%= lclOF.label("Category", "Category").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-4 columns">
 		<%= lclOF.dropdown("Category", Category.StandardComparator.getInstance()).namer(Category::getNameWithGroupName) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("IntendedPacketSet", "Intended Packet Set").css("right inline") %>
+		<%= lclOF.label("IntendedPacketSet", "Intended Packet Set").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 medium-4 columns">
 		<%= lclOF.dropdown("IntendedPacketSet", PacketSet.StandardComparator.getInstance()).filter(PacketSet::isNotCompleted) %>
@@ -94,14 +93,14 @@ if (lclOF.hasErrors()) {
 
 <div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("Text", "Question Text").css("right inline") %>
+		<%= lclOF.label("Text", "Question Text").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 columns">
 		<%= lclOF.textarea("Text", 60, 6) %>
 	</div>
 	
 	<div class="small-2 columns">
-		<%= lclOF.label("Answer", "Answer").css("right inline") %>
+		<%= lclOF.label("Answer", "Answer").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 columns">
 		<%= lclOF.textarea("Answer", 60, 2) %>
@@ -123,7 +122,7 @@ if (lclOF.hasErrors()) {
 
 <div class="row">
 	<div class="small-2 columns">
-		<%= lclOF.label("InternalNote", "Internal Note").css("right inline") %>
+		<%= lclOF.label("InternalNote", "Internal Note").addCssClass("right inline") %>
 	</div>
 	<div class="small-10 columns">
 		<%= lclOF.textarea("InternalNote", 60, 4) %>

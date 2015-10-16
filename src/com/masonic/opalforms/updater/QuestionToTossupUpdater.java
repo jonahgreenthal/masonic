@@ -9,10 +9,10 @@ import org.apache.commons.lang3.Validate;
 import com.opal.cma.OpalFormUpdater;
 import com.opal.cma.Validator;
 
+import com.masonic.application.Account;
 import com.masonic.application.QuestionStatusFactory;
 import com.masonic.application.QuestionTypeFactory;
 import com.masonic.application.Tossup;
-import com.masonic.AccountUtility;
 
 public class QuestionToTossupUpdater extends OpalFormUpdater<Tossup> {
 	public QuestionToTossupUpdater(final HttpServletRequest argRequest, final String argPrefix, final String argParameterName) {
@@ -32,7 +32,7 @@ public class QuestionToTossupUpdater extends OpalFormUpdater<Tossup> {
 		final Tossup lclTU = Validate.notNull(getUserFacing());
 		
 		if (lclTU.isNew() && lclTU.getWriter() == null) {
-			lclTU.setWriter(AccountUtility.demandLoggedInAccount(getRequest()));
+			lclTU.setWriter(Account.demand(getRequest()));
 			lclTU.setQuestionType(QuestionTypeFactory.TOSSUP());
 		}
 		
