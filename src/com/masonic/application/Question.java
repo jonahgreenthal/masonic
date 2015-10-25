@@ -23,7 +23,7 @@ public interface Question extends QuestionUserFacing {
 	}
 	
 	public static final NullSafeNameCodeExtractor<Question> NCE = new FunctionalNameCodeExtractor<>(
-		argQ -> argQ.getIdAsObject().toString(),
-		Question::getLabel
+		Question::getLabel,
+		argQ -> argQ.getIdAsObject().toString()
 	);
 }
