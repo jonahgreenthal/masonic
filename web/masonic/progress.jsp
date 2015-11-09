@@ -107,8 +107,8 @@ if (lclIncompleteSets.isEmpty()) {
 		}
 	}
 	
-	Set<Category> lclAllRelevantCategories = new HashSet<>(lclTUNeeded.asLiveMap().keySet());
-	lclAllRelevantCategories.addAll(lclTQNeeded.asLiveMap().keySet());
+	Set<Category> lclAllRelevantCategories = new HashSet<>(lclTUNeeded.keyList());
+	lclAllRelevantCategories.addAll(lclTQNeeded.keyList());
 	
 	List<CategoryGroup> lclCategoryGroups = lclAllRelevantCategories.stream()
 		.map(Category::getCategoryGroup)
