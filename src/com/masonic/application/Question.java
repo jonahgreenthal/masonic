@@ -22,6 +22,10 @@ public interface Question extends QuestionUserFacing {
 		return getPlacement() != null;
 	}
 	
+	default boolean isUnused() {
+		return getPlacement() == null;
+	}
+	
 	public static final NullSafeNameCodeExtractor<Question> NCE = new FunctionalNameCodeExtractor<>(
 		Question::getLabel,
 		argQ -> argQ.getIdAsObject().toString()

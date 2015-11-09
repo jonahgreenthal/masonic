@@ -10,7 +10,9 @@ import com.masonic.persistence.PacketSetUserFacing;
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
 
-public interface PacketSet extends PacketSetUserFacing {
-	/* Developers may add default and static methods to this interface without fear of them being overwritten
-	by subsequent re-generation of the Opals (and related classes). */
+public interface PacketSet extends PacketSetUserFacing, Comparable<PacketSet> {
+	@Override
+	default public int compareTo(PacketSet that) {
+		return this.getDeadline().compareTo(that.getDeadline());
+	}
 }
