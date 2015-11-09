@@ -75,7 +75,7 @@ if (lclSelectedStatuses.isEmpty()) {
 			
 			for (QuestionStatus lclS : lclStatuses) {
 				%><label>
-					<input type="checkbox" name="question_status_code" value="<%= lclS.getCode() %>"<%= lclSelectedStatuses.contains(lclS) ? " checked=\"checked\"" : "" %>>&nbsp;whose status is <%= lclS.getName() %></label>
+					<input type="checkbox" name="question_status_code" value="<%= lclS.getCode() %>"<%= lclSelectedStatuses.contains(lclS) ? " checked=\"checked\"" : "" %>>&nbsp;<%= lclS.getName() %></label>
 				</label><%
 			}
 		%></div>
