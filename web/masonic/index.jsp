@@ -29,7 +29,7 @@
 </jsp:include><%
 
 Collection<PacketSet> lclSelectedPacketSetsFromRequest = Validate.notNull(PacketSetFactory.getInstance().multipleFromHttpRequest(request));
-boolean lclShowUnused = request.getParameter("unused") == null || Boolean.parseBoolean(request.getParameter("unused")); // i.e., if there is no parameter for this, default to true
+boolean lclShowUnused = request.getParameter("packet_set_code") == null || Boolean.parseBoolean(request.getParameter("unused"));
 
 Set<PacketSet> lclSelectedPacketSets = new HashSet<>(lclSelectedPacketSetsFromRequest);
 if (lclSelectedPacketSets.isEmpty()) {
@@ -42,6 +42,25 @@ Set<QuestionStatus> lclSelectedStatuses = new HashSet<>(lclSelectedStatusesFromR
 if (lclSelectedStatuses.isEmpty()) {
 	QuestionStatusFactory.getInstance().acquireAll(lclSelectedStatuses);
 }
+
+
+List<Tossup> lclTUs = TossupFactory.getInstance().streamAll()
+	.filter(argQ -> argQ.isUnused() ? lclShowUnused : lclSelectedPacketSets.contains(argQ.getPlacement().getPacketSet()))
+	.filter(argQ -> lclSelectedStatuses.contains(argQ.getStatus()))
+	.sorted(Question.UpdatedComparator.getInstance().reversed().thenComparing(Question.PLACEMENT_COMPARATOR))
+	.collect(Collectors.toList());
+boolean lclAnyTUNote = lclTUs.stream().anyMatch(argTU -> argTU.getInternalNote() != null);
+
+List<TeamQuestion> lclTQs = TeamQuestionFactory.getInstance().streamAll()
+	.filter(argQ -> argQ.isUnused() ? lclShowUnused : lclSelectedPacketSets.contains(argQ.getPlacement().getPacketSet()))
+	.filter(argQ -> lclSelectedStatuses.contains(argQ.getStatus()))
+	.sorted(Question.UpdatedComparator.getInstance().reversed().thenComparing(Question.PLACEMENT_COMPARATOR))
+	.collect(Collectors.toList());
+boolean lclAnyTQNote = lclTQs.stream().anyMatch(argTQ -> argTQ.getInternalNote() != null);
+
+boolean lclMultiplePacketSetsShown = lclSelectedPacketSets.size() > 1 ? true : lclShowUnused;
+
+DateTimeFormatter lclUpdatedDTF = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
 
 %><div class="row hide-for-large-up">
 	<div class="small-12 columns">
@@ -65,7 +84,7 @@ if (lclSelectedStatuses.isEmpty()) {
 			}
 			
 			%><label>
-				<input type="checkbox" name="unused" value="<%= HTMLUtility.DEFAULT_TRUE_STRING %>"<%= lclShowUnused ? " checked=\"checked\"" : "" %> />&nbsp;[that&nbsp;are&nbsp;unused]
+				<input type="checkbox" name="unused" value="<%= HTMLUtility.DEFAULT_TRUE_STRING %>"<%= lclShowUnused ? " checked=\"checked\"" : "" %> />&nbsp;[unused]
 			</label>
 		</div>
 		<div class="small-12 medium-6 columns">
@@ -86,65 +105,57 @@ if (lclSelectedStatuses.isEmpty()) {
 </form>
 
 <div class="row">
-	<div class="small-12 large-5 columns">
-		<h2 id="tossups">Tossups</h2>
+	<div class="small-12 large-6 columns">
+		<h2 id="tossups">Tossups (<%= lclTUs.size() %>)</h2>
 		<table class="responsive full-width">
 			<thead>
 				<th>Label</th>
-				<th>Category</th>
+				<th>Cat</th>
 				<th>Status</th>
-				<th>Note?</th>
-				<th>Use</th>
+				<%= lclAnyTUNote ? "<th>Note?</th>" : "" %>
+				<%= lclMultiplePacketSetsShown ? "<th>Use</th>" : "" %>
 			</thead>
 			<tbody class="small"><%
-				List<Tossup> lclTUs = TossupFactory.getInstance().streamAll()
-					.filter(argQ -> argQ.isUnused() ? lclShowUnused : lclSelectedPacketSets.contains(argQ.getPlacement().getPacketSet()))
-					.filter(argQ -> lclSelectedStatuses.contains(argQ.getStatus()))
-					.sorted(Question.UpdatedComparator.getInstance().reversed().thenComparing(Question.PLACEMENT_COMPARATOR))
-					.collect(Collectors.toList());
-				
-				DateTimeFormatter lclUpdatedDTF = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
-				
 				for (Tossup lclTU : lclTUs) {
 					%><tr>
 						<td><a href="tossup-edit.jsp?question_id=<%= lclTU.getId() %>"><%= lclTU.getLabel() %></a></td>
 						<td><span title="<%= lclTU.getCategory().getName() %>"><%= lclTU.getCategory().getShortName() %></span></td>
-						<td><span title="Last updated: <%= lclUpdatedDTF.format(lclTU.getUpdated()) %>"><%= lclTU.getStatus().getShortName() %></span></td>
-						<td><%= lclTU.getInternalNote() == null ? "&nbsp;" : "<span title=\"" + WebDataFilter.scrub(lclTU.getInternalNote()) + "\">Yes</span>" %></td>
-						<td><%= lclTU.isUsed() ? lclTU.getPlacement().getPacketSet().getShortName() : "-" %></td>
-					</tr><%
+						<td><span title="Last updated: <%= lclUpdatedDTF.format(lclTU.getUpdated()) %>"><%= lclTU.getStatus().getShortName() %></span></td><%
+						if (lclAnyTUNote) {
+							%><td><%= lclTU.getInternalNote() == null ? "&nbsp;" : "<span title=\"" + WebDataFilter.scrub(lclTU.getInternalNote()) + "\">Yes</span>" %></td><%
+						}
+						if (lclMultiplePacketSetsShown) {
+							%><td><%= lclTU.isUsed() ? lclTU.getPlacement().getPacketSet().getShortName() : "-" %></td><%
+						}
+					%></tr><%
 				}
 			%></tbody>
 		</table>
 	</div>
 	
-	<div class="show-for-large-only large-2 columns"><!-- spacer for between the columns --></div>
-	
-	<div class="small-12 large-5 columns">
-		<h2 id="team-questions">Team Questions</h2>
+	<div class="small-12 large-6 columns">
+		<h2 id="team-questions">Team Questions (<%= lclTQs.size() %>)</h2>
 		<table class="responsive full-width">
 			<thead>
 				<th>Label</th>
-				<th>Category</th>
+				<th>Cat</th>
 				<th>Status</th>
-				<th>Note?</th>
+				<%= lclAnyTQNote ? "<th>Note?</th>" : "" %>
 				<th>Use</th>
 			</thead>
 			<tbody class="small"><%
-				List<TeamQuestion> lclTQs = TeamQuestionFactory.getInstance().streamAll()
-					.filter(argQ -> argQ.isUnused() ? lclShowUnused : lclSelectedPacketSets.contains(argQ.getPlacement().getPacketSet()))
-					.filter(argQ -> lclSelectedStatuses.contains(argQ.getStatus()))
-					.sorted(Question.UpdatedComparator.getInstance().reversed().thenComparing(Question.PLACEMENT_COMPARATOR))
-					.collect(Collectors.toList());
-				
 				for (TeamQuestion lclTQ : lclTQs) {
 					%><tr>
 						<td><a href="team-question-edit.jsp?question_id=<%= lclTQ.getId() %>"><%= lclTQ.getLabel() %></a></td>
 						<td><span title="<%= lclTQ.getCategory().getName() %>"><%= lclTQ.getCategory().getShortName() %></span></td>
-						<td><span title="Last updated: <%= lclUpdatedDTF.format(lclTQ.getUpdated()) %>"><%= lclTQ.getStatus().getShortName() %></span></td>
-						<td><%= lclTQ.getInternalNote() == null ? "&nbsp;" : "<span title=\"" + WebDataFilter.scrub(lclTQ.getInternalNote()) + "\">Yes</span>" %></td>
-						<td><%= lclTQ.isUsed() ? lclTQ.getPlacement().getPacketSet().getShortName() : "-" %></td>
-					</tr><%
+						<td><span title="Last updated: <%= lclUpdatedDTF.format(lclTQ.getUpdated()) %>"><%= lclTQ.getStatus().getShortName() %></span></td><%
+						if (lclAnyTQNote) {
+							%><td><%= lclTQ.getInternalNote() == null ? "&nbsp;" : "<span title=\"" + WebDataFilter.scrub(lclTQ.getInternalNote()) + "\">Yes</span>" %></td><%
+						}
+						if (lclMultiplePacketSetsShown) {
+							%><td><%= lclTQ.isUsed() ? lclTQ.getPlacement().getPacketSet().getShortName() : "-" %></td><%
+						}
+					%></tr><%
 				}
 			%></tbody>
 		</table>
