@@ -141,7 +141,7 @@ DateTimeFormatter lclUpdatedDTF = DateTimeFormatter.ofLocalizedDateTime(FormatSt
 				<th>Cat</th>
 				<th>Status</th>
 				<%= lclAnyTQNote ? "<th>Note?</th>" : "" %>
-				<th>Use</th>
+				<%= lclMultiplePacketSetsShown ? "<th>Use</th>" : "" %>
 			</thead>
 			<tbody class="small"><%
 				for (TeamQuestion lclTQ : lclTQs) {
