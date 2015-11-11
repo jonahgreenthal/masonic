@@ -288,26 +288,22 @@ if (lclIncompleteSets.isEmpty()) {
 				<table class="responsive full-width">
 					<thead>
 						<tr>
-							<th>&nbsp;</th><!-- Category -->
 							<th colspan="4">Tossups</th>
 							<th colspan="4">Team Questions</th>
 						</tr>
 						<tr>
-							<th style="width: 20%">Category</th>
-							<th style="width:  5%">Written</th>
-							<th style="width:  5%">Needed</th>
-							<th style="width:  5%">Completion</th>
+							<th style="width:  8%">Written</th>
+							<th style="width:  8%">Needed</th>
+							<th style="width:  9%">Completion</th>
 							<th style="width: 25%">&nbsp;</th>
-							<th style="width:  5%">Written</th>
-							<th style="width:  5%">Needed</th>
-							<th style="width:  5%">Completion</th>
+							<th style="width:  8%">Written</th>
+							<th style="width:  8%">Needed</th>
+							<th style="width:  9%">Completion</th>
 							<th style="width: 25%">&nbsp;</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td class="<%= lclWorstClass %>">&nbsp;</td><%
-							
+						<tr class="<%= lclWorstClass %>"><%
 							if (lclTotalTUNeeded > 0) {
 								String lclTUClass = determineClass(lclTUCompletion);
 								%><td class="<%= lclTUClass %>"><%= lclTotalTUWritten %></td>
@@ -321,8 +317,6 @@ if (lclIncompleteSets.isEmpty()) {
 							} else {
 								%><td colspan="4">&nbsp;</td><%
 							}
-							
-							%><td>&nbsp;</td><!-- spacer --><%
 							
 							if (lclTotalTQNeeded > 0) {
 								String lclTQClass = determineClass(lclTQCompletion);
