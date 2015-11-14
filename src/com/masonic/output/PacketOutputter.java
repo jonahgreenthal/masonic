@@ -95,9 +95,9 @@ public class PacketOutputter extends LaTeXOutputter {
 						"\\tossup{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL1.getSequence() + ": " +
 						escape(lclTU1.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTU1.getCategory().getName()) +
 						"}{" + escape(lclTU1.getQuestionType().getScoringNote()) + "}{" +
-							'\t' + questionTextToLatex(lclTU1.getText()) +
+							questionTextToLatex(lclTU1.getText()) +
 						"}{" +
-							'\t' + answerLineToLatex(lclTU1.getAnswer()) +
+							answerLineToLatex(lclTU1.getAnswer()) +
 						"}";
 					
 					Tossup lclTU2 = (Tossup) lclQ2;
@@ -108,9 +108,9 @@ public class PacketOutputter extends LaTeXOutputter {
 							"\\tossup{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL2.getSequence() + ": " +
 							escape(lclTU2.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTU2.getCategory().getName()) +
 							"}{" + escape(lclTU2.getQuestionType().getScoringNote()) + "}{" +
-								'\t' + questionTextToLatex(lclTU2.getText()) +
+								questionTextToLatex(lclTU2.getText()) +
 							"}{" +
-								'\t' + answerLineToLatex(lclTU2.getAnswer()) +
+								answerLineToLatex(lclTU2.getAnswer()) +
 							"}";
 					}
 				} else if (lclSection.getQuestionType() == QuestionTypeFactory.TEAM_QUESTION()) {
@@ -119,19 +119,19 @@ public class PacketOutputter extends LaTeXOutputter {
 						"\\teamquestion{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL1.getSequence() + ": " +
 						escape(lclTQ1.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTQ1.getCategory().getName()) +
 						"}{" + escape(lclTQ1.getQuestionType().getScoringNote()) + "}{" +
-							'\t' + questionTextToLatex(lclTQ1.getIntroduction()) +
+							questionTextToLatex(lclTQ1.getIntroduction()) +
 						"}{" +
-							'\t' + questionTextToLatex(lclTQ1.getPart1Text()) +
+							questionTextToLatex(lclTQ1.getPart1Text()) +
 						"}{" +
-							'\t' + answerLineToLatex(lclTQ1.getPart1Answer()) +
+							answerLineToLatex(lclTQ1.getPart1Answer()) +
 						"}{" +
-							'\t' + questionTextToLatex(lclTQ1.getPart2Text()) +
+							questionTextToLatex(lclTQ1.getPart2Text()) +
 						"}{" +
-							'\t' + answerLineToLatex(lclTQ1.getPart2Answer()) +
+							answerLineToLatex(lclTQ1.getPart2Answer()) +
 						"}{" +
-							'\t' + questionTextToLatex(lclTQ1.getPart3Text()) +
+							questionTextToLatex(lclTQ1.getPart3Text()) +
 						"}{" +
-							'\t' + answerLineToLatex(lclTQ1.getPart3Answer()) +
+							answerLineToLatex(lclTQ1.getPart3Answer()) +
 						"}";
 					
 					TeamQuestion lclTQ2 = (TeamQuestion) lclQ2;
@@ -142,19 +142,19 @@ public class PacketOutputter extends LaTeXOutputter {
 							"\\teamquestion{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL2.getSequence() + ": " +
 							escape(lclTQ2.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTQ2.getCategory().getName()) +
 							"}{" + escape(lclTQ2.getQuestionType().getScoringNote()) + "}{" +
-								'\t' + questionTextToLatex(lclTQ2.getIntroduction()) +
+								questionTextToLatex(lclTQ2.getIntroduction()) +
 							"}{" +
-								'\t' + questionTextToLatex(lclTQ2.getPart1Text()) +
+								questionTextToLatex(lclTQ2.getPart1Text()) +
 							"}{" +
-								'\t' + answerLineToLatex(lclTQ2.getPart1Answer()) +
+								answerLineToLatex(lclTQ2.getPart1Answer()) +
 							"}{" +
-								'\t' + questionTextToLatex(lclTQ2.getPart2Text()) +
+								questionTextToLatex(lclTQ2.getPart2Text()) +
 							"}{" +
-								'\t' + answerLineToLatex(lclTQ2.getPart2Answer()) +
+								answerLineToLatex(lclTQ2.getPart2Answer()) +
 							"}{" +
-								'\t' + questionTextToLatex(lclTQ2.getPart3Text()) +
+								questionTextToLatex(lclTQ2.getPart3Text()) +
 							"}{" +
-								'\t' + answerLineToLatex(lclTQ2.getPart3Answer()) +
+								answerLineToLatex(lclTQ2.getPart3Answer()) +
 							"}";
 					}
 				} else {
@@ -261,7 +261,7 @@ public class PacketOutputter extends LaTeXOutputter {
 			lclPrev = lclC;
 		}
 		
-		return lclSB.toString();
+		return lclSB.toString().trim();
 	}
 	
 	public static String answerLineToLatex(String argAnswerLine) {

@@ -1,13 +1,22 @@
 package com.masonic.output;
 
 import java.io.File;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.DirectoryNotEmptyException;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.exec.Executor;
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.ExecuteWatchdog;
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.ExecuteStreamHandler;
+import org.apache.commons.exec.PumpStreamHandler;
+import org.apache.commons.exec.LogOutputStream;
 
 public class LaTeXCompiler {
 	private static final org.apache.log4j.Logger ourLogger = org.apache.log4j.Logger.getLogger(LaTeXCompiler.class);
@@ -15,6 +24,8 @@ public class LaTeXCompiler {
 	public static final String LATEX_PATH = "/usr/local/texlive/2014/bin/x86_64-linux/xelatex";
 	public static final String TEX_MIME_TYPE = "application/x-tex";
 	public static final String PDF_MIME_TYPE = "application/pdf";
+	
+	public static final long TIMEOUT = 15000L; // 15000 ms, or 15 seconds
 	
 	protected static final int DEFAULT_COMPILATION_PASSES = 2;
 	
@@ -43,20 +54,29 @@ public class LaTeXCompiler {
 	
 	public File compile(final int argPasses) {
 		for (int lclPass = 1; lclPass <= argPasses; ++lclPass) {
+			final CollectingLogOutputStream lclOutAndError = new CollectingLogOutputStream();
 			try {
-				final ProcessBuilder lclLaTeXPB = new ProcessBuilder(LATEX_PATH, getInputFile().getCanonicalPath());
-				lclLaTeXPB.directory(getOutputDirectory());
-				final Process lclLaTeXProcess = lclLaTeXPB.start();
-				try (BufferedReader lclOutput = new BufferedReader(new InputStreamReader(lclLaTeXProcess.getInputStream()))) {
+				final Executor lclExec = new DefaultExecutor();
+				lclExec.setWorkingDirectory(getOutputDirectory());
+				lclExec.setWatchdog(new ExecuteWatchdog(TIMEOUT));
 				
-					@SuppressWarnings("unused") String lclOutputLine;
-					while ((lclOutputLine = lclOutput.readLine()) != null) {
-						// We need to read this output to avoid the process blocking.  But we don't want to actually see it or anything.
-						ourLogger.debug(lclOutputLine);
-					}
-				}
+				final CommandLine lclCommandLine = new CommandLine(LATEX_PATH);
+				lclCommandLine.addArgument(getInputFile().getCanonicalPath());
+				
+				final ExecuteStreamHandler lclStreamHandler = new PumpStreamHandler(lclOutAndError);
+				lclExec.setStreamHandler(lclStreamHandler);
+				
+				lclExec.execute(lclCommandLine);
 			} catch (IOException lclIOE) {
-				throw new RuntimeException(lclIOE);
+				final List<String> lclErrors = lclOutAndError.getLines().stream().filter(argS -> argS.startsWith("!")).collect(Collectors.toList());
+				if (lclErrors.isEmpty()) {
+					throw new RuntimeException(StringUtils.join(lclErrors, "\n"), lclIOE);
+				} else {
+					for (final String lclS : lclErrors) {
+						ourLogger.error(lclS);
+					}
+					throw new IllegalArgumentException("Couldn't compile LaTeX: " + StringUtils.join(lclErrors, '\n'), lclIOE);
+				}
 			}
 		}
 		
@@ -115,9 +135,12 @@ public class LaTeXCompiler {
 			lclFilenameWithExtension = lclBaseFilename + lclNormalizedArgExtension;
 		}
 		
-		for (final File lclF : argDirectory.listFiles()) {
-			if (lclFilenameWithExtension.equals(lclF.getName())) {
-				return lclF;
+		final File[] lclFiles = argDirectory.listFiles();
+		if (lclFiles != null) {
+			for (final File lclF : lclFiles) {
+				if (lclFilenameWithExtension.equals(lclF.getName())) {
+					return lclF;
+				}
 			}
 		}
 		
@@ -126,5 +149,18 @@ public class LaTeXCompiler {
 	
 	public static File getPDFFile(final File argLaTeXFile, final File argDirectory) {
 		return findFileWithExtension(argLaTeXFile, argDirectory, ".pdf");
+	}
+	
+	private static class CollectingLogOutputStream extends LogOutputStream {
+		private final List<String> myLines = new LinkedList<>();
+		
+		@Override
+		protected void processLine(final String argLine, final int argLevel) {
+			myLines.add(argLine);
+		}   
+		
+		public List<String> getLines() {
+			return myLines;
+		}
 	}
 }
