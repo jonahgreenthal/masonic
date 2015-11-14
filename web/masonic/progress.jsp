@@ -178,16 +178,16 @@ if (lclIncompleteSets.isEmpty()) {
 								int lclTQWrittenThisCategory = lclTQWritten.get(lclC);
 								int lclTQNeededThisCategory = lclTQNeeded.get(lclC);
 								
-								double lclTUCompletion = 1.0d * lclTUWrittenThisCategory / lclTUNeededThisCategory;
-								double lclTQCompletion = 1.0d * lclTQWrittenThisCategory / lclTQNeededThisCategory;
+								double lclTUCompletion = Math.min(1.0d, 1.0d * lclTUWrittenThisCategory / lclTUNeededThisCategory);
+								double lclTQCompletion = Math.min(1.0d, 1.0d * lclTQWrittenThisCategory / lclTQNeededThisCategory);
 								
-								String lclWorstClass = determineClass(lclTUCompletion, lclTQCompletion);
+								String lclWorstClass = determineClass(lclTUCompletion, lclTQCompletion, lclC.getName() + " worst");
 								
 								%><tr>
 									<td class="<%= lclWorstClass %>"><%= lclC.getName() %></td><%
 									
 									if (lclTUNeededThisCategory > 0) {
-										String lclTUClass = determineClass(lclTUCompletion);
+										String lclTUClass = determineClass(lclTUCompletion, lclC.getCode() + " tossups");
 										%><td class="<%= lclTUClass %>"><%= lclTUWrittenThisCategory %></td>
 										<td class="<%= lclTUClass %>"><%= lclTUNeededThisCategory %></td>
 										<td class="<%= lclTUClass %>"><%= lclPct.format(lclTUCompletion) %></td>
@@ -203,7 +203,7 @@ if (lclIncompleteSets.isEmpty()) {
 									%><td>&nbsp;</td><!-- spacer --><%
 									
 									if (lclTQNeededThisCategory > 0) {
-										String lclTQClass = determineClass(lclTQCompletion);
+										String lclTQClass = determineClass(lclTQCompletion, lclC.getCode() + " team questions");
 										%><td class="<%= lclTQClass %>"><%= lclTQWrittenThisCategory %></td>
 										<td class="<%= lclTQClass %>"><%= lclTQNeededThisCategory %></td>
 										<td class="<%= lclTQClass %>"><%= lclPct.format(lclTQCompletion) %></td>
@@ -229,17 +229,17 @@ if (lclIncompleteSets.isEmpty()) {
 						Validate.isTrue(lclTQWrittenThisCG >= 0);
 						Validate.isTrue(lclTUNeededThisCG + lclTQNeededThisCG > 0);
 						
-						double lclTUCompletion = 1.0d * lclTUWrittenThisCG / lclTUNeededThisCG;
-						double lclTQCompletion = 1.0d * lclTQWrittenThisCG / lclTQNeededThisCG;
+						double lclTUCompletion = Math.min(1.0d, 1.0d * lclTUWrittenThisCG / lclTUNeededThisCG);
+						double lclTQCompletion = Math.min(1.0d, 1.0d * lclTQWrittenThisCG / lclTQNeededThisCG);
 						
-						String lclWorstClass = determineClass(lclTUCompletion, lclTQCompletion);
+						String lclWorstClass = determineClass(lclTUCompletion, lclTQCompletion, lclCG.getName() + " worst");
 						
 						%><tfoot>
 							<tr>
 								<th class="<%= lclWorstClass %>"><%= lclCG.getName() %> Total</th><%
 								
 								if (lclTUNeededThisCG > 0) {
-									String lclTUClass = determineClass(lclTUCompletion);
+									String lclTUClass = determineClass(lclTUCompletion, lclCG.getCode() + " tossups");
 									%><th><%= lclTUWrittenThisCG %></th>
 									<th><%= lclTUNeededThisCG %></th>
 									<th><%= lclPct.format(lclTUCompletion) %></th>
@@ -255,7 +255,7 @@ if (lclIncompleteSets.isEmpty()) {
 								%><td>&nbsp;</td><!-- spacer --><%
 								
 								if (lclTQNeededThisCG > 0) {
-									String lclTQClass = determineClass(lclTQCompletion);
+									String lclTQClass = determineClass(lclTQCompletion, lclCG.getCode() + " team questions");
 									%><th><%= lclTQWrittenThisCG %></th>
 									<th><%= lclTQNeededThisCG %></th>
 									<th><%= lclPct.format(lclTQCompletion) %></th>
@@ -279,10 +279,10 @@ if (lclIncompleteSets.isEmpty()) {
 				int lclTotalTQWritten = lclTQWritten.getTotal();
 				int lclTotalTQNeeded = lclTQNeeded.getTotal();
 				
-				double lclTUCompletion = 1.0d * lclTotalTUWritten / lclTotalTUNeeded;
-				double lclTQCompletion = 1.0d * lclTotalTQWritten / lclTotalTQNeeded;
+				double lclTUCompletion = Math.min(1.0d, 1.0d * lclTotalTUWritten / lclTotalTUNeeded);
+				double lclTQCompletion = Math.min(1.0d, 1.0d * lclTotalTQWritten / lclTotalTQNeeded);
 				
-				String lclWorstClass = determineClass(lclTUCompletion, lclTQCompletion);
+				String lclWorstClass = determineClass(lclTUCompletion, lclTQCompletion, "total worst");
 				
 				%><h2>Total</h2>
 				<table class="responsive full-width">
@@ -305,7 +305,7 @@ if (lclIncompleteSets.isEmpty()) {
 					<tbody>
 						<tr class="<%= lclWorstClass %>"><%
 							if (lclTotalTUNeeded > 0) {
-								String lclTUClass = determineClass(lclTUCompletion);
+								String lclTUClass = determineClass(lclTUCompletion, "tossups total");
 								%><td class="<%= lclTUClass %>"><%= lclTotalTUWritten %></td>
 								<td class="<%= lclTUClass %>"><%= lclTotalTUNeeded %></td>
 								<td class="<%= lclTUClass %>"><%= lclPct.format(lclTUCompletion) %></td>
@@ -319,7 +319,7 @@ if (lclIncompleteSets.isEmpty()) {
 							}
 							
 							if (lclTotalTQNeeded > 0) {
-								String lclTQClass = determineClass(lclTQCompletion);
+								String lclTQClass = determineClass(lclTQCompletion, "team questions total");
 								%><td class="<%= lclTQClass %>"><%= lclTotalTQWritten %></td>
 								<td class="<%= lclTQClass %>"><%= lclTotalTQNeeded %></td>
 								<td class="<%= lclTQClass %>"><%= lclPct.format(lclTQCompletion) %></td>
@@ -343,9 +343,9 @@ if (lclIncompleteSets.isEmpty()) {
 
 <%!
 
-private String determineClass(double argCompletion) {
-	Validate.isTrue(Double.compare(argCompletion, 0.0d) >= 0, "Completion is " + argCompletion + " but it should be nonnegative"); // argCompletion must be nonnegative
-	Validate.isTrue(Double.compare(argCompletion, 1.0d) <= 0, "Completion is " + argCompletion + " but it should be less than or equal to 1"); // argCompletion must be <= 1
+private String determineClass(double argCompletion, String argName) {
+	Validate.isTrue(Double.compare(argCompletion, 0.0d) >= 0, argName + " completion is " + argCompletion + " but it should be nonnegative"); // argCompletion must be nonnegative
+	Validate.isTrue(Double.compare(argCompletion, 1.0d) <= 0, argName + " completion is " + argCompletion + " but it should be less than or equal to 1"); // argCompletion must be <= 1
 	
 	if (Double.compare(argCompletion, 0.0d) == 0) {
 		return "warning";
@@ -356,18 +356,18 @@ private String determineClass(double argCompletion) {
 	}
 }
 
-private String determineClass(double argTUCompletion, double argTQCompletion) {
+private String determineClass(double argTUCompletion, double argTQCompletion, String argName) {
 	if (Double.isNaN(argTUCompletion)) {
 		if (Double.isNaN(argTQCompletion)) {
 			throw new IllegalArgumentException("At least one of the completion proportions must be a real number");
 		} else {
-			return determineClass(argTQCompletion);
+			return determineClass(argTQCompletion, argName);
 		}
 	} else if (Double.isNaN(argTQCompletion)) {
 		// At this point argTUCompletion cannot be NaN
-		return determineClass(argTUCompletion);
+		return determineClass(argTUCompletion, argName);
 	} else {
-		return determineClass(Math.min(argTUCompletion, argTQCompletion));
+		return determineClass(Math.min(argTUCompletion, argTQCompletion), argName);
 	}
 }
 
