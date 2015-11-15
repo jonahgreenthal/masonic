@@ -40,6 +40,9 @@ public interface Question extends QuestionUserFacing {
 		if (StringUtils.countMatches(argText, '{') != StringUtils.countMatches(argText, '}')) {
 			argValidator.addError(argFieldName, "Curly braces ({, }) are not matched!");
 		}
+		if (StringUtils.countMatches(argText, '[') != StringUtils.countMatches(argText, ']')) {
+			argValidator.addError(argFieldName, "Square braces ([, ]) are not matched!");
+		}
 		if (StringUtils.countMatches(argText, '_') % 2 != 0) {
 			argValidator.addError(argFieldName, "Underscores (_) are not matched!");
 		}
