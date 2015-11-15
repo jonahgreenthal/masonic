@@ -46,9 +46,6 @@ public interface Question extends QuestionUserFacing {
 		if (StringUtils.countMatches(argText, '_') % 2 != 0) {
 			argValidator.addError(argFieldName, "Underscores (_) are not matched!");
 		}
-		if (StringUtils.countMatches(argText, '~') % 2 != 0) {
-			argValidator.addError(argFieldName, "Tildes (~) are not matched!");
-		}
 		
 		if (argText.contains("$")) {
 			int lclUnescapedDollarSigns = 0;
@@ -64,6 +61,23 @@ public interface Question extends QuestionUserFacing {
 			}
 			if (lclUnescapedDollarSigns % 2 != 0) {
 				argValidator.addError(argFieldName, "Dollar signs for math mode are not matched!");
+			}
+		}
+		
+		if (argText.contains("~")) {
+			int lclUnescapedTildes = 0;
+			for (int lclI = 0; lclI < argText.length(); ++lclI) {
+				char lclC = argText.charAt(lclI);
+				
+				if (lclC == '~') {
+					char lclPrev = lclI == 0 ? ' ' : argText.charAt(lclI - 1);
+					if (lclPrev != '\\') {
+						++lclUnescapedTildes;
+					}
+				}
+			}
+			if (lclUnescapedTildes % 2 != 0) {
+				argValidator.addError(argFieldName, "Tildes (~) are not matched!");
 			}
 		}
 	}
