@@ -211,7 +211,16 @@ public class PacketOutputter extends LaTeXOutputter {
 						lclSB.append(lclC);
 					} else {
 						lclInMath = !lclInMath;
+						
+						if (lclUnderlining && !lclInMath /* just left math */) {
+							lclSB.append("}"); // end of \boldsymbol
+						}
+						
 						lclSB.append(lclC);
+						
+						if (lclUnderlining && lclInMath /* just started math */) {
+							lclSB.append("\\boldsymbol{");
+						}
 					}
 					break;
 				case '~':

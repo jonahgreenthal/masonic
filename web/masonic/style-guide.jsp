@@ -20,6 +20,8 @@
 		<h2>Math and chemical formulae</h2>
 		<p>Use LaTeX coding and enclose the math/formula in dollar signs (<code>$</code>). You can read about how to write formulae in LaTeX <a href="http://en.wikibooks.org/wiki/LaTeX/Mathematics">here</a>, though it's probably easier to just <a href="mailto:jonah@jonahgreenthal.com">ask Jonah</a>.</p>
 		
+		<p>It is currently only possible to require (using underscores) <em>all</em> of a formula, not part of one, so it may be necessary to split formulas into parts.</p>
+		
 		<h2>Labeling team question parts and answer lines</h2>
 		<p>Do not use anything like <code class="warning">1.</code>, <code class="warning">A.</code>, or <code class="warning">answer:</code> to label team question parts or answer lines. Just make sure to type the text in the correct boxes.</p>
 		
