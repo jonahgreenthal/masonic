@@ -39,7 +39,7 @@ abbr, acronym {
 }
 
 
-.warning {
+.warning, .incorrect, .incorrect:active, .incorrect:focus {
 	background-color: $warning-color;
 }
 

@@ -11,6 +11,7 @@
 <%@ page import="com.masonic.application.TossupFactory" %>
 <%@ page import="com.masonic.menu.Menus" %>
 <%@ page import="com.masonic.opalforms.updater.QuestionToTossupUpdater" %>
+<%@ page import="com.masonic.opalforms.validator.TossupValidator" %>
 <%@ page import="com.masonic.HTMLUtility" %>
 
 <%
@@ -22,6 +23,7 @@ OpalMainForm<Tossup> lclOF = OpalForm.create(
 	"question_id"
 );
 lclOF.setUpdaterClass(QuestionToTossupUpdater.class);
+lclOF.setValidatorClass(TossupValidator.class);
 lclOF.setDeleteURI("/masonic/question-delete-confirmation.jsp");
 Tossup lclTU = lclOF.getUserFacing();
 

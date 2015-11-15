@@ -11,6 +11,7 @@
 <%@ page import="com.masonic.application.TeamQuestionFactory" %>
 <%@ page import="com.masonic.menu.Menus" %>
 <%@ page import="com.masonic.opalforms.updater.QuestionToTeamQuestionUpdater" %>
+<%@ page import="com.masonic.opalforms.validator.TeamQuestionValidator" %>
 <%@ page import="com.masonic.HTMLUtility" %>
 
 <%
@@ -22,6 +23,7 @@ OpalMainForm<TeamQuestion> lclOF = OpalForm.create(
 	"question_id"
 );
 lclOF.setUpdaterClass(QuestionToTeamQuestionUpdater.class);
+lclOF.setValidatorClass(TeamQuestionValidator.class);
 lclOF.setDeleteURI("/masonic/question-delete-confirmation.jsp");
 TeamQuestion lclTQ = lclOF.getUserFacing();
 

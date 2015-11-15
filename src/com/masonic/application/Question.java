@@ -2,8 +2,13 @@ package com.masonic.application;
 
 import java.util.Comparator;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.StringUtils;
+
 import com.siliconage.web.form.FunctionalNameCodeExtractor;
 import com.siliconage.web.form.NullSafeNameCodeExtractor;
+
+import com.opal.cma.Validator;
 
 import com.masonic.persistence.QuestionUserFacing;
 
@@ -24,6 +29,40 @@ public interface Question extends QuestionUserFacing {
 	
 	default boolean isUnused() {
 		return getPlacement() == null;
+	}
+	
+	// TODO There's a lot more validation this could do.
+	public static void validateMarkup(String argText, String argFieldName, Validator<?> argValidator) {
+		Validate.notNull(argText);
+		Validate.notBlank(argFieldName);
+		Validate.notNull(argValidator);
+		
+		if (StringUtils.countMatches(argText, '{') != StringUtils.countMatches(argText, '}')) {
+			argValidator.addError(argFieldName, "Curly braces ({, }) are not matched!");
+		}
+		if (StringUtils.countMatches(argText, '_') % 2 != 0) {
+			argValidator.addError(argFieldName, "Underscores (_) are not matched!");
+		}
+		if (StringUtils.countMatches(argText, '~') % 2 != 0) {
+			argValidator.addError(argFieldName, "Tildes (~) are not matched!");
+		}
+		
+		if (argText.contains("$")) {
+			int lclUnescapedDollarSigns = 0;
+			for (int lclI = 0; lclI < argText.length(); ++lclI) {
+				char lclC = argText.charAt(lclI);
+				
+				if (lclC == '$') {
+					char lclPrev = lclI == 0 ? ' ' : argText.charAt(lclI - 1);
+					if (lclPrev != '\\') {
+						++lclUnescapedDollarSigns;
+					}
+				}
+			}
+			if (lclUnescapedDollarSigns % 2 != 0) {
+				argValidator.addError(argFieldName, "Dollar signs for math mode are not matched!");
+			}
+		}
 	}
 	
 	public static final NullSafeNameCodeExtractor<Question> NCE = new FunctionalNameCodeExtractor<>(
