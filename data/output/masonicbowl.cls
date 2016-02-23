@@ -121,7 +121,7 @@
 }
 
 % \newcommand{\pg}[2]{\mbox{#1~\mbox{\textcolor{purple}{[#2]}}}}
-\newcommand{\pg}[2]{\textcolor{purple}{#1~[#2]}}
+\newcommand{\pg}[2]{\textcolor{purple}{#1 \penalty 10000 [#2]}}
 \newcommand{\syl}{$\cdot$}                 % Enclose in {}, i.e. "Syl{\syl}la{\syl}ble", for the spacing to look right.
 
 \newcommand{\req}[1]{\textbf{\uline{#1}}}

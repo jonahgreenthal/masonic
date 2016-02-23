@@ -40,11 +40,29 @@ public interface Question extends QuestionUserFacing {
 		if (StringUtils.countMatches(argText, '{') != StringUtils.countMatches(argText, '}')) {
 			argValidator.addError(argFieldName, "Curly braces ({, }) are not matched!");
 		}
+		
 		if (StringUtils.countMatches(argText, '[') != StringUtils.countMatches(argText, ']')) {
 			argValidator.addError(argFieldName, "Square braces ([, ]) are not matched!");
 		}
-		if (StringUtils.countMatches(argText, '_') % 2 != 0) {
-			argValidator.addError(argFieldName, "Underscores (_) are not matched!");
+		
+		if (argText.contains("_")) {
+			int lclNonMathUnderscores = 0;
+			boolean lclMath = false;
+			for (int lclI = 0; lclI < argText.length(); ++lclI) {
+				char lclC = argText.charAt(lclI);
+				char lclPrev = lclI == 0 ? ' ' : argText.charAt(lclI - 1);
+				
+				if (lclC == '$' && lclPrev != '\\') {
+					lclMath = !lclMath;
+				} else if (lclC == '_') {
+					if (!lclMath) {
+						++lclNonMathUnderscores;
+					}
+				}
+			}
+			if (lclNonMathUnderscores % 2 != 0) {
+				argValidator.addError(argFieldName, "Underscores (_) are not matched!");
+			}
 		}
 		
 		if (argText.contains("$")) {

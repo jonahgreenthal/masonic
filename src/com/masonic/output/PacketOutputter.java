@@ -252,7 +252,9 @@ public class PacketOutputter extends LaTeXOutputter {
 					break;
 				
 				case '_':
-					if (!lclInMath) {
+					if (lclInMath) {
+						lclSB.append('_');
+					} else {
 						if (lclUnderlining) {
 							lclSB.append('}');
 							lclUnderlining = false;
