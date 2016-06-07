@@ -47,7 +47,6 @@ public class PostgresTossupOpalFactory extends com.opal.AbstractDatabaseIdentity
 	@Override
 	protected com.opal.FieldValidator[] getFieldValidators() { return TossupOpal.getStaticFieldValidators(); }
 
-
 	@Override
 	protected javax.sql.DataSource getDataSource() {
 		return PostgresOpalFactoryFactory.getSpecificInstance().getDataSource();
@@ -168,18 +167,20 @@ public class PostgresTossupOpalFactory extends com.opal.AbstractDatabaseIdentity
 		);
 	}
 
-	/* package */ static class QuestionIdOpalKey extends com.opal.DatabaseOpalKey<TossupOpal> {
+	/* package */ static class QuestionIdOpalKey extends com.opal.SingleValueDatabaseOpalKey<TossupOpal> {
 		private static final String[] ourKeyColumnNames = new String[] {"question_id", };
 
 		public QuestionIdOpalKey(java.lang.Integer argQuestionId) {
-			super(new Object[] {argQuestionId, });
+			super(argQuestionId);
 		}
 
 		@Override
-		protected Object[] getParameters() { return getFields(); }
+		public Object[] getParameters() {
+			return new Object[] { getKeyValue(), };
+		}
 
 		@Override
-		protected String[] getColumnNames() { return ourKeyColumnNames; }
+		public String[] getColumnNames() { return ourKeyColumnNames; }
 
 	}
 

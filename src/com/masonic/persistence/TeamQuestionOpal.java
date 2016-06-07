@@ -4,12 +4,13 @@ import com.masonic.application.TeamQuestion;
 
 public final class TeamQuestionOpal extends com.opal.UpdatableOpal<TeamQuestion> {
 
+
 	private TeamQuestionOpal() {
 		super();
 		setUserFacing(null);
 	}
 
-	public TeamQuestionOpal(com.opal.OpalFactory<TeamQuestion, TeamQuestionOpal> argOpalFactory, Object[] argValues) {
+	public TeamQuestionOpal(com.opal.IdentityOpalFactory<TeamQuestion, TeamQuestionOpal> argOpalFactory, Object[] argValues) {
 		super(argOpalFactory, argValues);
 	}
 
@@ -344,8 +345,8 @@ public final class TeamQuestionOpal extends com.opal.UpdatableOpal<TeamQuestion>
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder lclSB =  new StringBuilder(64);
+	public java.lang.String toString() {
+		java.lang.StringBuilder lclSB = new java.lang.StringBuilder(64);
 		lclSB.append("TeamQuestionOpal[");
 		lclSB.append("myQuestionId=");
 		lclSB.append(toStringField(0));

@@ -5,12 +5,13 @@ import com.masonic.application.Placement;
 @com.opal.StoreGeneratedPrimaryKey
 public final class PlacementOpal extends com.opal.UpdatableOpal<Placement> {
 
+
 	private PlacementOpal() {
 		super();
 		setUserFacing(null);
 	}
 
-	public PlacementOpal(com.opal.OpalFactory<Placement, PlacementOpal> argOpalFactory, Object[] argValues) {
+	public PlacementOpal(com.opal.IdentityOpalFactory<Placement, PlacementOpal> argOpalFactory, Object[] argValues) {
 		super(argOpalFactory, argValues);
 	}
 
@@ -128,7 +129,7 @@ public final class PlacementOpal extends com.opal.UpdatableOpal<Placement> {
 			throw new com.opal.IllegalNullArgumentException("Cannot set myCategoryCode on " + this + " to null.");
 		}
 		if (argCategoryCode.length() > 32) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myCategoryCode on " + this + " is 32.", argCategoryCode.length(), 32);
+			throw new com.opal.ArgumentTooLongException("Cannot set myCategoryCode on " + this + " to \"" + argCategoryCode + "\" because that field's maximum length is 32.", argCategoryCode.length(), 32);
 		}
 		getNewValues()[2] = argCategoryCode;
 		return this;
@@ -444,8 +445,8 @@ public final class PlacementOpal extends com.opal.UpdatableOpal<Placement> {
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder lclSB =  new StringBuilder(64);
+	public java.lang.String toString() {
+		java.lang.StringBuilder lclSB = new java.lang.StringBuilder(64);
 		lclSB.append("PlacementOpal[");
 		lclSB.append("myId=");
 		lclSB.append(toStringField(0));

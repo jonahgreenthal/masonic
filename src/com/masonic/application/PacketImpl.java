@@ -4,6 +4,7 @@ import com.masonic.persistence.PacketOpal;
 import com.masonic.persistence.PacketSetOpal;
 
 public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal> implements Packet {
+
 	private final PacketOpal myPacketOpal;
 
 	public PacketImpl(PacketOpal argPacketOpal) {
@@ -30,11 +31,13 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 		return this.getSequenceAsObject().compareTo(argSecond.getSequenceAsObject());
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getIdAsObject() {
 		return getPacketOpal().getIdAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public PacketImpl setId(java.lang.Integer argId) {
 		getPacketOpal().setId(argId);
@@ -47,44 +50,58 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public java.lang.String getPacketSetCode() {
 		return getPacketOpal().getPacketSetCode();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public PacketImpl setPacketSetCode(java.lang.String argPacketSetCode) {
 		getPacketOpal().setPacketSetCode(argPacketSetCode);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public java.lang.String getName() {
 		return getPacketOpal().getName();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public PacketImpl setName(java.lang.String argName) {
 		getPacketOpal().setName(argName);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public java.lang.String getShortName() {
 		return getPacketOpal().getShortName();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public PacketImpl setShortName(java.lang.String argShortName) {
 		getPacketOpal().setShortName(argShortName);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getSequenceAsObject() {
 		return getPacketOpal().getSequenceAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public PacketImpl setSequence(java.lang.Integer argSequence) {
 		getPacketOpal().setSequence(argSequence);
@@ -102,6 +119,7 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 
 	/** @return the PacketSet object created from packet through reference packet_to_packet_set */
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public PacketSet getPacketSet() {
 		PacketSetOpal lclPacketSetOpal = getPacketOpal().getPacketSetOpal();
@@ -142,11 +160,6 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 	@Override
 	public java.util.Iterator<Section> createSectionIterator() {
 		return new com.opal.OpalIterator<> (getPacketOpal().createSectionOpalIterator());
-	}
-
-	@Override
-	public com.masonic.application.Packet clearSection() {
-		throw new UnsupportedOperationException();
 	}
 
 	@Override

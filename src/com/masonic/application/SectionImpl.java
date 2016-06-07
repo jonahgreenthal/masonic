@@ -5,6 +5,7 @@ import com.masonic.persistence.QuestionTypeOpal;
 import com.masonic.persistence.PacketOpal;
 
 public class SectionImpl extends com.opal.AbstractIdentityImpl<Section, SectionOpal> implements Section {
+
 	private final SectionOpal mySectionOpal;
 
 	public SectionImpl(SectionOpal argSectionOpal) {
@@ -26,11 +27,13 @@ public class SectionImpl extends com.opal.AbstractIdentityImpl<Section, SectionO
 		return getSectionOpal();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getIdAsObject() {
 		return getSectionOpal().getIdAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public SectionImpl setId(java.lang.Integer argId) {
 		getSectionOpal().setId(argId);
@@ -43,11 +46,13 @@ public class SectionImpl extends com.opal.AbstractIdentityImpl<Section, SectionO
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getPacketIdAsObject() {
 		return getSectionOpal().getPacketIdAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public SectionImpl setPacketId(java.lang.Integer argPacketId) {
 		getSectionOpal().setPacketId(argPacketId);
@@ -60,22 +65,28 @@ public class SectionImpl extends com.opal.AbstractIdentityImpl<Section, SectionO
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public java.lang.String getQuestionTypeCode() {
 		return getSectionOpal().getQuestionTypeCode();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public SectionImpl setQuestionTypeCode(java.lang.String argQuestionTypeCode) {
 		getSectionOpal().setQuestionTypeCode(argQuestionTypeCode);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getSequenceAsObject() {
 		return getSectionOpal().getSequenceAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public SectionImpl setSequence(java.lang.Integer argSequence) {
 		getSectionOpal().setSequence(argSequence);
@@ -88,33 +99,45 @@ public class SectionImpl extends com.opal.AbstractIdentityImpl<Section, SectionO
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public java.lang.String getName() {
 		return getSectionOpal().getName();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public SectionImpl setName(java.lang.String argName) {
 		getSectionOpal().setName(argName);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public java.lang.String getShortName() {
 		return getSectionOpal().getShortName();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public SectionImpl setShortName(java.lang.String argShortName) {
 		getSectionOpal().setShortName(argShortName);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "false")
 	@Override
 	public java.lang.Boolean isExtrasAsObject() {
 		return getSectionOpal().isExtrasAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "false")
 	@Override
 	public SectionImpl setExtras(java.lang.Boolean argExtras) {
 		getSectionOpal().setExtras(argExtras);
@@ -132,6 +155,7 @@ public class SectionImpl extends com.opal.AbstractIdentityImpl<Section, SectionO
 
 	/** @return the QuestionType object created from section through reference section_to_question_type */
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public QuestionType getQuestionType() {
 		QuestionTypeOpal lclQuestionTypeOpal = getSectionOpal().getQuestionTypeOpal();
@@ -146,6 +170,7 @@ public class SectionImpl extends com.opal.AbstractIdentityImpl<Section, SectionO
 
 	/** @return the Packet object created from section through reference section_to_packet */
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public Packet getPacket() {
 		PacketOpal lclPacketOpal = getSectionOpal().getPacketOpal();
@@ -186,11 +211,6 @@ public class SectionImpl extends com.opal.AbstractIdentityImpl<Section, SectionO
 	@Override
 	public java.util.Iterator<Placement> createPlacementIterator() {
 		return new com.opal.OpalIterator<> (getSectionOpal().createPlacementOpalIterator());
-	}
-
-	@Override
-	public com.masonic.application.Section clearPlacement() {
-		throw new UnsupportedOperationException();
 	}
 
 	@Override

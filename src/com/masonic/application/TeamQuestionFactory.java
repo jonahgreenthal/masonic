@@ -4,7 +4,8 @@ import com.masonic.persistence.TeamQuestionOpalFactory;
 import com.masonic.persistence.TeamQuestionOpal;
 import com.masonic.persistence.OpalFactoryFactory;
 
-public class TeamQuestionFactory extends com.opal.AbstractFactory<TeamQuestion, TeamQuestionOpal> implements com.opal.FactoryCreator<TeamQuestion>, com.opal.IdentityFactory<TeamQuestion> {
+public class TeamQuestionFactory extends com.opal.AbstractIdentityFactory<TeamQuestion, TeamQuestionOpal> implements com.opal.FactoryCreator<TeamQuestion> {
+
 	/** This static variable holds the Singleton instance of the Factory for application
 		objects of this type.  It is private, but can be accessed via the getInstance() method.
 	*/
@@ -15,7 +16,7 @@ public class TeamQuestionFactory extends com.opal.AbstractFactory<TeamQuestion, 
 
 	public TeamQuestionOpalFactory getTeamQuestionOpalFactory() { return (TeamQuestionOpalFactory) getOpalFactory(); }
 
-	protected TeamQuestionFactory(com.opal.OpalFactory<TeamQuestion, TeamQuestionOpal> argOpalFactory) {
+	protected TeamQuestionFactory(com.opal.IdentityOpalFactory<TeamQuestion, TeamQuestionOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 

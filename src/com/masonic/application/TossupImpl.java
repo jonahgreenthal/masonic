@@ -4,6 +4,7 @@ import com.masonic.persistence.TossupOpal;
 import com.masonic.persistence.QuestionOpal;
 
 public class TossupImpl extends QuestionImpl implements Tossup {
+
 	private final TossupOpal myTossupOpal;
 
 	public TossupImpl(TossupOpal argTossupOpal) {
@@ -44,11 +45,13 @@ public class TossupImpl extends QuestionImpl implements Tossup {
 		return getTossupOpal();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getQuestionIdAsObject() {
 		return getTossupOpal().getQuestionIdAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public TossupImpl setQuestionId(java.lang.Integer argQuestionId) {
 		getTossupOpal().setQuestionId(argQuestionId);
@@ -61,22 +64,30 @@ public class TossupImpl extends QuestionImpl implements Tossup {
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public java.lang.String getText() {
 		return getTossupOpal().getText();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public TossupImpl setText(java.lang.String argText) {
 		getTossupOpal().setText(argText);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public java.lang.String getAnswer() {
 		return getTossupOpal().getAnswer();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public TossupImpl setAnswer(java.lang.String argAnswer) {
 		getTossupOpal().setAnswer(argAnswer);

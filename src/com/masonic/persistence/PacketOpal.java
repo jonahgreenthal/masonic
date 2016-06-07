@@ -5,13 +5,24 @@ import com.masonic.application.Packet;
 @com.opal.StoreGeneratedPrimaryKey
 public final class PacketOpal extends com.opal.UpdatableOpal<Packet> {
 
+
 	private PacketOpal() {
 		super();
 		setUserFacing(null);
 	}
 
-	public PacketOpal(com.opal.OpalFactory<Packet, PacketOpal> argOpalFactory, Object[] argValues) {
+	public PacketOpal(com.opal.IdentityOpalFactory<Packet, PacketOpal> argOpalFactory, Object[] argValues) {
 		super(argOpalFactory, argValues);
+	}
+
+	@Override
+	protected void applyDefaults() {
+
+		/* Initialize the back Collections to empty sets. */
+
+		myNewSectionOpalHashSet = new java.util.HashSet<>();
+
+		return;
 	}
 
 	@Override
@@ -112,7 +123,7 @@ public final class PacketOpal extends com.opal.UpdatableOpal<Packet> {
 			throw new com.opal.IllegalNullArgumentException("Cannot set myPacketSetCode on " + this + " to null.");
 		}
 		if (argPacketSetCode.length() > 32) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myPacketSetCode on " + this + " is 32.", argPacketSetCode.length(), 32);
+			throw new com.opal.ArgumentTooLongException("Cannot set myPacketSetCode on " + this + " to \"" + argPacketSetCode + "\" because that field's maximum length is 32.", argPacketSetCode.length(), 32);
 		}
 		getNewValues()[1] = argPacketSetCode;
 		return this;
@@ -124,7 +135,7 @@ public final class PacketOpal extends com.opal.UpdatableOpal<Packet> {
 			throw new com.opal.IllegalNullArgumentException("Cannot set myName on " + this + " to null.");
 		}
 		if (argName.length() > 256) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myName on " + this + " is 256.", argName.length(), 256);
+			throw new com.opal.ArgumentTooLongException("Cannot set myName on " + this + " to \"" + argName + "\" because that field's maximum length is 256.", argName.length(), 256);
 		}
 		getNewValues()[2] = argName;
 		return this;
@@ -136,7 +147,7 @@ public final class PacketOpal extends com.opal.UpdatableOpal<Packet> {
 			throw new com.opal.IllegalNullArgumentException("Cannot set myShortName on " + this + " to null.");
 		}
 		if (argShortName.length() > 32) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myShortName on " + this + " is 32.", argShortName.length(), 32);
+			throw new com.opal.ArgumentTooLongException("Cannot set myShortName on " + this + " to \"" + argShortName + "\" because that field's maximum length is 32.", argShortName.length(), 32);
 		}
 		getNewValues()[3] = argShortName;
 		return this;
@@ -181,9 +192,13 @@ public final class PacketOpal extends com.opal.UpdatableOpal<Packet> {
 
 		if (needsToClearOldCollections()) {
 			myOldSectionOpalHashSet = null;
-			} else {
+		} else {
 			if (myNewSectionOpalHashSet != null) {
-				myOldSectionOpalHashSet = myNewSectionOpalHashSet;
+				if (myNewSectionOpalHashSet.size() > 0) {
+					myOldSectionOpalHashSet = myNewSectionOpalHashSet;
+				} else {
+					myOldSectionOpalHashSet = java.util.Collections.emptySet();
+				}
 				myNewSectionOpalHashSet = null;
 			} else {
 				mySectionOpalCachedOperations = null;
@@ -332,18 +347,20 @@ public final class PacketOpal extends com.opal.UpdatableOpal<Packet> {
 		myNewPacketSetOpal = argPacketSetOpal;
 	}
 
-	private java.util.HashSet<SectionOpal> myOldSectionOpalHashSet = null;
-	private java.util.HashSet<SectionOpal> myNewSectionOpalHashSet = null;
+	private java.util.Set<SectionOpal> myOldSectionOpalHashSet = null;
+	private java.util.Set<SectionOpal> myNewSectionOpalHashSet = null;
 	private java.util.ArrayList<com.opal.CachedOperation<SectionOpal>> mySectionOpalCachedOperations = null;
 
-	/* package */ java.util.HashSet<SectionOpal> getSectionOpalHashSet() {
+	/* package */ java.util.Set<SectionOpal> getSectionOpalHashSet() {
 		if (tryAccess()) {
 			if (myNewSectionOpalHashSet == null) {
 				if (myOldSectionOpalHashSet == null) {
 					if (isNew()) {
-						myOldSectionOpalHashSet = new java.util.HashSet<>();
+						myOldSectionOpalHashSet = java.util.Collections.emptySet();
 					} else {
-						myOldSectionOpalHashSet = OpalFactoryFactory.getInstance().getSectionOpalFactory().forPacketIdCollection(getIdAsObject());
+						java.util.Set<SectionOpal> lclS;
+						lclS = OpalFactoryFactory.getInstance().getSectionOpalFactory().forPacketIdCollection(getIdAsObject());
+						myOldSectionOpalHashSet = lclS.size() > 0 ? lclS : java.util.Collections.emptySet();
 					}
 				}
 				myNewSectionOpalHashSet = new java.util.HashSet<>(myOldSectionOpalHashSet);
@@ -355,7 +372,9 @@ public final class PacketOpal extends com.opal.UpdatableOpal<Packet> {
 			return myNewSectionOpalHashSet;
 		} else {
 			if (myOldSectionOpalHashSet == null) {
-				myOldSectionOpalHashSet = OpalFactoryFactory.getInstance().getSectionOpalFactory().forPacketIdCollection(getIdAsObject());
+				java.util.Set<SectionOpal> lclS;
+				lclS = OpalFactoryFactory.getInstance().getSectionOpalFactory().forPacketIdCollection(getIdAsObject());
+				myOldSectionOpalHashSet = lclS.size() > 0 ? lclS : java.util.Collections.emptySet();
 			}
 			return myOldSectionOpalHashSet;
 		}
@@ -414,11 +433,9 @@ public final class PacketOpal extends com.opal.UpdatableOpal<Packet> {
 		return getSectionOpalHashSet().stream();
 	}
 
-	public synchronized void clearSectionOpalInternal() { getSectionOpalHashSet().clear(); }
-
 	@Override
-	public String toString() {
-		StringBuilder lclSB =  new StringBuilder(64);
+	public java.lang.String toString() {
+		java.lang.StringBuilder lclSB = new java.lang.StringBuilder(64);
 		lclSB.append("PacketOpal[");
 		lclSB.append("myId=");
 		lclSB.append(toStringField(0));

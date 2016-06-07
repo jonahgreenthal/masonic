@@ -15,6 +15,7 @@ package com.masonic.persistence;
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
 public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Comparable<com.masonic.application.Category> {
+
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Code}
@@ -23,6 +24,8 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 	 *
 	 * @return an object value of {@code Code} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getCode();
 
 	/**
@@ -37,7 +40,7 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 	 * <p>The database column {@code code} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.Category setCode(java.lang.String argCode);
 
@@ -48,6 +51,8 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 	 *
 	 * @return an object value of {@code Name} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getName();
 
 	/**
@@ -62,7 +67,7 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public com.masonic.application.Category setName(java.lang.String argName);
 
@@ -73,6 +78,8 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 	 *
 	 * @return an object value of {@code ShortName} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getShortName();
 
 	/**
@@ -87,7 +94,7 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 	 * <p>The database column {@code short_name} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.Category setShortName(java.lang.String argShortName);
 
@@ -100,6 +107,7 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 	 *
 	 * @return an object value of {@code Sequence} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getSequenceAsObject();
 
 	/**
@@ -125,7 +133,7 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argSequence is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Category setSequence(java.lang.Integer argSequence);
 
 	/**
@@ -143,6 +151,8 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 	 *
 	 * @return an object value of {@code CategoryGroupCode} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getCategoryGroupCode();
 
 	/**
@@ -157,7 +167,7 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 	 * <p>The database column {@code category_group_code} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.Category setCategoryGroupCode(java.lang.String argCategoryGroupCode);
 
@@ -166,6 +176,7 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 	 * The returned {@code com.masonic.application.CategoryGroup} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code category_group} that is referenced by {@code category_to_category_group}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.CategoryGroup getCategoryGroup();
 	public com.masonic.application.Category setCategoryGroup(com.masonic.application.CategoryGroup argCategoryGroup);
 
@@ -176,8 +187,6 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 
 	public com.masonic.application.Category addQuestion(com.masonic.application.Question argQuestion);
 	public com.masonic.application.Category removeQuestion(com.masonic.application.Question argQuestion);
-	public com.masonic.application.Category clearQuestion();
-
 	default public <T extends java.util.Collection<? super com.masonic.application.Question>> T acquireQuestion(T argC) {
 		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Question> lclI = createQuestionIterator();
@@ -205,8 +214,6 @@ public interface CategoryUserFacing extends com.opal.IdentityUserFacing, Compara
 
 	public com.masonic.application.Category addPlacement(com.masonic.application.Placement argPlacement);
 	public com.masonic.application.Category removePlacement(com.masonic.application.Placement argPlacement);
-	public com.masonic.application.Category clearPlacement();
-
 	default public <T extends java.util.Collection<? super com.masonic.application.Placement>> T acquirePlacement(T argC) {
 		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Placement> lclI = createPlacementIterator();

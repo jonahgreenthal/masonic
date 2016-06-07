@@ -15,6 +15,7 @@ package com.masonic.persistence;
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
 public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
+
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Code}
@@ -23,6 +24,8 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Code} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getCode();
 
 	/**
@@ -37,7 +40,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code code} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.PacketSet setCode(java.lang.String argCode);
 
@@ -48,6 +51,8 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Name} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getName();
 
 	/**
@@ -62,7 +67,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public com.masonic.application.PacketSet setName(java.lang.String argName);
 
@@ -73,6 +78,8 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code ShortName} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getShortName();
 
 	/**
@@ -87,7 +94,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code short_name} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.PacketSet setShortName(java.lang.String argShortName);
 
@@ -98,6 +105,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Deadline} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
 	public java.time.LocalDate getDeadline();
 
 	/**
@@ -122,6 +130,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 * @param argDeadline the new value of {@code Deadline}.  May be <code>null</code>.
 	 * @return itself, so that mutator calls can be chained fluently
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
 	public com.masonic.application.PacketSet setDeadline(java.time.LocalDate argDeadline);
 
 	/**
@@ -131,6 +140,8 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Note} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getNote();
 
 	/**
@@ -158,6 +169,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code note} is limited to 2147483647 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public com.masonic.application.PacketSet setNote(java.lang.String argNote);
 
@@ -170,11 +182,13 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Completed} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "false")
 	public java.lang.Boolean isCompletedAsObject();
 
 	default public java.lang.Boolean isNotCompletedAsObject() {
 		Boolean lclB = isCompletedAsObject();
-		return lclB != null ? (lclB.booleanValue() ? Boolean.FALSE : Boolean.TRUE) : null;
+		return lclB.booleanValue() ? Boolean.FALSE : Boolean.TRUE;
 	}
 
 	/**
@@ -204,7 +218,8 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argCompleted is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "false")
 	public com.masonic.application.PacketSet setCompleted(java.lang.Boolean argCompleted);
 
 	/**
@@ -222,8 +237,6 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 
 	public com.masonic.application.PacketSet addIntendedQuestion(com.masonic.application.Question argQuestion);
 	public com.masonic.application.PacketSet removeIntendedQuestion(com.masonic.application.Question argQuestion);
-	public com.masonic.application.PacketSet clearIntendedQuestion();
-
 	default public <T extends java.util.Collection<? super com.masonic.application.Question>> T acquireIntendedQuestion(T argC) {
 		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Question> lclI = createIntendedQuestionIterator();
@@ -251,8 +264,6 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 
 	public com.masonic.application.PacketSet addPacket(com.masonic.application.Packet argPacket);
 	public com.masonic.application.PacketSet removePacket(com.masonic.application.Packet argPacket);
-	public com.masonic.application.PacketSet clearPacket();
-
 	default public <T extends java.util.Collection<? super com.masonic.application.Packet>> T acquirePacket(T argC) {
 		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Packet> lclI = createPacketIterator();

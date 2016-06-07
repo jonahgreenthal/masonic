@@ -15,6 +15,7 @@ package com.masonic.persistence;
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
 public interface SectionUserFacing extends com.opal.IdentityUserFacing {
+
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Id}
@@ -25,6 +26,7 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Id} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getIdAsObject();
 
 	/**
@@ -50,7 +52,7 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argId is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Section setId(java.lang.Integer argId);
 
 	/**
@@ -70,6 +72,7 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code PacketId} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getPacketIdAsObject();
 
 	/**
@@ -95,7 +98,7 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argPacketId is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Section setPacketId(java.lang.Integer argPacketId);
 
 	/**
@@ -113,6 +116,8 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code QuestionTypeCode} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getQuestionTypeCode();
 
 	/**
@@ -127,7 +132,7 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code question_type_code} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.Section setQuestionTypeCode(java.lang.String argQuestionTypeCode);
 
@@ -140,6 +145,7 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Sequence} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getSequenceAsObject();
 
 	/**
@@ -165,7 +171,7 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argSequence is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Section setSequence(java.lang.Integer argSequence);
 
 	/**
@@ -183,6 +189,8 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Name} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getName();
 
 	/**
@@ -197,7 +205,7 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public com.masonic.application.Section setName(java.lang.String argName);
 
@@ -208,6 +216,8 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code ShortName} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getShortName();
 
 	/**
@@ -222,7 +232,7 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code short_name} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.Section setShortName(java.lang.String argShortName);
 
@@ -235,6 +245,8 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Extras} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "false")
 	public java.lang.Boolean isExtrasAsObject();
 
 	/**
@@ -260,7 +272,8 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argExtras is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "false")
 	public com.masonic.application.Section setExtras(java.lang.Boolean argExtras);
 
 	/**
@@ -276,6 +289,7 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 * The returned {@code com.masonic.application.QuestionType} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code question_type} that is referenced by {@code section_to_question_type}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.QuestionType getQuestionType();
 	public com.masonic.application.Section setQuestionType(com.masonic.application.QuestionType argQuestionType);
 
@@ -284,6 +298,7 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 	 * The returned {@code com.masonic.application.Packet} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code packet} that is referenced by {@code section_to_packet}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Packet getPacket();
 	public com.masonic.application.Section setPacket(com.masonic.application.Packet argPacket);
 
@@ -294,8 +309,6 @@ public interface SectionUserFacing extends com.opal.IdentityUserFacing {
 
 	public com.masonic.application.Section addPlacement(com.masonic.application.Placement argPlacement);
 	public com.masonic.application.Section removePlacement(com.masonic.application.Placement argPlacement);
-	public com.masonic.application.Section clearPlacement();
-
 	default public <T extends java.util.Collection<? super com.masonic.application.Placement>> T acquirePlacement(T argC) {
 		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Placement> lclI = createPlacementIterator();

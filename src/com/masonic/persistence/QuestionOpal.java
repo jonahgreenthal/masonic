@@ -4,6 +4,7 @@ import com.masonic.application.Question;
 
 @com.opal.StoreGeneratedPrimaryKey
 public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
+
 	public static final java.lang.String ourDefaultQuestionStatusCode = "DRAFTED";
 
 	private QuestionOpal() {
@@ -11,14 +12,16 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 		setUserFacing(null);
 	}
 
-	public QuestionOpal(com.opal.OpalFactory<Question, QuestionOpal> argOpalFactory, Object[] argValues) {
+	public QuestionOpal(com.opal.IdentityOpalFactory<Question, QuestionOpal> argOpalFactory, Object[] argValues) {
 		super(argOpalFactory, argValues);
 	}
 
 	@Override
 	protected void applyDefaults() {
-		getNewValues()[7] = java.time.LocalDateTime.now();
+		/* Initialize fields with their default values. */
+		getNewValues()[7] = com.opal.LocalDateCache.now();
 		getNewValues()[9] = ourDefaultQuestionStatusCode;
+
 		return;
 	}
 
@@ -165,7 +168,7 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 			throw new com.opal.IllegalNullArgumentException("Cannot set myCategoryCode on " + this + " to null.");
 		}
 		if (argCategoryCode.length() > 32) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myCategoryCode on " + this + " is 32.", argCategoryCode.length(), 32);
+			throw new com.opal.ArgumentTooLongException("Cannot set myCategoryCode on " + this + " to \"" + argCategoryCode + "\" because that field's maximum length is 32.", argCategoryCode.length(), 32);
 		}
 		getNewValues()[1] = argCategoryCode;
 		return;
@@ -189,7 +192,7 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 			throw new com.opal.IllegalNullArgumentException("Cannot set myQuestionTypeCode on " + this + " to null.");
 		}
 		if (argQuestionTypeCode.length() > 32) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myQuestionTypeCode on " + this + " is 32.", argQuestionTypeCode.length(), 32);
+			throw new com.opal.ArgumentTooLongException("Cannot set myQuestionTypeCode on " + this + " to \"" + argQuestionTypeCode + "\" because that field's maximum length is 32.", argQuestionTypeCode.length(), 32);
 		}
 		getNewValues()[4] = argQuestionTypeCode;
 		return;
@@ -201,7 +204,7 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 			throw new com.opal.IllegalNullArgumentException("Cannot set myLabel on " + this + " to null.");
 		}
 		if (argLabel.length() > 256) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myLabel on " + this + " is 256.", argLabel.length(), 256);
+			throw new com.opal.ArgumentTooLongException("Cannot set myLabel on " + this + " to \"" + argLabel + "\" because that field's maximum length is 256.", argLabel.length(), 256);
 		}
 		getNewValues()[5] = argLabel;
 		return;
@@ -233,7 +236,7 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 	public synchronized void setIntendedPacketSetCode(final java.lang.String argIntendedPacketSetCode) {
 		tryMutate();
 		if ((argIntendedPacketSetCode != null) && (argIntendedPacketSetCode.length() > 32)) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myIntendedPacketSetCode on " + this + " is 32.", argIntendedPacketSetCode.length(), 32);
+			throw new com.opal.ArgumentTooLongException("Cannot set myIntendedPacketSetCode on " + this + " to \"" + argIntendedPacketSetCode + "\" because that field's maximum length is 32.", argIntendedPacketSetCode.length(), 32);
 		}
 		getNewValues()[8] = argIntendedPacketSetCode;
 		return;
@@ -245,7 +248,7 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 			throw new com.opal.IllegalNullArgumentException("Cannot set myQuestionStatusCode on " + this + " to null.");
 		}
 		if (argQuestionStatusCode.length() > 32) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myQuestionStatusCode on " + this + " is 32.", argQuestionStatusCode.length(), 32);
+			throw new com.opal.ArgumentTooLongException("Cannot set myQuestionStatusCode on " + this + " to \"" + argQuestionStatusCode + "\" because that field's maximum length is 32.", argQuestionStatusCode.length(), 32);
 		}
 		getNewValues()[9] = argQuestionStatusCode;
 		return;
@@ -736,8 +739,8 @@ public final class QuestionOpal extends com.opal.UpdatableOpal<Question> {
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder lclSB =  new StringBuilder(64);
+	public java.lang.String toString() {
+		java.lang.StringBuilder lclSB = new java.lang.StringBuilder(64);
 		lclSB.append("QuestionOpal[");
 		lclSB.append("myId=");
 		lclSB.append(toStringField(0));

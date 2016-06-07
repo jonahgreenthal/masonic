@@ -51,7 +51,6 @@ public class PostgresSectionOpalFactory extends com.opal.AbstractDatabaseIdentit
 	@Override
 	protected com.opal.FieldValidator[] getFieldValidators() { return SectionOpal.getStaticFieldValidators(); }
 
-
 	@Override
 	protected javax.sql.DataSource getDataSource() {
 		return PostgresOpalFactoryFactory.getSpecificInstance().getDataSource();
@@ -222,22 +221,24 @@ public class PostgresSectionOpalFactory extends com.opal.AbstractDatabaseIdentit
 		);
 	}
 
-	/* package */ static class IdOpalKey extends com.opal.DatabaseOpalKey<SectionOpal> {
+	/* package */ static class IdOpalKey extends com.opal.SingleValueDatabaseOpalKey<SectionOpal> {
 		private static final String[] ourKeyColumnNames = new String[] {"id", };
 
 		public IdOpalKey(java.lang.Integer argId) {
-			super(new Object[] {argId, });
+			super(argId);
 		}
 
 		@Override
-		protected Object[] getParameters() { return getFields(); }
+		public Object[] getParameters() {
+			return new Object[] { getKeyValue(), };
+		}
 
 		@Override
-		protected String[] getColumnNames() { return ourKeyColumnNames; }
+		public String[] getColumnNames() { return ourKeyColumnNames; }
 
 	}
 
-	/* package */ static class PacketIdSequenceOpalKey extends com.opal.DatabaseOpalKey<SectionOpal> {
+	/* package */ static class PacketIdSequenceOpalKey extends com.opal.MultipleValueDatabaseOpalKey<SectionOpal> {
 		private static final String[] ourKeyColumnNames = new String[] {"packet_id", "sequence", };
 
 		public PacketIdSequenceOpalKey(java.lang.Integer argPacketId, java.lang.Integer argSequence) {
@@ -245,10 +246,12 @@ public class PostgresSectionOpalFactory extends com.opal.AbstractDatabaseIdentit
 		}
 
 		@Override
-		protected Object[] getParameters() { return getFields(); }
+		public Object[] getParameters() {
+			return getFields();
+		}
 
 		@Override
-		protected String[] getColumnNames() { return ourKeyColumnNames; }
+		public String[] getColumnNames() { return ourKeyColumnNames; }
 
 	}
 

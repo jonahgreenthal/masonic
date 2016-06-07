@@ -4,7 +4,8 @@ import com.masonic.persistence.SectionOpalFactory;
 import com.masonic.persistence.SectionOpal;
 import com.masonic.persistence.OpalFactoryFactory;
 
-public class SectionFactory extends com.opal.AbstractFactory<Section, SectionOpal> implements com.opal.FactoryCreator<Section>, com.opal.IdentityFactory<Section> {
+public class SectionFactory extends com.opal.AbstractIdentityFactory<Section, SectionOpal> implements com.opal.FactoryCreator<Section> {
+
 	/** This static variable holds the Singleton instance of the Factory for application
 		objects of this type.  It is private, but can be accessed via the getInstance() method.
 	*/
@@ -15,7 +16,7 @@ public class SectionFactory extends com.opal.AbstractFactory<Section, SectionOpa
 
 	public SectionOpalFactory getSectionOpalFactory() { return (SectionOpalFactory) getOpalFactory(); }
 
-	protected SectionFactory(com.opal.OpalFactory<Section, SectionOpal> argOpalFactory) {
+	protected SectionFactory(com.opal.IdentityOpalFactory<Section, SectionOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 

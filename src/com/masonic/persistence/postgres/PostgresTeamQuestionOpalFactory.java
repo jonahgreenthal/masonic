@@ -52,7 +52,6 @@ public class PostgresTeamQuestionOpalFactory extends com.opal.AbstractDatabaseId
 	@Override
 	protected com.opal.FieldValidator[] getFieldValidators() { return TeamQuestionOpal.getStaticFieldValidators(); }
 
-
 	@Override
 	protected javax.sql.DataSource getDataSource() {
 		return PostgresOpalFactoryFactory.getSpecificInstance().getDataSource();
@@ -173,18 +172,20 @@ public class PostgresTeamQuestionOpalFactory extends com.opal.AbstractDatabaseId
 		);
 	}
 
-	/* package */ static class QuestionIdOpalKey extends com.opal.DatabaseOpalKey<TeamQuestionOpal> {
+	/* package */ static class QuestionIdOpalKey extends com.opal.SingleValueDatabaseOpalKey<TeamQuestionOpal> {
 		private static final String[] ourKeyColumnNames = new String[] {"question_id", };
 
 		public QuestionIdOpalKey(java.lang.Integer argQuestionId) {
-			super(new Object[] {argQuestionId, });
+			super(argQuestionId);
 		}
 
 		@Override
-		protected Object[] getParameters() { return getFields(); }
+		public Object[] getParameters() {
+			return new Object[] { getKeyValue(), };
+		}
 
 		@Override
-		protected String[] getColumnNames() { return ourKeyColumnNames; }
+		public String[] getColumnNames() { return ourKeyColumnNames; }
 
 	}
 

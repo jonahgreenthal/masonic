@@ -4,6 +4,7 @@ import com.masonic.persistence.TeamQuestionOpal;
 import com.masonic.persistence.QuestionOpal;
 
 public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
+
 	private final TeamQuestionOpal myTeamQuestionOpal;
 
 	public TeamQuestionImpl(TeamQuestionOpal argTeamQuestionOpal) {
@@ -44,11 +45,13 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 		return getTeamQuestionOpal();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getQuestionIdAsObject() {
 		return getTeamQuestionOpal().getQuestionIdAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public TeamQuestionImpl setQuestionId(java.lang.Integer argQuestionId) {
 		getTeamQuestionOpal().setQuestionId(argQuestionId);
@@ -61,77 +64,105 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public java.lang.String getIntroduction() {
 		return getTeamQuestionOpal().getIntroduction();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public TeamQuestionImpl setIntroduction(java.lang.String argIntroduction) {
 		getTeamQuestionOpal().setIntroduction(argIntroduction);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public java.lang.String getPart1Text() {
 		return getTeamQuestionOpal().getPart1Text();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public TeamQuestionImpl setPart1Text(java.lang.String argPart1Text) {
 		getTeamQuestionOpal().setPart1Text(argPart1Text);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public java.lang.String getPart1Answer() {
 		return getTeamQuestionOpal().getPart1Answer();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public TeamQuestionImpl setPart1Answer(java.lang.String argPart1Answer) {
 		getTeamQuestionOpal().setPart1Answer(argPart1Answer);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public java.lang.String getPart2Text() {
 		return getTeamQuestionOpal().getPart2Text();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public TeamQuestionImpl setPart2Text(java.lang.String argPart2Text) {
 		getTeamQuestionOpal().setPart2Text(argPart2Text);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public java.lang.String getPart2Answer() {
 		return getTeamQuestionOpal().getPart2Answer();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public TeamQuestionImpl setPart2Answer(java.lang.String argPart2Answer) {
 		getTeamQuestionOpal().setPart2Answer(argPart2Answer);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public java.lang.String getPart3Text() {
 		return getTeamQuestionOpal().getPart3Text();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public TeamQuestionImpl setPart3Text(java.lang.String argPart3Text) {
 		getTeamQuestionOpal().setPart3Text(argPart3Text);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public java.lang.String getPart3Answer() {
 		return getTeamQuestionOpal().getPart3Answer();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
 	public TeamQuestionImpl setPart3Answer(java.lang.String argPart3Answer) {
 		getTeamQuestionOpal().setPart3Answer(argPart3Answer);

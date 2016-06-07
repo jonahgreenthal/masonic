@@ -15,6 +15,7 @@ package com.masonic.persistence;
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
 public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparable<com.masonic.application.Packet> {
+
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Id}
@@ -25,6 +26,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @return an object value of {@code Id} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getIdAsObject();
 
 	/**
@@ -50,7 +52,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argId is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Packet setId(java.lang.Integer argId);
 
 	/**
@@ -68,6 +70,8 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @return an object value of {@code PacketSetCode} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getPacketSetCode();
 
 	/**
@@ -82,7 +86,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 * <p>The database column {@code packet_set_code} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.Packet setPacketSetCode(java.lang.String argPacketSetCode);
 
@@ -93,6 +97,8 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @return an object value of {@code Name} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getName();
 
 	/**
@@ -107,7 +113,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public com.masonic.application.Packet setName(java.lang.String argName);
 
@@ -118,6 +124,8 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @return an object value of {@code ShortName} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getShortName();
 
 	/**
@@ -132,7 +140,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 * <p>The database column {@code short_name} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.Packet setShortName(java.lang.String argShortName);
 
@@ -145,6 +153,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @return an object value of {@code Sequence} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getSequenceAsObject();
 
 	/**
@@ -170,7 +179,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argSequence is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Packet setSequence(java.lang.Integer argSequence);
 
 	/**
@@ -186,6 +195,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 * The returned {@code com.masonic.application.PacketSet} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code packet_set} that is referenced by {@code packet_to_packet_set}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.PacketSet getPacketSet();
 	public com.masonic.application.Packet setPacketSet(com.masonic.application.PacketSet argPacketSet);
 
@@ -196,8 +206,6 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 
 	public com.masonic.application.Packet addSection(com.masonic.application.Section argSection);
 	public com.masonic.application.Packet removeSection(com.masonic.application.Section argSection);
-	public com.masonic.application.Packet clearSection();
-
 	default public <T extends java.util.Collection<? super com.masonic.application.Section>> T acquireSection(T argC) {
 		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
 		java.util.Iterator<com.masonic.application.Section> lclI = createSectionIterator();

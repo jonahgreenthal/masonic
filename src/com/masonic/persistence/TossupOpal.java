@@ -4,12 +4,13 @@ import com.masonic.application.Tossup;
 
 public final class TossupOpal extends com.opal.UpdatableOpal<Tossup> {
 
+
 	private TossupOpal() {
 		super();
 		setUserFacing(null);
 	}
 
-	public TossupOpal(com.opal.OpalFactory<Tossup, TossupOpal> argOpalFactory, Object[] argValues) {
+	public TossupOpal(com.opal.IdentityOpalFactory<Tossup, TossupOpal> argOpalFactory, Object[] argValues) {
 		super(argOpalFactory, argValues);
 	}
 
@@ -244,8 +245,8 @@ public final class TossupOpal extends com.opal.UpdatableOpal<Tossup> {
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder lclSB =  new StringBuilder(64);
+	public java.lang.String toString() {
+		java.lang.StringBuilder lclSB = new java.lang.StringBuilder(64);
 		lclSB.append("TossupOpal[");
 		lclSB.append("myQuestionId=");
 		lclSB.append(toStringField(0));

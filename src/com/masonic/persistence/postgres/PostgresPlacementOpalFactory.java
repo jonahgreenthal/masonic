@@ -49,7 +49,6 @@ public class PostgresPlacementOpalFactory extends com.opal.AbstractDatabaseIdent
 	@Override
 	protected com.opal.FieldValidator[] getFieldValidators() { return PlacementOpal.getStaticFieldValidators(); }
 
-
 	@Override
 	protected javax.sql.DataSource getDataSource() {
 		return PostgresOpalFactoryFactory.getSpecificInstance().getDataSource();
@@ -246,37 +245,41 @@ public class PostgresPlacementOpalFactory extends com.opal.AbstractDatabaseIdent
 		);
 	}
 
-	/* package */ static class IdOpalKey extends com.opal.DatabaseOpalKey<PlacementOpal> {
+	/* package */ static class IdOpalKey extends com.opal.SingleValueDatabaseOpalKey<PlacementOpal> {
 		private static final String[] ourKeyColumnNames = new String[] {"id", };
 
 		public IdOpalKey(java.lang.Integer argId) {
-			super(new Object[] {argId, });
+			super(argId);
 		}
 
 		@Override
-		protected Object[] getParameters() { return getFields(); }
+		public Object[] getParameters() {
+			return new Object[] { getKeyValue(), };
+		}
 
 		@Override
-		protected String[] getColumnNames() { return ourKeyColumnNames; }
+		public String[] getColumnNames() { return ourKeyColumnNames; }
 
 	}
 
-	/* package */ static class QuestionIdOpalKey extends com.opal.DatabaseOpalKey<PlacementOpal> {
+	/* package */ static class QuestionIdOpalKey extends com.opal.SingleValueDatabaseOpalKey<PlacementOpal> {
 		private static final String[] ourKeyColumnNames = new String[] {"question_id", };
 
 		public QuestionIdOpalKey(java.lang.Integer argQuestionId) {
-			super(new Object[] {argQuestionId, });
+			super(argQuestionId);
 		}
 
 		@Override
-		protected Object[] getParameters() { return getFields(); }
+		public Object[] getParameters() {
+			return new Object[] { getKeyValue(), };
+		}
 
 		@Override
-		protected String[] getColumnNames() { return ourKeyColumnNames; }
+		public String[] getColumnNames() { return ourKeyColumnNames; }
 
 	}
 
-	/* package */ static class SectionIdSequenceOpalKey extends com.opal.DatabaseOpalKey<PlacementOpal> {
+	/* package */ static class SectionIdSequenceOpalKey extends com.opal.MultipleValueDatabaseOpalKey<PlacementOpal> {
 		private static final String[] ourKeyColumnNames = new String[] {"section_id", "sequence", };
 
 		public SectionIdSequenceOpalKey(java.lang.Integer argSectionId, java.lang.Integer argSequence) {
@@ -284,10 +287,12 @@ public class PostgresPlacementOpalFactory extends com.opal.AbstractDatabaseIdent
 		}
 
 		@Override
-		protected Object[] getParameters() { return getFields(); }
+		public Object[] getParameters() {
+			return getFields();
+		}
 
 		@Override
-		protected String[] getColumnNames() { return ourKeyColumnNames; }
+		public String[] getColumnNames() { return ourKeyColumnNames; }
 
 	}
 

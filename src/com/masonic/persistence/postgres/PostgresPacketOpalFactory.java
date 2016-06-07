@@ -49,7 +49,6 @@ public class PostgresPacketOpalFactory extends com.opal.AbstractDatabaseIdentity
 	@Override
 	protected com.opal.FieldValidator[] getFieldValidators() { return PacketOpal.getStaticFieldValidators(); }
 
-
 	@Override
 	protected javax.sql.DataSource getDataSource() {
 		return PostgresOpalFactoryFactory.getSpecificInstance().getDataSource();
@@ -247,22 +246,24 @@ public class PostgresPacketOpalFactory extends com.opal.AbstractDatabaseIdentity
 		);
 	}
 
-	/* package */ static class IdOpalKey extends com.opal.DatabaseOpalKey<PacketOpal> {
+	/* package */ static class IdOpalKey extends com.opal.SingleValueDatabaseOpalKey<PacketOpal> {
 		private static final String[] ourKeyColumnNames = new String[] {"id", };
 
 		public IdOpalKey(java.lang.Integer argId) {
-			super(new Object[] {argId, });
+			super(argId);
 		}
 
 		@Override
-		protected Object[] getParameters() { return getFields(); }
+		public Object[] getParameters() {
+			return new Object[] { getKeyValue(), };
+		}
 
 		@Override
-		protected String[] getColumnNames() { return ourKeyColumnNames; }
+		public String[] getColumnNames() { return ourKeyColumnNames; }
 
 	}
 
-	/* package */ static class PacketSetCodeNameOpalKey extends com.opal.DatabaseOpalKey<PacketOpal> {
+	/* package */ static class PacketSetCodeNameOpalKey extends com.opal.MultipleValueDatabaseOpalKey<PacketOpal> {
 		private static final String[] ourKeyColumnNames = new String[] {"packet_set_code", "name", };
 
 		public PacketSetCodeNameOpalKey(java.lang.String argPacketSetCode, java.lang.String argName) {
@@ -270,14 +271,16 @@ public class PostgresPacketOpalFactory extends com.opal.AbstractDatabaseIdentity
 		}
 
 		@Override
-		protected Object[] getParameters() { return getFields(); }
+		public Object[] getParameters() {
+			return getFields();
+		}
 
 		@Override
-		protected String[] getColumnNames() { return ourKeyColumnNames; }
+		public String[] getColumnNames() { return ourKeyColumnNames; }
 
 	}
 
-	/* package */ static class PacketSetCodeSequenceOpalKey extends com.opal.DatabaseOpalKey<PacketOpal> {
+	/* package */ static class PacketSetCodeSequenceOpalKey extends com.opal.MultipleValueDatabaseOpalKey<PacketOpal> {
 		private static final String[] ourKeyColumnNames = new String[] {"packet_set_code", "sequence", };
 
 		public PacketSetCodeSequenceOpalKey(java.lang.String argPacketSetCode, java.lang.Integer argSequence) {
@@ -285,14 +288,16 @@ public class PostgresPacketOpalFactory extends com.opal.AbstractDatabaseIdentity
 		}
 
 		@Override
-		protected Object[] getParameters() { return getFields(); }
+		public Object[] getParameters() {
+			return getFields();
+		}
 
 		@Override
-		protected String[] getColumnNames() { return ourKeyColumnNames; }
+		public String[] getColumnNames() { return ourKeyColumnNames; }
 
 	}
 
-	/* package */ static class PacketSetCodeShortNameOpalKey extends com.opal.DatabaseOpalKey<PacketOpal> {
+	/* package */ static class PacketSetCodeShortNameOpalKey extends com.opal.MultipleValueDatabaseOpalKey<PacketOpal> {
 		private static final String[] ourKeyColumnNames = new String[] {"packet_set_code", "short_name", };
 
 		public PacketSetCodeShortNameOpalKey(java.lang.String argPacketSetCode, java.lang.String argShortName) {
@@ -300,10 +305,12 @@ public class PostgresPacketOpalFactory extends com.opal.AbstractDatabaseIdentity
 		}
 
 		@Override
-		protected Object[] getParameters() { return getFields(); }
+		public Object[] getParameters() {
+			return getFields();
+		}
 
 		@Override
-		protected String[] getColumnNames() { return ourKeyColumnNames; }
+		public String[] getColumnNames() { return ourKeyColumnNames; }
 
 	}
 

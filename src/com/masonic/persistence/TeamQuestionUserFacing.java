@@ -15,6 +15,7 @@ package com.masonic.persistence;
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
 public interface TeamQuestionUserFacing extends com.masonic.application.Question {
+
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code QuestionId}
@@ -25,6 +26,7 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 *
 	 * @return an object value of {@code QuestionId} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getQuestionIdAsObject();
 
 	/**
@@ -50,7 +52,7 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argQuestionId is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.TeamQuestion setQuestionId(java.lang.Integer argQuestionId);
 
 	/**
@@ -68,6 +70,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 *
 	 * @return an object value of {@code Introduction} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getIntroduction();
 
 	/**
@@ -82,7 +86,7 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * <p>The database column {@code introduction} is limited to 2147483647 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public com.masonic.application.TeamQuestion setIntroduction(java.lang.String argIntroduction);
 
@@ -93,6 +97,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 *
 	 * @return an object value of {@code Part1Text} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getPart1Text();
 
 	/**
@@ -107,7 +113,7 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * <p>The database column {@code part_1_text} is limited to 2147483647 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public com.masonic.application.TeamQuestion setPart1Text(java.lang.String argPart1Text);
 
@@ -118,6 +124,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 *
 	 * @return an object value of {@code Part1Answer} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getPart1Answer();
 
 	/**
@@ -132,7 +140,7 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * <p>The database column {@code part_1_answer} is limited to 2147483647 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public com.masonic.application.TeamQuestion setPart1Answer(java.lang.String argPart1Answer);
 
@@ -143,6 +151,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 *
 	 * @return an object value of {@code Part2Text} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getPart2Text();
 
 	/**
@@ -157,7 +167,7 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * <p>The database column {@code part_2_text} is limited to 2147483647 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public com.masonic.application.TeamQuestion setPart2Text(java.lang.String argPart2Text);
 
@@ -168,6 +178,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 *
 	 * @return an object value of {@code Part2Answer} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getPart2Answer();
 
 	/**
@@ -182,7 +194,7 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * <p>The database column {@code part_2_answer} is limited to 2147483647 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public com.masonic.application.TeamQuestion setPart2Answer(java.lang.String argPart2Answer);
 
@@ -193,6 +205,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 *
 	 * @return an object value of {@code Part3Text} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getPart3Text();
 
 	/**
@@ -207,7 +221,7 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * <p>The database column {@code part_3_text} is limited to 2147483647 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public com.masonic.application.TeamQuestion setPart3Text(java.lang.String argPart3Text);
 
@@ -218,6 +232,8 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 *
 	 * @return an object value of {@code Part3Answer} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getPart3Answer();
 
 	/**
@@ -232,7 +248,7 @@ public interface TeamQuestionUserFacing extends com.masonic.application.Question
 	 * <p>The database column {@code part_3_answer} is limited to 2147483647 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public com.masonic.application.TeamQuestion setPart3Answer(java.lang.String argPart3Answer);
 

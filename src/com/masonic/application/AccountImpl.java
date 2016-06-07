@@ -3,6 +3,7 @@ package com.masonic.application;
 import com.masonic.persistence.AccountOpal;
 
 public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountOpal> implements Account {
+
 	private final AccountOpal myAccountOpal;
 
 	public AccountImpl(AccountOpal argAccountOpal) {
@@ -24,11 +25,13 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 		return getAccountOpal();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getIdAsObject() {
 		return getAccountOpal().getIdAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public AccountImpl setId(java.lang.Integer argId) {
 		getAccountOpal().setId(argId);
@@ -41,55 +44,77 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public java.lang.String getName() {
 		return getAccountOpal().getName();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public AccountImpl setName(java.lang.String argName) {
 		getAccountOpal().setName(argName);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public java.lang.String getEmailAddress() {
 		return getAccountOpal().getEmailAddress();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public AccountImpl setEmailAddress(java.lang.String argEmailAddress) {
 		getAccountOpal().setEmailAddress(argEmailAddress);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 64L)
 	@Override
 	public java.lang.String getUsername() {
 		return getAccountOpal().getUsername();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 64L)
 	@Override
 	public AccountImpl setUsername(java.lang.String argUsername) {
 		getAccountOpal().setUsername(argUsername);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 60L)
+	@com.opal.annotation.Default(value = "$2a$16$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	@Override
 	public java.lang.String getPasswordHash() {
 		return getAccountOpal().getPasswordHash();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 60L)
+	@com.opal.annotation.Default(value = "$2a$16$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	@Override
 	public AccountImpl setPasswordHash(java.lang.String argPasswordHash) {
 		getAccountOpal().setPasswordHash(argPasswordHash);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "false")
 	@Override
 	public java.lang.Boolean isAdministratorAsObject() {
 		return getAccountOpal().isAdministratorAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "false")
 	@Override
 	public AccountImpl setAdministrator(java.lang.Boolean argAdministrator) {
 		getAccountOpal().setAdministrator(argAdministrator);
@@ -102,11 +127,15 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "true")
 	@Override
 	public java.lang.Boolean isActiveAsObject() {
 		return getAccountOpal().isActiveAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "true")
 	@Override
 	public AccountImpl setActive(java.lang.Boolean argActive) {
 		getAccountOpal().setActive(argActive);
@@ -150,11 +179,6 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 	@Override
 	public java.util.Iterator<Question> createWriterQuestionIterator() {
 		return new com.opal.OpalIterator<> (getAccountOpal().createWriterQuestionOpalIterator());
-	}
-
-	@Override
-	public com.masonic.application.Account clearWriterQuestion() {
-		throw new UnsupportedOperationException();
 	}
 
 	@Override

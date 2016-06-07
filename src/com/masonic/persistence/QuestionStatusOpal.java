@@ -4,13 +4,24 @@ import com.masonic.application.QuestionStatus;
 
 public final class QuestionStatusOpal extends com.opal.UpdatableOpal<QuestionStatus> {
 
+
 	private QuestionStatusOpal() {
 		super();
 		setUserFacing(null);
 	}
 
-	public QuestionStatusOpal(com.opal.OpalFactory<QuestionStatus, QuestionStatusOpal> argOpalFactory, Object[] argValues) {
+	public QuestionStatusOpal(com.opal.IdentityOpalFactory<QuestionStatus, QuestionStatusOpal> argOpalFactory, Object[] argValues) {
 		super(argOpalFactory, argValues);
+	}
+
+	@Override
+	protected void applyDefaults() {
+
+		/* Initialize the back Collections to empty sets. */
+
+		myNewQuestionOpalHashSet = new java.util.HashSet<>();
+
+		return;
 	}
 
 	/* package */ static final String[] ourFieldNames = new String[] {
@@ -83,7 +94,7 @@ public final class QuestionStatusOpal extends com.opal.UpdatableOpal<QuestionSta
 			throw new com.opal.IllegalNullArgumentException("Cannot set myCode on " + this + " to null.");
 		}
 		if (argCode.length() > 32) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myCode on " + this + " is 32.", argCode.length(), 32);
+			throw new com.opal.ArgumentTooLongException("Cannot set myCode on " + this + " to \"" + argCode + "\" because that field's maximum length is 32.", argCode.length(), 32);
 		}
 		getNewValues()[0] = argCode;
 		return this;
@@ -95,7 +106,7 @@ public final class QuestionStatusOpal extends com.opal.UpdatableOpal<QuestionSta
 			throw new com.opal.IllegalNullArgumentException("Cannot set myName on " + this + " to null.");
 		}
 		if (argName.length() > 256) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myName on " + this + " is 256.", argName.length(), 256);
+			throw new com.opal.ArgumentTooLongException("Cannot set myName on " + this + " to \"" + argName + "\" because that field's maximum length is 256.", argName.length(), 256);
 		}
 		getNewValues()[1] = argName;
 		return this;
@@ -107,7 +118,7 @@ public final class QuestionStatusOpal extends com.opal.UpdatableOpal<QuestionSta
 			throw new com.opal.IllegalNullArgumentException("Cannot set myShortName on " + this + " to null.");
 		}
 		if (argShortName.length() > 32) {
-			throw new com.opal.ArgumentTooLongException("Maximum length of myShortName on " + this + " is 32.", argShortName.length(), 32);
+			throw new com.opal.ArgumentTooLongException("Cannot set myShortName on " + this + " to \"" + argShortName + "\" because that field's maximum length is 32.", argShortName.length(), 32);
 		}
 		getNewValues()[2] = argShortName;
 		return this;
@@ -150,9 +161,13 @@ public final class QuestionStatusOpal extends com.opal.UpdatableOpal<QuestionSta
 		/** This Opal has no references to other Opals that need to be copied. */
 		if (needsToClearOldCollections()) {
 			myOldQuestionOpalHashSet = null;
-			} else {
+		} else {
 			if (myNewQuestionOpalHashSet != null) {
-				myOldQuestionOpalHashSet = myNewQuestionOpalHashSet;
+				if (myNewQuestionOpalHashSet.size() > 0) {
+					myOldQuestionOpalHashSet = myNewQuestionOpalHashSet;
+				} else {
+					myOldQuestionOpalHashSet = java.util.Collections.emptySet();
+				}
 				myNewQuestionOpalHashSet = null;
 			} else {
 				myQuestionOpalCachedOperations = null;
@@ -230,18 +245,20 @@ public final class QuestionStatusOpal extends com.opal.UpdatableOpal<QuestionSta
 		argOutput.println("Sequence = " + getSequenceAsObject());
 	}
 
-	private java.util.HashSet<QuestionOpal> myOldQuestionOpalHashSet = null;
-	private java.util.HashSet<QuestionOpal> myNewQuestionOpalHashSet = null;
+	private java.util.Set<QuestionOpal> myOldQuestionOpalHashSet = null;
+	private java.util.Set<QuestionOpal> myNewQuestionOpalHashSet = null;
 	private java.util.ArrayList<com.opal.CachedOperation<QuestionOpal>> myQuestionOpalCachedOperations = null;
 
-	/* package */ java.util.HashSet<QuestionOpal> getQuestionOpalHashSet() {
+	/* package */ java.util.Set<QuestionOpal> getQuestionOpalHashSet() {
 		if (tryAccess()) {
 			if (myNewQuestionOpalHashSet == null) {
 				if (myOldQuestionOpalHashSet == null) {
 					if (isNew()) {
-						myOldQuestionOpalHashSet = new java.util.HashSet<>();
+						myOldQuestionOpalHashSet = java.util.Collections.emptySet();
 					} else {
-						myOldQuestionOpalHashSet = OpalFactoryFactory.getInstance().getQuestionOpalFactory().forQuestionStatusCodeCollection(getCode());
+						java.util.Set<QuestionOpal> lclS;
+						lclS = OpalFactoryFactory.getInstance().getQuestionOpalFactory().forQuestionStatusCodeCollection(getCode());
+						myOldQuestionOpalHashSet = lclS.size() > 0 ? lclS : java.util.Collections.emptySet();
 					}
 				}
 				myNewQuestionOpalHashSet = new java.util.HashSet<>(myOldQuestionOpalHashSet);
@@ -253,7 +270,9 @@ public final class QuestionStatusOpal extends com.opal.UpdatableOpal<QuestionSta
 			return myNewQuestionOpalHashSet;
 		} else {
 			if (myOldQuestionOpalHashSet == null) {
-				myOldQuestionOpalHashSet = OpalFactoryFactory.getInstance().getQuestionOpalFactory().forQuestionStatusCodeCollection(getCode());
+				java.util.Set<QuestionOpal> lclS;
+				lclS = OpalFactoryFactory.getInstance().getQuestionOpalFactory().forQuestionStatusCodeCollection(getCode());
+				myOldQuestionOpalHashSet = lclS.size() > 0 ? lclS : java.util.Collections.emptySet();
 			}
 			return myOldQuestionOpalHashSet;
 		}
@@ -312,11 +331,9 @@ public final class QuestionStatusOpal extends com.opal.UpdatableOpal<QuestionSta
 		return getQuestionOpalHashSet().stream();
 	}
 
-	public synchronized void clearQuestionOpalInternal() { getQuestionOpalHashSet().clear(); }
-
 	@Override
-	public String toString() {
-		StringBuilder lclSB =  new StringBuilder(64);
+	public java.lang.String toString() {
+		java.lang.StringBuilder lclSB = new java.lang.StringBuilder(64);
 		lclSB.append("QuestionStatusOpal[");
 		lclSB.append("myCode=");
 		lclSB.append(toStringField(0));

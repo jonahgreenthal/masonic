@@ -3,6 +3,7 @@ package com.masonic.application;
 import com.masonic.persistence.QuestionTypeOpal;
 
 public class QuestionTypeImpl extends com.opal.AbstractIdentityImpl<QuestionType, QuestionTypeOpal> implements QuestionType {
+
 	private final QuestionTypeOpal myQuestionTypeOpal;
 
 	public QuestionTypeImpl(QuestionTypeOpal argQuestionTypeOpal) {
@@ -29,44 +30,58 @@ public class QuestionTypeImpl extends com.opal.AbstractIdentityImpl<QuestionType
 		return this.getSequenceAsObject().compareTo(argSecond.getSequenceAsObject());
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public java.lang.String getCode() {
 		return getQuestionTypeOpal().getCode();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public QuestionTypeImpl setCode(java.lang.String argCode) {
 		getQuestionTypeOpal().setCode(argCode);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public java.lang.String getName() {
 		return getQuestionTypeOpal().getName();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public QuestionTypeImpl setName(java.lang.String argName) {
 		getQuestionTypeOpal().setName(argName);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public java.lang.String getShortName() {
 		return getQuestionTypeOpal().getShortName();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public QuestionTypeImpl setShortName(java.lang.String argShortName) {
 		getQuestionTypeOpal().setShortName(argShortName);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getSequenceAsObject() {
 		return getQuestionTypeOpal().getSequenceAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public QuestionTypeImpl setSequence(java.lang.Integer argSequence) {
 		getQuestionTypeOpal().setSequence(argSequence);
@@ -79,33 +94,45 @@ public class QuestionTypeImpl extends com.opal.AbstractIdentityImpl<QuestionType
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public java.lang.String getTableName() {
 		return getQuestionTypeOpal().getTableName();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public QuestionTypeImpl setTableName(java.lang.String argTableName) {
 		getQuestionTypeOpal().setTableName(argTableName);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = true)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public java.lang.String getSectionHeader() {
 		return getQuestionTypeOpal().getSectionHeader();
 	}
 
+	@com.opal.annotation.Nullability(nullable = true)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public QuestionTypeImpl setSectionHeader(java.lang.String argSectionHeader) {
 		getQuestionTypeOpal().setSectionHeader(argSectionHeader);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public java.lang.String getScoringNote() {
 		return getQuestionTypeOpal().getScoringNote();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	@Override
 	public QuestionTypeImpl setScoringNote(java.lang.String argScoringNote) {
 		getQuestionTypeOpal().setScoringNote(argScoringNote);
@@ -146,11 +173,6 @@ public class QuestionTypeImpl extends com.opal.AbstractIdentityImpl<QuestionType
 	}
 
 	@Override
-	public com.masonic.application.QuestionType clearQuestion() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
 	public com.masonic.application.QuestionType addSection(Section argSection) {
 		getQuestionTypeOpal().addSectionOpal(((SectionImpl) argSection).getSectionOpal());
 		return this;
@@ -175,11 +197,6 @@ public class QuestionTypeImpl extends com.opal.AbstractIdentityImpl<QuestionType
 	@Override
 	public java.util.Iterator<Section> createSectionIterator() {
 		return new com.opal.OpalIterator<> (getQuestionTypeOpal().createSectionOpalIterator());
-	}
-
-	@Override
-	public com.masonic.application.QuestionType clearSection() {
-		throw new UnsupportedOperationException();
 	}
 
 	@Override

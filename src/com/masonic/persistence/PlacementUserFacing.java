@@ -15,6 +15,7 @@ package com.masonic.persistence;
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
 public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
+
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Id}
@@ -25,6 +26,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Id} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getIdAsObject();
 
 	/**
@@ -50,7 +52,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argId is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Placement setId(java.lang.Integer argId);
 
 	/**
@@ -70,6 +72,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code SectionId} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getSectionIdAsObject();
 
 	/**
@@ -95,7 +98,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argSectionId is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Placement setSectionId(java.lang.Integer argSectionId);
 
 	/**
@@ -113,6 +116,8 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code CategoryCode} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getCategoryCode();
 
 	/**
@@ -127,7 +132,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code category_code} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.Placement setCategoryCode(java.lang.String argCategoryCode);
 
@@ -140,6 +145,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Sequence} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getSequenceAsObject();
 
 	/**
@@ -165,7 +171,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argSequence is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Placement setSequence(java.lang.Integer argSequence);
 
 	/**
@@ -185,6 +191,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code QuestionId} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
 	public java.lang.Integer getQuestionIdAsObject();
 
 	/**
@@ -239,6 +246,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 * @param argQuestionId the new value of {@code QuestionId}.  May be <code>null</code>.
 	 * @return itself, so that mutator calls can be chained fluently
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
 	public com.masonic.application.Placement setQuestionId(java.lang.Integer argQuestionId);
 
 	/**
@@ -254,6 +262,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 * The returned {@code com.masonic.application.Section} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code section} that is referenced by {@code placement_to_section}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Section getSection();
 	public com.masonic.application.Placement setSection(com.masonic.application.Section argSection);
 
@@ -262,6 +271,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 * The returned {@code com.masonic.application.Question} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code question} that is referenced by {@code placement_to_question}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
 	public com.masonic.application.Question getQuestion();
 	public com.masonic.application.Placement setQuestion(com.masonic.application.Question argQuestion);
 
@@ -270,6 +280,7 @@ public interface PlacementUserFacing extends com.opal.IdentityUserFacing {
 	 * The returned {@code com.masonic.application.Category} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code category} that is referenced by {@code placement_to_category}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Category getCategory();
 	public com.masonic.application.Placement setCategory(com.masonic.application.Category argCategory);
 

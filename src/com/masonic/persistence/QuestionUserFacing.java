@@ -15,6 +15,7 @@ package com.masonic.persistence;
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
 public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
+
 	/* Accessors and mutators for internal data. */
 	/**
 	 * object accessor for the {@code Id}
@@ -25,6 +26,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Id} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getIdAsObject();
 
 	/**
@@ -49,7 +51,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argId is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public void setId(java.lang.Integer argId);
 
 	/**
@@ -66,6 +68,8 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code CategoryCode} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getCategoryCode();
 
 	/**
@@ -79,7 +83,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code category_code} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public void setCategoryCode(java.lang.String argCategoryCode);
 
@@ -90,6 +94,8 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code InternalNote} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getInternalNote();
 
 	/**
@@ -116,6 +122,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code internal_note} is limited to 2147483647 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public void setInternalNote(java.lang.String argInternalNote);
 
@@ -126,6 +133,8 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code ExternalNote} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
+	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getExternalNote();
 
 	/**
@@ -152,6 +161,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code external_note} is limited to 2147483647 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public void setExternalNote(java.lang.String argExternalNote);
 
@@ -162,6 +172,8 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code QuestionTypeCode} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getQuestionTypeCode();
 
 	/**
@@ -175,7 +187,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code question_type_code} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public void setQuestionTypeCode(java.lang.String argQuestionTypeCode);
 
@@ -186,6 +198,8 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Label} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getLabel();
 
 	/**
@@ -199,7 +213,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code label} is limited to 256 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public void setLabel(java.lang.String argLabel);
 
@@ -212,6 +226,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code WriterAccountId} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getWriterAccountIdAsObject();
 
 	/**
@@ -236,7 +251,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argWriterAccountId is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	public void setWriterAccountId(java.lang.Integer argWriterAccountId);
 
 	/**
@@ -253,6 +268,8 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Updated} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.CurrentDateTimeDefault
 	public java.time.LocalDateTime getUpdated();
 
 	/**
@@ -263,7 +280,8 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argUpdated is null
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.CurrentDateTimeDefault
 	public void setUpdated(java.time.LocalDateTime argUpdated);
 
 	/**
@@ -273,6 +291,8 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code IntendedPacketSetCode} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
+	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getIntendedPacketSetCode();
 
 	/**
@@ -299,6 +319,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code intended_packet_set_code} is limited to 32 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 32L)
 	public void setIntendedPacketSetCode(java.lang.String argIntendedPacketSetCode);
 
@@ -309,6 +330,9 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code QuestionStatusCode} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
+	@com.opal.annotation.Default(value = "DRAFTED")
 	public java.lang.String getQuestionStatusCode();
 
 	/**
@@ -322,8 +346,9 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code question_status_code} is limited to 32 characters.</p>
 	 *
 	 */
-	@com.opal.annotation.NotNull
+	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
+	@com.opal.annotation.Default(value = "DRAFTED")
 	public void setQuestionStatusCode(java.lang.String argQuestionStatusCode);
 
 	/**
@@ -331,6 +356,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * The returned {@code com.masonic.application.QuestionStatus} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code question_status} that is referenced by {@code question_question_status_code_fkey}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.QuestionStatus getStatus();
 	public void setStatus(com.masonic.application.QuestionStatus argStatus);
 
@@ -339,6 +365,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * The returned {@code com.masonic.application.PacketSet} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code packet_set} that is referenced by {@code question_intended_packet_set_code_fkey}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = true)
 	public com.masonic.application.PacketSet getIntendedPacketSet();
 	public void setIntendedPacketSet(com.masonic.application.PacketSet argIntendedPacketSet);
 
@@ -347,6 +374,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * The returned {@code com.masonic.application.Account} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code account} that is referenced by {@code question_writer_account_id_fkey}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Account getWriter();
 	public void setWriter(com.masonic.application.Account argWriter);
 
@@ -355,6 +383,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * The returned {@code com.masonic.application.Category} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code category} that is referenced by {@code question_to_category}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Category getCategory();
 	public void setCategory(com.masonic.application.Category argCategory);
 
@@ -363,9 +392,11 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * The returned {@code com.masonic.application.QuestionType} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code question_type} that is referenced by {@code question_to_question_type}.
 	 *
 	 */
+	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.QuestionType getQuestionType();
 	public void setQuestionType(com.masonic.application.QuestionType argQuestionType);
 
+	@com.opal.annotation.Nullability(nullable = true)
 	public com.masonic.application.Placement getPlacement();
 	public void setPlacement(com.masonic.application.Placement argPlacement);
 

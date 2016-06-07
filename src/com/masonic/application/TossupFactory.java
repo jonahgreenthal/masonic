@@ -4,7 +4,8 @@ import com.masonic.persistence.TossupOpalFactory;
 import com.masonic.persistence.TossupOpal;
 import com.masonic.persistence.OpalFactoryFactory;
 
-public class TossupFactory extends com.opal.AbstractFactory<Tossup, TossupOpal> implements com.opal.FactoryCreator<Tossup>, com.opal.IdentityFactory<Tossup> {
+public class TossupFactory extends com.opal.AbstractIdentityFactory<Tossup, TossupOpal> implements com.opal.FactoryCreator<Tossup> {
+
 	/** This static variable holds the Singleton instance of the Factory for application
 		objects of this type.  It is private, but can be accessed via the getInstance() method.
 	*/
@@ -15,7 +16,7 @@ public class TossupFactory extends com.opal.AbstractFactory<Tossup, TossupOpal> 
 
 	public TossupOpalFactory getTossupOpalFactory() { return (TossupOpalFactory) getOpalFactory(); }
 
-	protected TossupFactory(com.opal.OpalFactory<Tossup, TossupOpal> argOpalFactory) {
+	protected TossupFactory(com.opal.IdentityOpalFactory<Tossup, TossupOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 

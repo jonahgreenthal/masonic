@@ -4,7 +4,8 @@ import com.masonic.persistence.PacketSetOpalFactory;
 import com.masonic.persistence.PacketSetOpal;
 import com.masonic.persistence.OpalFactoryFactory;
 
-public class PacketSetFactory extends com.opal.AbstractFactory<PacketSet, PacketSetOpal> implements com.opal.FactoryCreator<PacketSet>, com.opal.IdentityFactory<PacketSet> {
+public class PacketSetFactory extends com.opal.AbstractIdentityFactory<PacketSet, PacketSetOpal> implements com.opal.FactoryCreator<PacketSet> {
+
 	/** This static variable holds the Singleton instance of the Factory for application
 		objects of this type.  It is private, but can be accessed via the getInstance() method.
 	*/
@@ -15,7 +16,7 @@ public class PacketSetFactory extends com.opal.AbstractFactory<PacketSet, Packet
 
 	public PacketSetOpalFactory getPacketSetOpalFactory() { return (PacketSetOpalFactory) getOpalFactory(); }
 
-	protected PacketSetFactory(com.opal.OpalFactory<PacketSet, PacketSetOpal> argOpalFactory) {
+	protected PacketSetFactory(com.opal.IdentityOpalFactory<PacketSet, PacketSetOpal> argOpalFactory) {
 		super(argOpalFactory);
 	}
 

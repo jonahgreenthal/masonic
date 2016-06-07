@@ -6,6 +6,7 @@ import com.masonic.persistence.QuestionOpal;
 import com.masonic.persistence.CategoryOpal;
 
 public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, PlacementOpal> implements Placement {
+
 	private final PlacementOpal myPlacementOpal;
 
 	public PlacementImpl(PlacementOpal argPlacementOpal) {
@@ -27,11 +28,13 @@ public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, Plac
 		return getPlacementOpal();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getIdAsObject() {
 		return getPlacementOpal().getIdAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public PlacementImpl setId(java.lang.Integer argId) {
 		getPlacementOpal().setId(argId);
@@ -44,11 +47,13 @@ public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, Plac
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getSectionIdAsObject() {
 		return getPlacementOpal().getSectionIdAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public PlacementImpl setSectionId(java.lang.Integer argSectionId) {
 		getPlacementOpal().setSectionId(argSectionId);
@@ -61,22 +66,28 @@ public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, Plac
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public java.lang.String getCategoryCode() {
 		return getPlacementOpal().getCategoryCode();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Length(maximum = 32L)
 	@Override
 	public PlacementImpl setCategoryCode(java.lang.String argCategoryCode) {
 		getPlacementOpal().setCategoryCode(argCategoryCode);
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getSequenceAsObject() {
 		return getPlacementOpal().getSequenceAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public PlacementImpl setSequence(java.lang.Integer argSequence) {
 		getPlacementOpal().setSequence(argSequence);
@@ -89,11 +100,13 @@ public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, Plac
 		return this;
 	}
 
+	@com.opal.annotation.Nullability(nullable = true)
 	@Override
 	public java.lang.Integer getQuestionIdAsObject() {
 		return getPlacementOpal().getQuestionIdAsObject();
 	}
 
+	@com.opal.annotation.Nullability(nullable = true)
 	@Override
 	public PlacementImpl setQuestionId(java.lang.Integer argQuestionId) {
 		getPlacementOpal().setQuestionId(argQuestionId);
@@ -111,6 +124,7 @@ public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, Plac
 
 	/** @return the Section object created from placement through reference placement_to_section */
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public Section getSection() {
 		SectionOpal lclSectionOpal = getPlacementOpal().getSectionOpal();
@@ -125,6 +139,7 @@ public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, Plac
 
 	/** @return the Question object created from placement through reference placement_to_question */
 
+	@com.opal.annotation.Nullability(nullable = true)
 	@Override
 	public Question getQuestion() {
 		QuestionOpal lclQuestionOpal = getPlacementOpal().getQuestionOpal();
@@ -139,6 +154,7 @@ public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, Plac
 
 	/** @return the Category object created from placement through reference placement_to_category */
 
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public Category getCategory() {
 		CategoryOpal lclCategoryOpal = getPlacementOpal().getCategoryOpal();
