@@ -40,6 +40,9 @@ public abstract class Standalone {
 				MasonicConfiguration.getInstance().getString("DATABASE_PASSWORD")
 			)
 		);
+		
+		lclC.bind("java:comp/env/opal/localdatecache/start", "2000-01-01");
+		lclC.bind("java:comp/env/opal/localdatecache/end",  "2020-01-01");
 	}
 	
 	public static void createConsoleLogger() {
