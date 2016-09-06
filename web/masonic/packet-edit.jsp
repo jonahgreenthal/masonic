@@ -1,4 +1,5 @@
-﻿<%@ page import="java.util.List" %>
+﻿<%@ page import="java.util.Comparator" %>
+<%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="org.apache.commons.lang3.Validate" %>
 <%@ page import="com.opal.DatabaseQuery" %>
@@ -15,7 +16,6 @@
 <%@ page import="com.masonic.application.Section" %>
 <%@ page import="com.masonic.application.SectionFactory" %>
 <%@ page import="com.masonic.opalforms.specialhandler.QuestionHandler" %>
-<%@ page import="com.masonic.opalforms.updater.PacketPlacementUpdater" %>
 <%@ page import="com.masonic.opalforms.updater.PlacementDuplicateTeamQuestions" %>
 <%@ page import="com.masonic.opalforms.validator.PlacementCategoryValidator" %>
 <%@ page import="com.masonic.menu.Menus" %>
@@ -29,7 +29,6 @@ OpalMainForm<Packet> lclOF = OpalForm.create(
 	PacketFactory.getInstance(),
 	"packet_id"
 );
-lclOF.setUpdaterClass(PacketPlacementUpdater.class);
 lclOF.setDeleteURI("/masonic/packet-delete-confirmation.jsp");
 Packet lclP = Validate.notNull(lclOF.getUserFacing());
 
@@ -157,7 +156,8 @@ if (lclOF.hasErrors()) {
 									<!--<td><%= lclPLOF.field("Id") %></td>-->
 									<td><%= lclPLOF.text("Sequence", 3) %></td>
 									<td><%= lclPLOF.dropdown("Category", Category.StandardComparator.getInstance()).namer(Category::getNameWithGroupName) %></td>
-									<td><%
+									<td>
+										<%
 										if (lclPLOF.isNew()) {
 											%><%= lclPLOF.special("Question", 5, QuestionHandler.class) %><%
 										} else {
@@ -175,7 +175,7 @@ if (lclOF.hasErrors()) {
 												new DatabaseQuery("SELECT Q.* FROM Question Q WHERE NOT EXISTS (SELECT * FROM Placement PL WHERE PL.question_id = Q.id) AND Q.category_code = ? ORDER BY Q.label", lclPL.getCategory().getCode())
 											);
 											
-											%><%= lclOF.getPriorInput().dropdown("/Placement_" + lclPL.getId() + "_Question", lclCandidates, lclPLOF.getUserFacing().getQuestion(), Question.NCE) %><%
+											%><%= lclPLOF.dropdown("Question", Comparator.comparing(Question::getLabel)).namer(Question.NCE).choices(lclCandidates) %><%
 										}
 									%></td>
 									<td><%= lclPLOF.delete() %></td>
