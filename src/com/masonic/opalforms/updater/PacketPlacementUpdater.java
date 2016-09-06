@@ -33,20 +33,24 @@ public class PacketPlacementUpdater extends OpalFormUpdater<Packet> {
 		
 		for (Section lclS : lclP.createSectionArray()) {
 			for (Placement lclPL : lclS.createPlacementArray()) {
-				String lclQuestionIdString = StringUtils.trimToNull(getPrefixedParameter("Placement_" + lclPL.getId() + "_Question"));
-				if (lclQuestionIdString == null) {
+				if (lclPL.isNew()) {
 					lclPL.setQuestion(null);
 				} else {
-					try {
-						int lclQuestionId = Integer.parseInt(lclQuestionIdString);
-						Question lclQ = QuestionFactory.getInstance().forId(lclQuestionId);
-						if (lclQ == null) {
-							addError(lclQuestionId + " is not a valid ID of any question for " + lclPL.getString());
-						} else {
-							lclPL.setQuestion(lclQ);
+					String lclQuestionIdString = StringUtils.trimToNull(getPrefixedParameter("Placement_" + lclPL.getId() + "_Question"));
+					if (lclQuestionIdString == null) {
+						lclPL.setQuestion(null);
+					} else {
+						try {
+							int lclQuestionId = Integer.parseInt(lclQuestionIdString);
+							Question lclQ = QuestionFactory.getInstance().forId(lclQuestionId);
+							if (lclQ == null) {
+								addError(lclQuestionId + " is not a valid ID of any question for " + lclPL.getString());
+							} else {
+								lclPL.setQuestion(lclQ);
+							}
+						} catch (NumberFormatException lclNFE) {
+							addError("Couldn't interpret '" + lclQuestionIdString + "' as a question ID (or, in fact, any integer at all) for " + lclPL.getString());
 						}
-					} catch (NumberFormatException lclNFE) {
-						addError("Couldn't interpret '" + lclQuestionIdString + "' as a question ID (or, in fact, any integer at all) for " + lclPL.getString());
 					}
 				}
 			}
