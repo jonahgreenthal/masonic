@@ -172,7 +172,7 @@ if (lclOF.hasErrors()) {
 											
 											QuestionFactory.getInstance().acquireForQuery(
 												lclCandidates,
-												new DatabaseQuery("SELECT Q.* FROM Question Q WHERE NOT EXISTS (SELECT * FROM Placement PL WHERE PL.question_id = Q.id) AND Q.category_code = ? ORDER BY Q.label", lclPL.getCategory().getCode())
+												new DatabaseQuery("SELECT Q.* FROM Question Q WHERE NOT EXISTS (SELECT * FROM Placement PL WHERE PL.question_id = Q.id) AND Q.category_code = ? AND Q.question_type_code = ? ORDER BY Q.label", lclPL.getCategory().getCode(), lclPL.getSection().getQuestionType().getCode())
 											);
 											
 											%><%= lclPLOF.dropdown("Question", Comparator.comparing(Question::getLabel)).namer(Question.NCE).choices(lclCandidates) %><%
