@@ -58,16 +58,13 @@ public class PacketOutputter extends LaTeXOutputter {
 				Placement lclPL1 = lclPLs.get(lclI);
 				Placement lclPL2 = lclI < lclPLs.size() - 1 ? lclPLs.get(lclI + 1) : null;
 				
-				Validate.isTrue(lclPL1.isFilled());
-				Validate.isTrue(lclPL2 == null || lclPL2.isFilled());
+				Question lclQ1 = lclPL1.getQuestion(); // may be null
+				if (lclQ1 != null) {
+					Validate.isTrue(lclQ1.getQuestionType() == lclSection.getQuestionType(), "Question #" + lclQ1.getId() + " doesn't match its section's question type: question is " + lclQ1.getQuestionType().getCode() + "; section is " + lclQ1.getQuestionType().getCode());
+					Validate.isTrue(lclQ1.getCategory() == lclPL1.getCategory(), "Question #" + lclQ1.getId() + " doesn't match its placement's category: placement is " + lclPL1.getCategory().getNameWithGroupName() + "; question is " + lclQ1.getCategory().getNameWithGroupName());
+				}
 				
-				Question lclQ1 = Validate.notNull(lclPL1.getQuestion());
-				Question lclQ2 = lclPL2 == null ? null : Validate.notNull(lclPL2.getQuestion());
-				
-				Validate.isTrue(lclQ1.getQuestionType() == lclSection.getQuestionType(), "Question #" + lclQ1.getId() + " doesn't match its section's question type: question is " + lclQ1.getQuestionType().getCode() + "; section is " + lclQ1.getQuestionType().getCode());
-				Validate.isTrue(lclQ1.getCategory() == lclPL1.getCategory(), "Question #" + lclQ1.getId() + " doesn't match its placement's category: placement is " + lclPL1.getCategory().getNameWithGroupName() + "; question is " + lclQ1.getCategory().getNameWithGroupName());
-				
-				
+				Question lclQ2 = lclPL2 == null ? null : lclPL2.getQuestion(); // may be null
 				if (lclQ2 != null) {
 					Validate.isTrue(lclQ2.getQuestionType() == lclSection.getQuestionType(), "Question #" + lclQ2.getId() + " doesn't match its section's question type: question is " + lclQ2.getQuestionType().getCode() + "; section is " + lclQ2.getQuestionType().getCode());
 					Validate.isTrue(lclQ2.getCategory() == lclPL2.getCategory(), "Question #" + lclQ2.getId() + " doesn't match its placement's category (placement is " + lclPL2.getCategory().getNameWithGroupName() + "; question is " + lclQ2.getCategory().getNameWithGroupName());
@@ -83,22 +80,26 @@ public class PacketOutputter extends LaTeXOutputter {
 				Placement lclPL1 = lclPair.getLeft();
 				Placement lclPL2 = lclPair.getRight(); // may be null
 				
-				Question lclQ1 = Validate.notNull(lclPL1.getQuestion());
-				Question lclQ2 = lclPL2 == null ? null : Validate.notNull(lclPL2.getQuestion());
+				Question lclQ1 = lclPL1.getQuestion(); // may be null
+				Question lclQ2 = lclPL2 == null ? null : lclPL2.getQuestion(); // may be null
 				
 				String lclQ1Latex;
 				String lclQ2Latex;
 				
 				if (lclSection.getQuestionType() == QuestionTypeFactory.TOSSUP()) {
 					Tossup lclTU1 = (Tossup) lclQ1;
-					lclQ1Latex =
-						"\\tossup{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL1.getSequence() + ": " +
-						escape(lclTU1.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTU1.getCategory().getName()) +
-						"}{" + escape(lclTU1.getQuestionType().getScoringNote()) + "}{" +
-							questionTextToLatex(lclTU1.getText()) +
-						"}{" +
-							answerLineToLatex(lclTU1.getAnswer()) +
-						"}";
+					if (lclTU1 == null) {
+						lclQ1Latex = "";
+					} else {
+						lclQ1Latex =
+							"\\tossup{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL1.getSequence() + ": " +
+							escape(lclTU1.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTU1.getCategory().getName()) +
+							"}{" + escape(lclTU1.getQuestionType().getScoringNote()) + "}{\n" +
+								questionTextToLatex(lclTU1.getText()) +
+							"\n}{\n" +
+								answerLineToLatex(lclTU1.getAnswer()) +
+							"\n}";
+					}
 					
 					Tossup lclTU2 = (Tossup) lclQ2;
 					if (lclTU2 == null) {
@@ -107,32 +108,36 @@ public class PacketOutputter extends LaTeXOutputter {
 						lclQ2Latex =
 							"\\tossup{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL2.getSequence() + ": " +
 							escape(lclTU2.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTU2.getCategory().getName()) +
-							"}{" + escape(lclTU2.getQuestionType().getScoringNote()) + "}{" +
+							"}{" + escape(lclTU2.getQuestionType().getScoringNote()) + "}{\n" +
 								questionTextToLatex(lclTU2.getText()) +
-							"}{" +
+							"\n}{\n" +
 								answerLineToLatex(lclTU2.getAnswer()) +
-							"}";
+							"\n}";
 					}
 				} else if (lclSection.getQuestionType() == QuestionTypeFactory.TEAM_QUESTION()) {
 					TeamQuestion lclTQ1 = (TeamQuestion) lclQ1;
-					lclQ1Latex =
-						"\\teamquestion{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL1.getSequence() + ": " +
-						escape(lclTQ1.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTQ1.getCategory().getName()) +
-						"}{" + escape(lclTQ1.getQuestionType().getScoringNote()) + "}{" +
-							questionTextToLatex(lclTQ1.getIntroduction()) +
-						"}{" +
-							questionTextToLatex(lclTQ1.getPart1Text()) +
-						"}{" +
-							answerLineToLatex(lclTQ1.getPart1Answer()) +
-						"}{" +
-							questionTextToLatex(lclTQ1.getPart2Text()) +
-						"}{" +
-							answerLineToLatex(lclTQ1.getPart2Answer()) +
-						"}{" +
-							questionTextToLatex(lclTQ1.getPart3Text()) +
-						"}{" +
-							answerLineToLatex(lclTQ1.getPart3Answer()) +
-						"}";
+					if (lclTQ1 == null) {
+						lclQ1Latex = "";
+					} else {
+						lclQ1Latex =
+							"\\teamquestion{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL1.getSequence() + ": " +
+							escape(lclTQ1.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTQ1.getCategory().getName()) +
+							"}{" + escape(lclTQ1.getQuestionType().getScoringNote()) + "}{\n" +
+								questionTextToLatex(lclTQ1.getIntroduction()) +
+							"\n}{\n" +
+								questionTextToLatex(lclTQ1.getPart1Text()) +
+							"\n}{\n" +
+								answerLineToLatex(lclTQ1.getPart1Answer()) +
+							"\n}{\n" +
+								questionTextToLatex(lclTQ1.getPart2Text()) +
+							"\n}{\n" +
+								answerLineToLatex(lclTQ1.getPart2Answer()) +
+							"\n}{\n" +
+								questionTextToLatex(lclTQ1.getPart3Text()) +
+							"\n}{\n" +
+								answerLineToLatex(lclTQ1.getPart3Answer()) +
+							"\n}";
+					}
 					
 					TeamQuestion lclTQ2 = (TeamQuestion) lclQ2;
 					if (lclTQ2 == null) {
@@ -141,27 +146,27 @@ public class PacketOutputter extends LaTeXOutputter {
 						lclQ2Latex =
 							"\\teamquestion{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL2.getSequence() + ": " +
 							escape(lclTQ2.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTQ2.getCategory().getName()) +
-							"}{" + escape(lclTQ2.getQuestionType().getScoringNote()) + "}{" +
+							"}{" + escape(lclTQ2.getQuestionType().getScoringNote()) + "}{\n" +
 								questionTextToLatex(lclTQ2.getIntroduction()) +
-							"}{" +
+							"\n}{\n" +
 								questionTextToLatex(lclTQ2.getPart1Text()) +
-							"}{" +
+							"\n}{\n" +
 								answerLineToLatex(lclTQ2.getPart1Answer()) +
-							"}{" +
+							"\n}{\n" +
 								questionTextToLatex(lclTQ2.getPart2Text()) +
-							"}{" +
+							"\n}{\n" +
 								answerLineToLatex(lclTQ2.getPart2Answer()) +
-							"}{" +
+							"\n}{\n" +
 								questionTextToLatex(lclTQ2.getPart3Text()) +
-							"}{" +
+							"\n}{\n" +
 								answerLineToLatex(lclTQ2.getPart3Answer()) +
-							"}";
+							"\n}";
 					}
 				} else {
 					throw new IllegalStateException("Unknown question type (" + lclSection.getQuestionType().getCode() + ") for section #" + lclSection.getId());
 				}
 				
-				getWriter().println("\\questionpage{" + escape(getPacketSet().getName()) + "}{" + escape(getPacket().getName()) + "}{" + escape(lclSection.getName()) + "}{" + lclSection.getQuestionType().getSectionHeader() + "}{" + lclQ1Latex + "}{ " + lclQ2Latex + "}");
+				getWriter().println("\\questionpage{" + escape(getPacketSet().getName()) + "}{" + escape(getPacket().getName()) + "}{" + escape(lclSection.getName()) + "}{" + lclSection.getQuestionType().getSectionHeader() + "}{\n" + lclQ1Latex + "\n}{\n" + lclQ2Latex + "\n}");
 				getWriter().println();
 			
 				if (lclPI.hasNext()) {
