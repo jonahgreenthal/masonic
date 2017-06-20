@@ -18,15 +18,16 @@
 	<property name="opals.generated.to"    value="${user.home}/masonic/src" />
 	
 	<property name="javadoc.dir"           value="${domain.dir}/admin/javadoc" />
-	<property name="masonic.source.dir" value="${user.home}/masonic/src/" />
+	<property name="masonic.source.dir"    value="${user.home}/masonic/src/" />
 	
 	<property name="doclib.dir" value="doclib"/>
 	<property name="doclib.temp.dir" value="${doclib.dir}/temp" />
 	
-	<property name="grunt.path" value="/usr/bin/grunt" />
-	<property name="foundation.base" value="${user.home}/masonic/foundation/" />
-	<property name="foundation.vendor.base" value="${user.home}/masonic/foundation/bower_components/foundation/" />
-	<property name="foundation.target" value="${user.home}/masonic/web/template/foundation/" />
+	<property name="web.dir" value="web" />
+	<property name="webcomponents.dir" value="web-components" />
+	<property name="scss.sourcedir" value="${webcomponents.dir}/scss/" />
+	<property name="scss.sourcefile" value="main.scss" />
+	<property name="scss.targetfile" value="${web.dir}/template/style.css" />
 	
 	<path id="project.class.path">
 		<fileset dir="${tomcat.lib.dir}">
@@ -76,7 +77,7 @@
 		<delete dir="${jsp.src.dir}" />
 	</target>
 	
-	<target name="prepare">
+	<target name="prepare" depends="scss">
 		<copy file="etc/web.xml" tofile="${webinf.dir}/web.xml" />
 		
 		<filter token="WEBAPP_DOMAIN" value="${webapp.domain}" />
@@ -106,6 +107,16 @@
 			</preserveintarget>
 		</sync>
 	</target>
+	
+	<!-- Compile SCSS to CSS -->
+	<target name="scss">
+		<exec dir="${scss.sourcedir}" executable="sass" output="${scss.targetfile}">
+			<arg value="${scss.sourcefile}" />
+			<arg value="--style" />
+			<arg value="compressed" />
+		</exec>
+	</target>
+
 	
 	<!-- This compiles the .jsp pages to .java files in the ${jsp.src.dir} directory.
 		The regular javac task will then compile them, but the compiled .class files are not
@@ -149,7 +160,7 @@
 		</jar>
 	</target>
 	
-	<target name="compile" depends="foundation,prepare,jspc">
+	<target name="compile" depends="prepare,jspc">
 		<javac 
 			srcdir="src" 
 			destdir="${build.dir}"
@@ -240,23 +251,5 @@
 			<fileset dir="doclib/temp"/>
 		</javadoc> 
 		<delete dir="${doclib.temp.dir}"/>
-	</target>
-	
-	<target name="foundation">
-		<exec dir="${foundation.base}" executable="${grunt.path}">
-			<arg value="build" />
-		</exec>
-		
-		<copy todir="${foundation.target}/css" overwrite="true">
-			<fileset dir="${foundation.base}/css/" />
-		</copy>
-		
-		<copy todir="${foundation.target}/js" overwrite="true">
-			<fileset dir="${foundation.base}/js/" />
-			<fileset file="${foundation.vendor.base}/js/foundation.min.js" />
-			<fileset dir="${foundation.vendor.base}/js/foundation/" />
-			<fileset dir="${foundation.vendor.base}/js/foundation/" />
-			<fileset dir="${foundation.vendor.base}/js/vendor/" />
-		</copy>
 	</target>
 </project>

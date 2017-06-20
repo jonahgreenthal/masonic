@@ -47,10 +47,8 @@ if (argDescriptionParameter == null) {
 	<script src="/template/js/smartquotes.min.js"></script>
 	
 	<!-- Foundation -->
-	<link rel="stylesheet" href="/template/foundation/css/app.css">
+	<link rel="stylesheet" href="/template/style.css">
 	<script src="/template/foundation/js/foundation.min.js"></script>
-	<script src="/template/foundation/js/fastclick.js"></script>
-	<script src="/template/foundation/js/modernizr.js"></script>
 	
 	<!-- Foundation Datepicker -->
 	<link rel="stylesheet" href="/template/foundation/datepicker/foundation-datepicker.css">

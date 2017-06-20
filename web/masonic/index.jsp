@@ -62,7 +62,7 @@ boolean lclMultiplePacketSetsShown = lclSelectedPacketSets.size() > 1 ? true : l
 
 DateTimeFormatter lclUpdatedDTF = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
 
-%><div class="row hide-for-large-up">
+%><div class="row hide-for-medium">
 	<div class="small-12 columns">
 		<p><a href="#team-questions">Jump to team questions</a></p>
 	</div>
@@ -79,7 +79,7 @@ DateTimeFormatter lclUpdatedDTF = DateTimeFormatter.ofLocalizedDateTime(FormatSt
 			
 			for (PacketSet lclPS : lclPSes) {
 				%><label>
-					<input type="checkbox" name="packet_set_code" value="<%= lclPS.getCode() %>"<%= lclSelectedPacketSets.contains(lclPS) ? " checked=\"checked\"" : "" %>>&nbsp;<%= lclPS.getName() %></label>
+					<input type="checkbox" name="packet_set_code" value="<%= lclPS.getCode() %>"<%= lclSelectedPacketSets.contains(lclPS) ? " checked=\"checked\"" : "" %>>&nbsp;<%= lclPS.getName() %>
 				</label><%
 			}
 			

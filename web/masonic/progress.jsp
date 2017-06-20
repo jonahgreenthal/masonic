@@ -128,7 +128,6 @@ if (lclIncompleteSets.isEmpty()) {
 			}
 			
 			NumberFormat lclPct = new DecimalFormat("0.0%");
-			NumberFormat lclIntPct = new DecimalFormat("#%");
 			
 			for (CategoryGroup lclCG : lclCategoryGroups) {
 				%><h2><%= lclCG.getName() %></h2>
@@ -191,11 +190,7 @@ if (lclIncompleteSets.isEmpty()) {
 										%><td class="<%= lclTUClass %>"><%= lclTUWrittenThisCategory %></td>
 										<td class="<%= lclTUClass %>"><%= lclTUNeededThisCategory %></td>
 										<td class="<%= lclTUClass %>"><%= lclPct.format(lclTUCompletion) %></td>
-										<td class="<%= lclTUClass %>">
-											<div class="progress">
-												<span class="meter" style="width: <%= lclIntPct.format(lclTUCompletion) %>;"></span>
-											</div>
-										</td><%
+										<td class="<%= lclTUClass %>"><%= outputProgressBar(lclTUWrittenThisCategory, lclTUNeededThisCategory) %></td><%
 									} else {
 										%><td class="info" colspan="4">&nbsp;</td><%
 									}
@@ -207,11 +202,7 @@ if (lclIncompleteSets.isEmpty()) {
 										%><td class="<%= lclTQClass %>"><%= lclTQWrittenThisCategory %></td>
 										<td class="<%= lclTQClass %>"><%= lclTQNeededThisCategory %></td>
 										<td class="<%= lclTQClass %>"><%= lclPct.format(lclTQCompletion) %></td>
-										<td class="<%= lclTQClass %>">
-											<div class="progress">
-												<span class="meter" style="width: <%= lclIntPct.format(lclTQCompletion) %>;"></span>
-											</div>
-										</td><%
+										<td class="<%= lclTQClass %>"><%= outputProgressBar(lclTQWrittenThisCategory, lclTQNeededThisCategory) %></td><%
 									} else {
 										%><td class="info" colspan="4">&nbsp;</td><%
 									}
@@ -240,14 +231,10 @@ if (lclIncompleteSets.isEmpty()) {
 								
 								if (lclTUNeededThisCG > 0) {
 									String lclTUClass = determineClass(lclTUCompletion, lclCG.getCode() + " tossups");
-									%><th><%= lclTUWrittenThisCG %></th>
-									<th><%= lclTUNeededThisCG %></th>
-									<th><%= lclPct.format(lclTUCompletion) %></th>
-									<td>
-										<div class="progress">
-											<span class="meter" style="width: <%= lclIntPct.format(lclTUCompletion) %>;"></span>
-										</div>
-									</td><%
+									%><th class="<%= lclTUClass %>"><%= lclTUWrittenThisCG %></th>
+									<th class="<%= lclTUClass %>"><%= lclTUNeededThisCG %></th>
+									<th class="<%= lclTUClass %>"><%= lclPct.format(lclTUCompletion) %></th>
+									<td class="<%= lclTUClass %>"><%= outputProgressBar(lclTUWrittenThisCG, lclTUNeededThisCG) %></td><%
 								} else {
 									%><td class="info" colspan="4">&nbsp;</td><%
 								}
@@ -256,14 +243,10 @@ if (lclIncompleteSets.isEmpty()) {
 								
 								if (lclTQNeededThisCG > 0) {
 									String lclTQClass = determineClass(lclTQCompletion, lclCG.getCode() + " team questions");
-									%><th><%= lclTQWrittenThisCG %></th>
-									<th><%= lclTQNeededThisCG %></th>
-									<th><%= lclPct.format(lclTQCompletion) %></th>
-									<td>
-										<div class="progress">
-											<span class="meter" style="width: <%= lclIntPct.format(lclTQCompletion) %>;"></span>
-										</div>
-									</td><%
+									%><th class="<%= lclTQClass %>"><%= lclTQWrittenThisCG %></th>
+									<th class="<%= lclTQClass %>"><%= lclTQNeededThisCG %></th>
+									<th class="<%= lclTQClass %>"><%= lclPct.format(lclTQCompletion) %></th>
+									<td class="<%= lclTQClass %>"><%= outputProgressBar(lclTQWrittenThisCG, lclTQNeededThisCG) %></td><%
 								} else {
 									%><td class="info" colspan="4">&nbsp;</td><%
 								}
@@ -309,11 +292,7 @@ if (lclIncompleteSets.isEmpty()) {
 								%><td class="<%= lclTUClass %>"><%= lclTotalTUWritten %></td>
 								<td class="<%= lclTUClass %>"><%= lclTotalTUNeeded %></td>
 								<td class="<%= lclTUClass %>"><%= lclPct.format(lclTUCompletion) %></td>
-								<td class="<%= lclTUClass %>">
-									<div class="progress">
-										<span class="meter" style="width: <%= lclIntPct.format(lclTUCompletion) %>;"></span>
-									</div>
-								</td><%
+								<td class="<%= lclTUClass %>"><%= outputProgressBar(lclTotalTUWritten, lclTotalTUNeeded) %></td><%
 							} else {
 								%><td colspan="4">&nbsp;</td><%
 							}
@@ -323,11 +302,7 @@ if (lclIncompleteSets.isEmpty()) {
 								%><td class="<%= lclTQClass %>"><%= lclTotalTQWritten %></td>
 								<td class="<%= lclTQClass %>"><%= lclTotalTQNeeded %></td>
 								<td class="<%= lclTQClass %>"><%= lclPct.format(lclTQCompletion) %></td>
-								<td class="<%= lclTQClass %>">
-									<div class="progress">
-										<span class="meter" style="width: <%= lclIntPct.format(lclTQCompletion) %>;"></span>
-									</div>
-								</td><%
+								<td class="<%= lclTQClass %>"><%= outputProgressBar(lclTotalTQWritten, lclTotalTQNeeded) %></td><%
 							} else {
 								%><td colspan="4">&nbsp;</td><%
 							}
@@ -369,6 +344,16 @@ private String determineClass(double argTUCompletion, double argTQCompletion, St
 	} else {
 		return determineClass(Math.min(argTUCompletion, argTQCompletion), argName);
 	}
+}
+
+NumberFormat lclIntPct = new DecimalFormat("#%");
+private String outputProgressBar(int argDone, int argNeeded) {
+	Validate.isTrue(argDone >= 0);
+	Validate.isTrue(argNeeded > 0);
+	
+	return "<div class=\"progress\" role=\"progressbar\" aria-valuenow=\"" + argDone + "\" aria-valuemin=\"0\" aria-valuemax=\"" + argNeeded + "\">\n" +
+	"	<div class=\"progress-meter\" style=\"width: " + lclIntPct.format(1.0d * argDone / argNeeded) + "\"></div>\n" +
+	"</div>";
 }
 
 %>
