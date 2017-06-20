@@ -36,6 +36,7 @@ masonic.log
 # Development stuff
 ant/**
 build.csh
+build.bash
 src/com/masonic/StandaloneTest.java
 
 =======
