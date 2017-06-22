@@ -9,7 +9,7 @@ import com.opal.OpalUtility;
 import com.opal.PersistenceException;
 
 import com.masonic.application.Section;
-import com.masonic.application.SectionImpl;
+import com.masonic.persistence.SectionImpl;
 import com.masonic.persistence.SectionOpal;
 import com.masonic.persistence.SectionOpalFactory;
 
@@ -185,18 +185,18 @@ public class PostgresSectionOpalFactory extends com.opal.AbstractDatabaseIdentit
 	}
 
 	@Override
-	public java.util.HashSet<SectionOpal> forQuestionTypeCodeCollection(java.lang.String argQuestionTypeCode) /* throws PersistenceException */ {
-		final Object[] lclParameters = new Object[] { argQuestionTypeCode };
-		final String[] lclFieldNames = new String[] { "question_type_code" };
+	public java.util.HashSet<SectionOpal> forPacketIdCollection(java.lang.Integer argPacketId) /* throws PersistenceException */ {
+		final Object[] lclParameters = new Object[] { argPacketId };
+		final String[] lclFieldNames = new String[] { "packet_id" };
 		java.util.HashSet<SectionOpal> lclCollection = new java.util.HashSet<>();
 		load(getFullyQualifiedTableName(), lclFieldNames, lclParameters, null, lclCollection);
 		return lclCollection;
 	}
 
 	@Override
-	public java.util.HashSet<SectionOpal> forPacketIdCollection(java.lang.Integer argPacketId) /* throws PersistenceException */ {
-		final Object[] lclParameters = new Object[] { argPacketId };
-		final String[] lclFieldNames = new String[] { "packet_id" };
+	public java.util.HashSet<SectionOpal> forQuestionTypeCodeCollection(java.lang.String argQuestionTypeCode) /* throws PersistenceException */ {
+		final Object[] lclParameters = new Object[] { argQuestionTypeCode };
+		final String[] lclFieldNames = new String[] { "question_type_code" };
 		java.util.HashSet<SectionOpal> lclCollection = new java.util.HashSet<>();
 		load(getFullyQualifiedTableName(), lclFieldNames, lclParameters, null, lclCollection);
 		return lclCollection;

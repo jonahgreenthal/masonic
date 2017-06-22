@@ -1,35 +1,35 @@
-package com.masonic.application;
+package com.masonic.persistence;
 
-import com.masonic.persistence.CategoryGroupOpal;
 
-public class CategoryGroupImpl extends com.opal.AbstractIdentityImpl<CategoryGroup, CategoryGroupOpal> implements CategoryGroup {
+public class CategoryGroupImpl extends com.opal.AbstractIdentityImpl<com.masonic.application.CategoryGroup, com.masonic.persistence.CategoryGroupOpal> implements com.masonic.application.CategoryGroup {
 
-	private final CategoryGroupOpal myCategoryGroupOpal;
+	private final com.masonic.persistence.CategoryGroupOpal myCategoryGroupOpal;
 
 	public CategoryGroupImpl(CategoryGroupOpal argCategoryGroupOpal) {
 		super();
 		myCategoryGroupOpal = org.apache.commons.lang3.Validate.notNull(argCategoryGroupOpal);
 	}
 
-	protected CategoryGroupOpal getCategoryGroupOpal() {
+	protected com.masonic.persistence.CategoryGroupOpal getCategoryGroupOpal() {
 		return myCategoryGroupOpal;
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends CategoryGroup> getOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.CategoryGroup> getOpal() {
 		return getCategoryGroupOpal();
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends CategoryGroup> getBottomOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.CategoryGroup> getBottomOpal() {
 		return getCategoryGroupOpal();
 	}
 
 	@Override
-	public int compareTo(CategoryGroup argSecond) {
+	public int compareTo(com.masonic.application.CategoryGroup argSecond) {
 		return this.getSequenceAsObject().compareTo(argSecond.getSequenceAsObject());
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -37,14 +37,16 @@ public class CategoryGroupImpl extends com.opal.AbstractIdentityImpl<CategoryGro
 		return getCategoryGroupOpal().getCode();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
-	public CategoryGroupImpl setCode(java.lang.String argCode) {
+	public com.masonic.persistence.CategoryGroupImpl setCode(java.lang.String argCode) {
 		getCategoryGroupOpal().setCode(argCode);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
@@ -52,14 +54,16 @@ public class CategoryGroupImpl extends com.opal.AbstractIdentityImpl<CategoryGro
 		return getCategoryGroupOpal().getName();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
-	public CategoryGroupImpl setName(java.lang.String argName) {
+	public com.masonic.persistence.CategoryGroupImpl setName(java.lang.String argName) {
 		getCategoryGroupOpal().setName(argName);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -67,29 +71,32 @@ public class CategoryGroupImpl extends com.opal.AbstractIdentityImpl<CategoryGro
 		return getCategoryGroupOpal().getShortName();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
-	public CategoryGroupImpl setShortName(java.lang.String argShortName) {
+	public com.masonic.persistence.CategoryGroupImpl setShortName(java.lang.String argShortName) {
 		getCategoryGroupOpal().setShortName(argShortName);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getSequenceAsObject() {
 		return getCategoryGroupOpal().getSequenceAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public CategoryGroupImpl setSequence(java.lang.Integer argSequence) {
+	public com.masonic.persistence.CategoryGroupImpl setSequence(java.lang.Integer argSequence) {
 		getCategoryGroupOpal().setSequence(argSequence);
 		return this;
 	}
 
 	@Override
-	public CategoryGroupImpl setSequence(int argSequence) {
+	public com.masonic.persistence.CategoryGroupImpl setSequence(int argSequence) {
 		getCategoryGroupOpal().setSequence(argSequence);
 		return this;
 	}
@@ -101,13 +108,13 @@ public class CategoryGroupImpl extends com.opal.AbstractIdentityImpl<CategoryGro
 	to this object. */
 
 	@Override
-	public com.masonic.application.CategoryGroup addCategory(Category argCategory) {
+	public com.masonic.application.CategoryGroup addCategory(com.masonic.application.Category argCategory) {
 		getCategoryGroupOpal().addCategoryOpal(((CategoryImpl) argCategory).getCategoryOpal());
 		return this;
 	}
 
 	@Override
-	public com.masonic.application.CategoryGroup removeCategory(Category argCategory) {
+	public com.masonic.application.CategoryGroup removeCategory(com.masonic.application.Category argCategory) {
 		getCategoryGroupOpal().removeCategoryOpal(((CategoryImpl) argCategory).getCategoryOpal());
 		return this;
 	}
@@ -118,12 +125,12 @@ public class CategoryGroupImpl extends com.opal.AbstractIdentityImpl<CategoryGro
 	}
 
 	@Override
-	public java.util.stream.Stream<Category> streamCategory() {
+	public java.util.stream.Stream<com.masonic.application.Category> streamCategory() {
 		return getCategoryGroupOpal().streamCategoryOpal().map(com.opal.Opal::getUserFacing);
 	}
 
 	@Override
-	public java.util.Iterator<Category> createCategoryIterator() {
+	public java.util.Iterator<com.masonic.application.Category> createCategoryIterator() {
 		return new com.opal.OpalIterator<> (getCategoryGroupOpal().createCategoryOpalIterator());
 	}
 
@@ -138,7 +145,7 @@ public class CategoryGroupImpl extends com.opal.AbstractIdentityImpl<CategoryGro
 	}
 
 	@Override
-	public CategoryGroup copy() {
+	public com.masonic.application.CategoryGroup copy() {
 		return getCategoryGroupOpal().copy().getUserFacing();
 	}
 

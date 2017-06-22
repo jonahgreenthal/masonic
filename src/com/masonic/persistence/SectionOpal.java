@@ -31,8 +31,8 @@ public final class SectionOpal extends com.opal.UpdatableOpal<Section> {
 
 	@Override
 	protected void initializeReferences() {
-		myOldQuestionTypeOpal = QuestionTypeOpal.NOT_YET_LOADED;
 		myOldPacketOpal = PacketOpal.NOT_YET_LOADED;
+		myOldQuestionTypeOpal = QuestionTypeOpal.NOT_YET_LOADED;
 		return;
 	}
 
@@ -228,8 +228,8 @@ public final class SectionOpal extends com.opal.UpdatableOpal<Section> {
 
 	@Override
 	protected /* synchronized */ void copyOldValuesToNewInternal() {
-		myNewQuestionTypeOpal = myOldQuestionTypeOpal;
 		myNewPacketOpal = myOldPacketOpal;
+		myNewQuestionTypeOpal = myOldQuestionTypeOpal;
 		myNewPlacementOpalHashSet = null; /* Necessary if it has been rolled back */
 		myPlacementOpalCachedOperations = null; /* Ditto */
 		/* We don't copy Collections of other Opals; they will be cloned as needed. */
@@ -238,8 +238,8 @@ public final class SectionOpal extends com.opal.UpdatableOpal<Section> {
 
 	@Override
 	protected /* synchronized */ void copyNewValuesToOldInternal() {
-		myOldQuestionTypeOpal = myNewQuestionTypeOpal;
 		myOldPacketOpal = myNewPacketOpal;
+		myOldQuestionTypeOpal = myNewQuestionTypeOpal;
 
 		if (needsToClearOldCollections()) {
 			myOldPlacementOpalHashSet = null;
@@ -268,11 +268,11 @@ public final class SectionOpal extends com.opal.UpdatableOpal<Section> {
 				((PlacementOpal) lclI.next()).setSectionOpalInternal(null);
 			}
 		}
-		if (getQuestionTypeOpal() != null) {
-			getQuestionTypeOpal().removeSectionOpalInternal(this);
-		}
 		if (getPacketOpal() != null) {
 			getPacketOpal().removeSectionOpalInternal(this);
+		}
+		if (getQuestionTypeOpal() != null) {
+			getQuestionTypeOpal().removeSectionOpalInternal(this);
 		}
 		return;
 	}
@@ -294,11 +294,11 @@ public final class SectionOpal extends com.opal.UpdatableOpal<Section> {
 
 	@Override
 	public synchronized void translateReferencesToFields() {
-		if (myNewQuestionTypeOpal != QuestionTypeOpal.NOT_YET_LOADED) {
-			setQuestionTypeCode(myNewQuestionTypeOpal == null ? null : myNewQuestionTypeOpal.getCode());
-		}
 		if (myNewPacketOpal != PacketOpal.NOT_YET_LOADED) {
 			setPacketId(myNewPacketOpal == null ? null : myNewPacketOpal.getIdAsObject());
+		}
+		if (myNewQuestionTypeOpal != QuestionTypeOpal.NOT_YET_LOADED) {
+			setQuestionTypeCode(myNewQuestionTypeOpal == null ? null : myNewQuestionTypeOpal.getCode());
 		}
 		return;
 	}
@@ -383,51 +383,6 @@ public final class SectionOpal extends com.opal.UpdatableOpal<Section> {
 		argOutput.println("Extras = " + isExtrasAsObject());
 	}
 
-	private QuestionTypeOpal myOldQuestionTypeOpal;
-	private QuestionTypeOpal myNewQuestionTypeOpal;
-
-	protected QuestionTypeOpal retrieveQuestionTypeOpal(Object[] argValueSet) {
-		assert argValueSet != null;
-		if ((argValueSet[2] == null)) {
-			return null;
-		}
-		return OpalFactoryFactory.getInstance().getQuestionTypeOpalFactory().forCode(getQuestionTypeCode());
-	}
-
-	public synchronized QuestionTypeOpal getQuestionTypeOpal() {
-		QuestionTypeOpal lclQuestionTypeOpal;
-		boolean lclAccess = tryAccess();
-		lclQuestionTypeOpal = lclAccess ? myNewQuestionTypeOpal : myOldQuestionTypeOpal;
-		if (lclQuestionTypeOpal == QuestionTypeOpal.NOT_YET_LOADED) {
-			lclQuestionTypeOpal = retrieveQuestionTypeOpal(getReadValueSet());
-			if (lclAccess) {
-				myNewQuestionTypeOpal = lclQuestionTypeOpal;
-			} else {
-				myOldQuestionTypeOpal = lclQuestionTypeOpal;
-			}
-		}
-		return lclQuestionTypeOpal;
-	}
-
-	public synchronized SectionOpal setQuestionTypeOpal(QuestionTypeOpal argQuestionTypeOpal) {
-		tryMutate();
-		QuestionTypeOpal lclQuestionTypeOpal = getQuestionTypeOpal();
-		if (lclQuestionTypeOpal == argQuestionTypeOpal) { return this; }
-		if (lclQuestionTypeOpal != null) {
-			lclQuestionTypeOpal.removeSectionOpalInternal(this);
-		}
-		myNewQuestionTypeOpal = argQuestionTypeOpal;
-		if (argQuestionTypeOpal != null) {
-			argQuestionTypeOpal.addSectionOpalInternal(this);
-		}
-		return this;
-	}
-
-	protected synchronized void setQuestionTypeOpalInternal(QuestionTypeOpal argQuestionTypeOpal) {
-		tryMutate();
-		myNewQuestionTypeOpal = argQuestionTypeOpal;
-	}
-
 	private PacketOpal myOldPacketOpal;
 	private PacketOpal myNewPacketOpal;
 
@@ -471,6 +426,51 @@ public final class SectionOpal extends com.opal.UpdatableOpal<Section> {
 	protected synchronized void setPacketOpalInternal(PacketOpal argPacketOpal) {
 		tryMutate();
 		myNewPacketOpal = argPacketOpal;
+	}
+
+	private QuestionTypeOpal myOldQuestionTypeOpal;
+	private QuestionTypeOpal myNewQuestionTypeOpal;
+
+	protected QuestionTypeOpal retrieveQuestionTypeOpal(Object[] argValueSet) {
+		assert argValueSet != null;
+		if ((argValueSet[2] == null)) {
+			return null;
+		}
+		return OpalFactoryFactory.getInstance().getQuestionTypeOpalFactory().forCode(getQuestionTypeCode());
+	}
+
+	public synchronized QuestionTypeOpal getQuestionTypeOpal() {
+		QuestionTypeOpal lclQuestionTypeOpal;
+		boolean lclAccess = tryAccess();
+		lclQuestionTypeOpal = lclAccess ? myNewQuestionTypeOpal : myOldQuestionTypeOpal;
+		if (lclQuestionTypeOpal == QuestionTypeOpal.NOT_YET_LOADED) {
+			lclQuestionTypeOpal = retrieveQuestionTypeOpal(getReadValueSet());
+			if (lclAccess) {
+				myNewQuestionTypeOpal = lclQuestionTypeOpal;
+			} else {
+				myOldQuestionTypeOpal = lclQuestionTypeOpal;
+			}
+		}
+		return lclQuestionTypeOpal;
+	}
+
+	public synchronized SectionOpal setQuestionTypeOpal(QuestionTypeOpal argQuestionTypeOpal) {
+		tryMutate();
+		QuestionTypeOpal lclQuestionTypeOpal = getQuestionTypeOpal();
+		if (lclQuestionTypeOpal == argQuestionTypeOpal) { return this; }
+		if (lclQuestionTypeOpal != null) {
+			lclQuestionTypeOpal.removeSectionOpalInternal(this);
+		}
+		myNewQuestionTypeOpal = argQuestionTypeOpal;
+		if (argQuestionTypeOpal != null) {
+			argQuestionTypeOpal.addSectionOpalInternal(this);
+		}
+		return this;
+	}
+
+	protected synchronized void setQuestionTypeOpalInternal(QuestionTypeOpal argQuestionTypeOpal) {
+		tryMutate();
+		myNewQuestionTypeOpal = argQuestionTypeOpal;
 	}
 
 	private java.util.Set<PlacementOpal> myOldPlacementOpalHashSet = null;
@@ -571,11 +571,11 @@ public final class SectionOpal extends com.opal.UpdatableOpal<Section> {
 
 	@Override
 	protected void updateReferencesAfterReload() {
-		if (myNewQuestionTypeOpal != QuestionTypeOpal.NOT_YET_LOADED) {
-			setQuestionTypeOpal(retrieveQuestionTypeOpal(getNewValues()));
-		}
 		if (myNewPacketOpal != PacketOpal.NOT_YET_LOADED) {
 			setPacketOpal(retrievePacketOpal(getNewValues()));
+		}
+		if (myNewQuestionTypeOpal != QuestionTypeOpal.NOT_YET_LOADED) {
+			setQuestionTypeOpal(retrieveQuestionTypeOpal(getNewValues()));
 		}
 	}
 

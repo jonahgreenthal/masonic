@@ -1,18 +1,16 @@
-package com.masonic.application;
+package com.masonic.persistence;
 
-import com.masonic.persistence.TeamQuestionOpal;
-import com.masonic.persistence.QuestionOpal;
 
-public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
+public class TeamQuestionImpl extends QuestionImpl implements com.masonic.application.TeamQuestion {
 
-	private final TeamQuestionOpal myTeamQuestionOpal;
+	private final com.masonic.persistence.TeamQuestionOpal myTeamQuestionOpal;
 
 	public TeamQuestionImpl(TeamQuestionOpal argTeamQuestionOpal) {
 		super();
 		myTeamQuestionOpal = org.apache.commons.lang3.Validate.notNull(argTeamQuestionOpal);
 	}
 
-	protected TeamQuestionOpal getTeamQuestionOpal() {
+	protected com.masonic.persistence.TeamQuestionOpal getTeamQuestionOpal() {
 		return myTeamQuestionOpal;
 	}
 
@@ -22,7 +20,7 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends TeamQuestion> getOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.TeamQuestion> getOpal() {
 		return getTeamQuestionOpal();
 	}
 
@@ -41,29 +39,32 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends TeamQuestion> getBottomOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.TeamQuestion> getBottomOpal() {
 		return getTeamQuestionOpal();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getQuestionIdAsObject() {
 		return getTeamQuestionOpal().getQuestionIdAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public TeamQuestionImpl setQuestionId(java.lang.Integer argQuestionId) {
+	public com.masonic.persistence.TeamQuestionImpl setQuestionId(java.lang.Integer argQuestionId) {
 		getTeamQuestionOpal().setQuestionId(argQuestionId);
 		return this;
 	}
 
 	@Override
-	public TeamQuestionImpl setQuestionId(int argQuestionId) {
+	public com.masonic.persistence.TeamQuestionImpl setQuestionId(int argQuestionId) {
 		getTeamQuestionOpal().setQuestionId(argQuestionId);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -71,14 +72,16 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 		return getTeamQuestionOpal().getIntroduction();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
-	public TeamQuestionImpl setIntroduction(java.lang.String argIntroduction) {
+	public com.masonic.persistence.TeamQuestionImpl setIntroduction(java.lang.String argIntroduction) {
 		getTeamQuestionOpal().setIntroduction(argIntroduction);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -86,14 +89,16 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 		return getTeamQuestionOpal().getPart1Text();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
-	public TeamQuestionImpl setPart1Text(java.lang.String argPart1Text) {
+	public com.masonic.persistence.TeamQuestionImpl setPart1Text(java.lang.String argPart1Text) {
 		getTeamQuestionOpal().setPart1Text(argPart1Text);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -101,14 +106,16 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 		return getTeamQuestionOpal().getPart1Answer();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
-	public TeamQuestionImpl setPart1Answer(java.lang.String argPart1Answer) {
+	public com.masonic.persistence.TeamQuestionImpl setPart1Answer(java.lang.String argPart1Answer) {
 		getTeamQuestionOpal().setPart1Answer(argPart1Answer);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -116,14 +123,16 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 		return getTeamQuestionOpal().getPart2Text();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
-	public TeamQuestionImpl setPart2Text(java.lang.String argPart2Text) {
+	public com.masonic.persistence.TeamQuestionImpl setPart2Text(java.lang.String argPart2Text) {
 		getTeamQuestionOpal().setPart2Text(argPart2Text);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -131,14 +140,16 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 		return getTeamQuestionOpal().getPart2Answer();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
-	public TeamQuestionImpl setPart2Answer(java.lang.String argPart2Answer) {
+	public com.masonic.persistence.TeamQuestionImpl setPart2Answer(java.lang.String argPart2Answer) {
 		getTeamQuestionOpal().setPart2Answer(argPart2Answer);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -146,14 +157,16 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 		return getTeamQuestionOpal().getPart3Text();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
-	public TeamQuestionImpl setPart3Text(java.lang.String argPart3Text) {
+	public com.masonic.persistence.TeamQuestionImpl setPart3Text(java.lang.String argPart3Text) {
 		getTeamQuestionOpal().setPart3Text(argPart3Text);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -161,10 +174,11 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 		return getTeamQuestionOpal().getPart3Answer();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
-	public TeamQuestionImpl setPart3Answer(java.lang.String argPart3Answer) {
+	public com.masonic.persistence.TeamQuestionImpl setPart3Answer(java.lang.String argPart3Answer) {
 		getTeamQuestionOpal().setPart3Answer(argPart3Answer);
 		return this;
 	}
@@ -188,7 +202,7 @@ public class TeamQuestionImpl extends QuestionImpl implements TeamQuestion {
 	}
 
 	@Override
-	public TeamQuestion copy() {
+	public com.masonic.application.TeamQuestion copy() {
 		throw new com.siliconage.util.UnimplementedOperationException();
 	}
 

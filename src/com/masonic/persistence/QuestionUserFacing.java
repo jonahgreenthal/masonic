@@ -14,6 +14,8 @@ package com.masonic.persistence;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
+	@com.opal.annotation.Creatability(creatable = true)
+	@com.opal.annotation.Updatability(updatable = true)
 public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 
 	/* Accessors and mutators for internal data. */
@@ -26,6 +28,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Id} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getIdAsObject();
 
@@ -51,6 +54,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argId is null
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public void setId(java.lang.Integer argId);
 
@@ -68,6 +72,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code CategoryCode} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getCategoryCode();
@@ -83,6 +88,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code category_code} is limited to 32 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public void setCategoryCode(java.lang.String argCategoryCode);
@@ -94,6 +100,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code InternalNote} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getInternalNote();
@@ -122,6 +129,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code internal_note} is limited to 2147483647 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public void setInternalNote(java.lang.String argInternalNote);
@@ -133,6 +141,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code ExternalNote} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getExternalNote();
@@ -161,6 +170,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code external_note} is limited to 2147483647 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public void setExternalNote(java.lang.String argExternalNote);
@@ -172,6 +182,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code QuestionTypeCode} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getQuestionTypeCode();
@@ -187,6 +198,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code question_type_code} is limited to 32 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public void setQuestionTypeCode(java.lang.String argQuestionTypeCode);
@@ -198,6 +210,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Label} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getLabel();
@@ -213,6 +226,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code label} is limited to 256 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public void setLabel(java.lang.String argLabel);
@@ -226,6 +240,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code WriterAccountId} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getWriterAccountIdAsObject();
 
@@ -251,6 +266,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argWriterAccountId is null
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public void setWriterAccountId(java.lang.Integer argWriterAccountId);
 
@@ -268,6 +284,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Updated} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.CurrentDateTimeDefault
 	public java.time.LocalDateTime getUpdated();
@@ -280,6 +297,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argUpdated is null
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.CurrentDateTimeDefault
 	public void setUpdated(java.time.LocalDateTime argUpdated);
@@ -291,6 +309,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code IntendedPacketSetCode} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getIntendedPacketSetCode();
@@ -319,6 +338,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code intended_packet_set_code} is limited to 32 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 32L)
 	public void setIntendedPacketSetCode(java.lang.String argIntendedPacketSetCode);
@@ -330,6 +350,7 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code QuestionStatusCode} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@com.opal.annotation.Default(value = "DRAFTED")
@@ -346,19 +367,11 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code question_status_code} is limited to 32 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@com.opal.annotation.Default(value = "DRAFTED")
 	public void setQuestionStatusCode(java.lang.String argQuestionStatusCode);
-
-	/**
-	 * @return the {@code com.masonic.application.QuestionStatus}
-	 * The returned {@code com.masonic.application.QuestionStatus} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code question_status} that is referenced by {@code question_question_status_code_fkey}.
-	 *
-	 */
-	@com.opal.annotation.Nullability(nullable = false)
-	public com.masonic.application.QuestionStatus getStatus();
-	public void setStatus(com.masonic.application.QuestionStatus argStatus);
 
 	/**
 	 * @return the {@code com.masonic.application.PacketSet}
@@ -370,13 +383,13 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	public void setIntendedPacketSet(com.masonic.application.PacketSet argIntendedPacketSet);
 
 	/**
-	 * @return the {@code com.masonic.application.Account}
-	 * The returned {@code com.masonic.application.Account} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code account} that is referenced by {@code question_writer_account_id_fkey}.
+	 * @return the {@code com.masonic.application.QuestionStatus}
+	 * The returned {@code com.masonic.application.QuestionStatus} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code question_status} that is referenced by {@code question_question_status_code_fkey}.
 	 *
 	 */
 	@com.opal.annotation.Nullability(nullable = false)
-	public com.masonic.application.Account getWriter();
-	public void setWriter(com.masonic.application.Account argWriter);
+	public com.masonic.application.QuestionStatus getStatus();
+	public void setStatus(com.masonic.application.QuestionStatus argStatus);
 
 	/**
 	 * @return the {@code com.masonic.application.Category}
@@ -396,9 +409,41 @@ public interface QuestionUserFacing extends com.opal.IdentityUserFacing {
 	public com.masonic.application.QuestionType getQuestionType();
 	public void setQuestionType(com.masonic.application.QuestionType argQuestionType);
 
-	@com.opal.annotation.Nullability(nullable = true)
-	public com.masonic.application.Placement getPlacement();
-	public void setPlacement(com.masonic.application.Placement argPlacement);
+	/**
+	 * @return the {@code com.masonic.application.Account}
+	 * The returned {@code com.masonic.application.Account} is the {@link com.opal.UserFacing} object corresponding to the entry in {@code account} that is referenced by {@code question_writer_account_id_fkey}.
+	 *
+	 */
+	@com.opal.annotation.Nullability(nullable = false)
+	public com.masonic.application.Account getWriter();
+	public void setWriter(com.masonic.application.Account argWriter);
+
+	public int getPlacementCount();
+	public java.util.Iterator<com.masonic.application.Placement> createPlacementIterator();
+
+	public java.util.stream.Stream<com.masonic.application.Placement> streamPlacement();
+
+	public void addPlacement(com.masonic.application.Placement argPlacement);
+	public void removePlacement(com.masonic.application.Placement argPlacement);
+	default public <T extends java.util.Collection<? super com.masonic.application.Placement>> T acquirePlacement(T argC) {
+		org.apache.commons.lang3.Validate.notNull(argC, "Target Collection is null");
+		java.util.Iterator<com.masonic.application.Placement> lclI = createPlacementIterator();
+		while (lclI.hasNext()) {
+			argC.add(lclI.next());
+		}
+		return argC;
+	}
+
+	default public com.masonic.application.Placement[] createPlacementArray() {
+		int lclLength = getPlacementCount();
+		com.masonic.application.Placement[] lclA = new com.masonic.application.Placement[lclLength];
+		int lclIndex = 0;
+		java.util.Iterator<com.masonic.application.Placement> lclI = createPlacementIterator();
+		while (lclI.hasNext()) {
+			lclA[lclIndex++] = lclI.next();
+		}
+		return lclA;
+	}
 
 	public com.masonic.application.Question copy();
 

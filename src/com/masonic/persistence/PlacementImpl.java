@@ -1,71 +1,72 @@
-package com.masonic.application;
+package com.masonic.persistence;
 
-import com.masonic.persistence.PlacementOpal;
-import com.masonic.persistence.SectionOpal;
-import com.masonic.persistence.QuestionOpal;
-import com.masonic.persistence.CategoryOpal;
 
-public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, PlacementOpal> implements Placement {
+public class PlacementImpl extends com.opal.AbstractIdentityImpl<com.masonic.application.Placement, com.masonic.persistence.PlacementOpal> implements com.masonic.application.Placement {
 
-	private final PlacementOpal myPlacementOpal;
+	private final com.masonic.persistence.PlacementOpal myPlacementOpal;
 
 	public PlacementImpl(PlacementOpal argPlacementOpal) {
 		super();
 		myPlacementOpal = org.apache.commons.lang3.Validate.notNull(argPlacementOpal);
 	}
 
-	protected PlacementOpal getPlacementOpal() {
+	protected com.masonic.persistence.PlacementOpal getPlacementOpal() {
 		return myPlacementOpal;
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends Placement> getOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.Placement> getOpal() {
 		return getPlacementOpal();
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends Placement> getBottomOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.Placement> getBottomOpal() {
 		return getPlacementOpal();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getIdAsObject() {
 		return getPlacementOpal().getIdAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public PlacementImpl setId(java.lang.Integer argId) {
+	public com.masonic.persistence.PlacementImpl setId(java.lang.Integer argId) {
 		getPlacementOpal().setId(argId);
 		return this;
 	}
 
 	@Override
-	public PlacementImpl setId(int argId) {
+	public com.masonic.persistence.PlacementImpl setId(int argId) {
 		getPlacementOpal().setId(argId);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getSectionIdAsObject() {
 		return getPlacementOpal().getSectionIdAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public PlacementImpl setSectionId(java.lang.Integer argSectionId) {
+	public com.masonic.persistence.PlacementImpl setSectionId(java.lang.Integer argSectionId) {
 		getPlacementOpal().setSectionId(argSectionId);
 		return this;
 	}
 
 	@Override
-	public PlacementImpl setSectionId(int argSectionId) {
+	public com.masonic.persistence.PlacementImpl setSectionId(int argSectionId) {
 		getPlacementOpal().setSectionId(argSectionId);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -73,48 +74,53 @@ public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, Plac
 		return getPlacementOpal().getCategoryCode();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
-	public PlacementImpl setCategoryCode(java.lang.String argCategoryCode) {
+	public com.masonic.persistence.PlacementImpl setCategoryCode(java.lang.String argCategoryCode) {
 		getPlacementOpal().setCategoryCode(argCategoryCode);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getSequenceAsObject() {
 		return getPlacementOpal().getSequenceAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public PlacementImpl setSequence(java.lang.Integer argSequence) {
+	public com.masonic.persistence.PlacementImpl setSequence(java.lang.Integer argSequence) {
 		getPlacementOpal().setSequence(argSequence);
 		return this;
 	}
 
 	@Override
-	public PlacementImpl setSequence(int argSequence) {
+	public com.masonic.persistence.PlacementImpl setSequence(int argSequence) {
 		getPlacementOpal().setSequence(argSequence);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@Override
 	public java.lang.Integer getQuestionIdAsObject() {
 		return getPlacementOpal().getQuestionIdAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@Override
-	public PlacementImpl setQuestionId(java.lang.Integer argQuestionId) {
+	public com.masonic.persistence.PlacementImpl setQuestionId(java.lang.Integer argQuestionId) {
 		getPlacementOpal().setQuestionId(argQuestionId);
 		return this;
 	}
 
 	@Override
-	public PlacementImpl setQuestionId(int argQuestionId) {
+	public com.masonic.persistence.PlacementImpl setQuestionId(int argQuestionId) {
 		getPlacementOpal().setQuestionId(argQuestionId);
 		return this;
 	}
@@ -122,18 +128,18 @@ public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, Plac
 	/* The following methods allow direct access to the user objects to which
 	this object has references in the database. */
 
-	/** @return the Section object created from placement through reference placement_to_section */
+	/** @return the Category object created from placement through reference placement_to_category */
 
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public Section getSection() {
-		SectionOpal lclSectionOpal = getPlacementOpal().getSectionOpal();
-		return lclSectionOpal == null ? null : lclSectionOpal.getUserFacing();
+	public com.masonic.application.Category getCategory() {
+		CategoryOpal lclCategoryOpal = getPlacementOpal().getCategoryOpal();
+		return lclCategoryOpal == null ? null : lclCategoryOpal.getUserFacing();
 	}
 
 	@Override
-	public Placement setSection(Section argSection) {
-		getPlacementOpal().setSectionOpal(argSection == null ? null : ((SectionImpl) argSection).getSectionOpal());
+	public com.masonic.application.Placement setCategory(com.masonic.application.Category argCategory) {
+		getPlacementOpal().setCategoryOpal(argCategory == null ? null : ((CategoryImpl) argCategory).getCategoryOpal());
 		return this;
 	}
 
@@ -141,29 +147,29 @@ public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, Plac
 
 	@com.opal.annotation.Nullability(nullable = true)
 	@Override
-	public Question getQuestion() {
+	public com.masonic.application.Question getQuestion() {
 		QuestionOpal lclQuestionOpal = getPlacementOpal().getQuestionOpal();
 		return lclQuestionOpal == null ? null : lclQuestionOpal.getUserFacing();
 	}
 
 	@Override
-	public Placement setQuestion(Question argQuestion) {
+	public com.masonic.application.Placement setQuestion(com.masonic.application.Question argQuestion) {
 		getPlacementOpal().setQuestionOpal(argQuestion == null ? null : ((QuestionImpl) argQuestion).getQuestionOpal());
 		return this;
 	}
 
-	/** @return the Category object created from placement through reference placement_to_category */
+	/** @return the Section object created from placement through reference placement_to_section */
 
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public Category getCategory() {
-		CategoryOpal lclCategoryOpal = getPlacementOpal().getCategoryOpal();
-		return lclCategoryOpal == null ? null : lclCategoryOpal.getUserFacing();
+	public com.masonic.application.Section getSection() {
+		SectionOpal lclSectionOpal = getPlacementOpal().getSectionOpal();
+		return lclSectionOpal == null ? null : lclSectionOpal.getUserFacing();
 	}
 
 	@Override
-	public Placement setCategory(Category argCategory) {
-		getPlacementOpal().setCategoryOpal(argCategory == null ? null : ((CategoryImpl) argCategory).getCategoryOpal());
+	public com.masonic.application.Placement setSection(com.masonic.application.Section argSection) {
+		getPlacementOpal().setSectionOpal(argSection == null ? null : ((SectionImpl) argSection).getSectionOpal());
 		return this;
 	}
 
@@ -181,7 +187,7 @@ public class PlacementImpl extends com.opal.AbstractIdentityImpl<Placement, Plac
 	}
 
 	@Override
-	public Placement copy() {
+	public com.masonic.application.Placement copy() {
 		return getPlacementOpal().copy().getUserFacing();
 	}
 

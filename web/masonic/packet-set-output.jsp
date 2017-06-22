@@ -43,6 +43,16 @@ String lclTitle = "Output " + lclPS.getName();
 	
 	<div class="row">
 		<div class="small-12 columns">
+			<p>Which output style?</p>
+			<ul class="no-bullet">
+				<li><label><input type="radio" name="output_style" value="masonic" checked="checked" required="required" /> Masonic</label></li>
+				<li><label><input type="radio" name="output_style" value="tossup_bonus" required="required" /> Tossup-bonus</label></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="small-12 columns">
 			<input type="submit" value="Download packets" />
 		</div>
 	</div>

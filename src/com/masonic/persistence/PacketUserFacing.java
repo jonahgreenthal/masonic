@@ -14,6 +14,8 @@ package com.masonic.persistence;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
+	@com.opal.annotation.Creatability(creatable = true)
+	@com.opal.annotation.Updatability(updatable = true)
 public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparable<com.masonic.application.Packet> {
 
 	/* Accessors and mutators for internal data. */
@@ -26,6 +28,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @return an object value of {@code Id} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getIdAsObject();
 
@@ -52,6 +55,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argId is null
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Packet setId(java.lang.Integer argId);
 
@@ -70,6 +74,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @return an object value of {@code PacketSetCode} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getPacketSetCode();
@@ -86,6 +91,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 * <p>The database column {@code packet_set_code} is limited to 32 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.Packet setPacketSetCode(java.lang.String argPacketSetCode);
@@ -97,6 +103,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @return an object value of {@code Name} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getName();
@@ -113,6 +120,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public com.masonic.application.Packet setName(java.lang.String argName);
@@ -124,6 +132,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @return an object value of {@code ShortName} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getShortName();
@@ -140,6 +149,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 * <p>The database column {@code short_name} is limited to 32 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.Packet setShortName(java.lang.String argShortName);
@@ -153,6 +163,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @return an object value of {@code Sequence} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getSequenceAsObject();
 
@@ -179,6 +190,7 @@ public interface PacketUserFacing extends com.opal.IdentityUserFacing, Comparabl
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argSequence is null
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Packet setSequence(java.lang.Integer argSequence);
 

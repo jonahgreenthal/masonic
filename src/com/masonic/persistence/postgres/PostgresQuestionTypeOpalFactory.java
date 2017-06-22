@@ -9,7 +9,7 @@ import com.opal.OpalUtility;
 import com.opal.PersistenceException;
 
 import com.masonic.application.QuestionType;
-import com.masonic.application.QuestionTypeImpl;
+import com.masonic.persistence.QuestionTypeImpl;
 import com.masonic.persistence.QuestionTypeOpal;
 import com.masonic.persistence.QuestionTypeOpalFactory;
 

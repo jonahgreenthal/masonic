@@ -80,11 +80,17 @@ if (lclOF.hasErrors()) {
 		<%= lclOF.textarea("Note", 60, 2) %>
 	</div>
 	
-	<div class="small-2 columns">
+	<div class="small-2 medium-1 columns">
 		<%= lclOF.label("Completed", "Completed?").addCssClass("right inline") %>
 	</div>
-	<div class="small-10 medium-4 columns">
+	<div class="small-10 medium-2 columns">
 		<%= HTMLUtility.switchWidget(lclOF, "Completed") %>
+	</div>
+	<div class="small-2 medium-1 columns">
+		<%= lclOF.label("ReusesQuestions", "Reuses Questions?").addCssClass("right inline") %>
+	</div>
+	<div class="small-10 medium-2 columns">
+		<%= HTMLUtility.switchWidget(lclOF, "ReusesQuestions") %>
 	</div>
 </div>
 

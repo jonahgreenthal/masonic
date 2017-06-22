@@ -9,7 +9,7 @@ import com.opal.OpalUtility;
 import com.opal.PersistenceException;
 
 import com.masonic.application.Packet;
-import com.masonic.application.PacketImpl;
+import com.masonic.persistence.PacketImpl;
 import com.masonic.persistence.PacketOpal;
 import com.masonic.persistence.PacketOpalFactory;
 

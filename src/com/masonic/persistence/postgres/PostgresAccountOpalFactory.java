@@ -9,7 +9,7 @@ import com.opal.OpalUtility;
 import com.opal.PersistenceException;
 
 import com.masonic.application.Account;
-import com.masonic.application.AccountImpl;
+import com.masonic.persistence.AccountImpl;
 import com.masonic.persistence.AccountOpal;
 import com.masonic.persistence.AccountOpalFactory;
 

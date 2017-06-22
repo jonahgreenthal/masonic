@@ -95,15 +95,6 @@
 			</Mapping>
 		</Mappings>
 		
-		
-		<!-- One-to-one relationships -->
-		<Reference>
-			<Source Type="Placement">
-				<Column>question_id</Column>
-			</Source>
-			<Target Type="Question" OneToOne="True" />
-		</Reference>
-		
 		<!-- Rename some references -->
 		<Reference Field="Writer">
 			<Source Type="Question">

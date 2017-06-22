@@ -14,6 +14,8 @@ package com.masonic.persistence;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
+	@com.opal.annotation.Creatability(creatable = true)
+	@com.opal.annotation.Updatability(updatable = true)
 public interface TossupUserFacing extends com.masonic.application.Question {
 
 	/* Accessors and mutators for internal data. */
@@ -26,6 +28,7 @@ public interface TossupUserFacing extends com.masonic.application.Question {
 	 *
 	 * @return an object value of {@code QuestionId} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getQuestionIdAsObject();
 
@@ -52,6 +55,7 @@ public interface TossupUserFacing extends com.masonic.application.Question {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argQuestionId is null
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.Tossup setQuestionId(java.lang.Integer argQuestionId);
 
@@ -70,6 +74,7 @@ public interface TossupUserFacing extends com.masonic.application.Question {
 	 *
 	 * @return an object value of {@code Text} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getText();
@@ -86,6 +91,7 @@ public interface TossupUserFacing extends com.masonic.application.Question {
 	 * <p>The database column {@code text} is limited to 2147483647 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public com.masonic.application.Tossup setText(java.lang.String argText);
@@ -97,6 +103,7 @@ public interface TossupUserFacing extends com.masonic.application.Question {
 	 *
 	 * @return an object value of {@code Answer} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getAnswer();
@@ -113,6 +120,7 @@ public interface TossupUserFacing extends com.masonic.application.Question {
 	 * <p>The database column {@code answer} is limited to 2147483647 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public com.masonic.application.Tossup setAnswer(java.lang.String argAnswer);

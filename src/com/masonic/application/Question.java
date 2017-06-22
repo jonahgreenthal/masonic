@@ -1,6 +1,7 @@
 package com.masonic.application;
 
 import java.util.Comparator;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.StringUtils;
@@ -24,11 +25,26 @@ public interface Question extends QuestionUserFacing {
 	public static final Comparator<Question> PLACEMENT_COMPARATOR = Comparator.<Question>comparingInt(argQ -> argQ.isUsed() ? 0 : 1).thenComparingInt(Question::getId);
 	
 	default boolean isUsed() {
-		return getPlacement() != null;
+		return getPlacementCount() > 0;
 	}
 	
 	default boolean isUnused() {
-		return getPlacement() == null;
+		return isUsed() == false;
+	}
+	
+	default QuestionType getType() {
+		return getQuestionType();
+	}
+	
+	default String getUsedPacketSetShortNames() {
+		if (isUsed()) {
+			return streamPlacement()
+				.map(Placement::getPacketSet)
+				.map(PacketSet::getShortName)
+				.collect(Collectors.joining(", "));
+		} else {
+			return "";
+		}
 	}
 	
 	// TODO There's a lot more validation this could do.
@@ -37,10 +53,12 @@ public interface Question extends QuestionUserFacing {
 		Validate.notBlank(argFieldName);
 		Validate.notNull(argValidator);
 		
+		// TODO: This doesn't even test for proper nesting
 		if (StringUtils.countMatches(argText, '{') != StringUtils.countMatches(argText, '}')) {
 			argValidator.addError(argFieldName, "Curly braces ({, }) are not matched!");
 		}
 		
+		// TODO: This doesn't even test for proper nesting
 		if (StringUtils.countMatches(argText, '[') != StringUtils.countMatches(argText, ']')) {
 			argValidator.addError(argFieldName, "Square braces ([, ]) are not matched!");
 		}
@@ -101,7 +119,7 @@ public interface Question extends QuestionUserFacing {
 	}
 	
 	public static final NullSafeNameCodeExtractor<Question> NCE = new FunctionalNameCodeExtractor<>(
-		Question::getLabel,
+		argQ -> argQ.getLabel() + (argQ.isUsed() ? " (used in " + argQ.getUsedPacketSetShortNames() + ")" : ""),
 		argQ -> argQ.getIdAsObject().toString()
 	);
 }

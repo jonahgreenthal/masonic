@@ -13,7 +13,8 @@ CREATE TABLE Packet_Set (
 	short_name short_name_t UNIQUE,
 	deadline DATE,
 	note note_t,
-	completed BOOLEAN NOT NULL DEFAULT FALSE
+	completed BOOLEAN NOT NULL DEFAULT FALSE,
+	reuses_questions BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE Packet (
@@ -160,9 +161,11 @@ CREATE TABLE Placement (
 	section_id INTEGER NOT NULL REFERENCES Section ON UPDATE CASCADE ON DELETE RESTRICT,
 	category_code code_t REFERENCES Category ON UPDATE CASCADE ON DELETE RESTRICT,
 	sequence sequence_t,
-	question_id INTEGER UNIQUE REFERENCES Question ON UPDATE CASCADE ON DELETE RESTRICT,
-	UNIQUE(section_id, sequence)
+	question_id INTEGER REFERENCES Question ON UPDATE CASCADE ON DELETE RESTRICT,
+	UNIQUE(section_id, sequence),
+	UNIQUE(section_id, question_id)
 );
+CREATE INDEX placement_question_index ON Placement (question_id);
 ALTER SEQUENCE placement_id_seq RESTART WITH 1000;
 
 CREATE TABLE Account (

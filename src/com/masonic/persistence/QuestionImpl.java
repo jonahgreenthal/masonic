@@ -1,32 +1,27 @@
-package com.masonic.application;
+package com.masonic.persistence;
 
-import com.masonic.persistence.QuestionOpal;
-import com.masonic.persistence.QuestionStatusOpal;
-import com.masonic.persistence.PacketSetOpal;
-import com.masonic.persistence.AccountOpal;
-import com.masonic.persistence.CategoryOpal;
-import com.masonic.persistence.QuestionTypeOpal;
-import com.masonic.persistence.PlacementOpal;
 
-public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Question, QuestionOpal> implements Question {
+public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<com.masonic.application.Question, com.masonic.persistence.QuestionOpal> implements com.masonic.application.Question {
 
 	protected QuestionImpl() {
 		super();
 	}
 
-	protected abstract QuestionOpal getQuestionOpal();
+	protected abstract com.masonic.persistence.QuestionOpal getQuestionOpal();
 
 	@Override
-	protected com.opal.IdentityOpal<? extends Question> getOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.Question> getOpal() {
 		return getQuestionOpal();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getIdAsObject() {
 		return getQuestionOpal().getIdAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public void setId(java.lang.Integer argId) {
@@ -40,6 +35,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -47,6 +43,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return getQuestionOpal().getCategoryCode();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -55,6 +52,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -62,6 +60,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return getQuestionOpal().getInternalNote();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -70,6 +69,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -77,6 +77,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return getQuestionOpal().getExternalNote();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -85,6 +86,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -92,6 +94,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return getQuestionOpal().getQuestionTypeCode();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -100,6 +103,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
@@ -107,6 +111,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return getQuestionOpal().getLabel();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
@@ -115,12 +120,14 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getWriterAccountIdAsObject() {
 		return getQuestionOpal().getWriterAccountIdAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public void setWriterAccountId(java.lang.Integer argWriterAccountId) {
@@ -134,6 +141,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.CurrentDateTimeDefault
 	@Override
@@ -141,6 +149,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return getQuestionOpal().getUpdated();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.CurrentDateTimeDefault
 	@Override
@@ -149,6 +158,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -156,6 +166,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return getQuestionOpal().getIntendedPacketSetCode();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -164,6 +175,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@com.opal.annotation.Default(value = "DRAFTED")
@@ -172,6 +184,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 		return getQuestionOpal().getQuestionStatusCode();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@com.opal.annotation.Default(value = "DRAFTED")
@@ -184,48 +197,33 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 	/* The following methods allow direct access to the user objects to which
 	this object has references in the database. */
 
-	/** @return the QuestionStatus object created from question through reference question_question_status_code_fkey */
-
-	@com.opal.annotation.Nullability(nullable = false)
-	@Override
-	public QuestionStatus getStatus() {
-		QuestionStatusOpal lclQuestionStatusOpal = getQuestionOpal().getStatusOpal();
-		return lclQuestionStatusOpal == null ? null : lclQuestionStatusOpal.getUserFacing();
-	}
-
-	@Override
-	public void setStatus(QuestionStatus argQuestionStatus) {
-		getQuestionOpal().setStatusOpal(argQuestionStatus == null ? null : ((QuestionStatusImpl) argQuestionStatus).getQuestionStatusOpal());
-		return;
-	}
-
 	/** @return the PacketSet object created from question through reference question_intended_packet_set_code_fkey */
 
 	@com.opal.annotation.Nullability(nullable = true)
 	@Override
-	public PacketSet getIntendedPacketSet() {
+	public com.masonic.application.PacketSet getIntendedPacketSet() {
 		PacketSetOpal lclPacketSetOpal = getQuestionOpal().getIntendedPacketSetOpal();
 		return lclPacketSetOpal == null ? null : lclPacketSetOpal.getUserFacing();
 	}
 
 	@Override
-	public void setIntendedPacketSet(PacketSet argPacketSet) {
+	public void setIntendedPacketSet(com.masonic.application.PacketSet argPacketSet) {
 		getQuestionOpal().setIntendedPacketSetOpal(argPacketSet == null ? null : ((PacketSetImpl) argPacketSet).getPacketSetOpal());
 		return;
 	}
 
-	/** @return the Account object created from question through reference question_writer_account_id_fkey */
+	/** @return the QuestionStatus object created from question through reference question_question_status_code_fkey */
 
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public Account getWriter() {
-		AccountOpal lclAccountOpal = getQuestionOpal().getWriterOpal();
-		return lclAccountOpal == null ? null : lclAccountOpal.getUserFacing();
+	public com.masonic.application.QuestionStatus getStatus() {
+		QuestionStatusOpal lclQuestionStatusOpal = getQuestionOpal().getStatusOpal();
+		return lclQuestionStatusOpal == null ? null : lclQuestionStatusOpal.getUserFacing();
 	}
 
 	@Override
-	public void setWriter(Account argAccount) {
-		getQuestionOpal().setWriterOpal(argAccount == null ? null : ((AccountImpl) argAccount).getAccountOpal());
+	public void setStatus(com.masonic.application.QuestionStatus argQuestionStatus) {
+		getQuestionOpal().setStatusOpal(argQuestionStatus == null ? null : ((QuestionStatusImpl) argQuestionStatus).getQuestionStatusOpal());
 		return;
 	}
 
@@ -233,13 +231,13 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public Category getCategory() {
+	public com.masonic.application.Category getCategory() {
 		CategoryOpal lclCategoryOpal = getQuestionOpal().getCategoryOpal();
 		return lclCategoryOpal == null ? null : lclCategoryOpal.getUserFacing();
 	}
 
 	@Override
-	public void setCategory(Category argCategory) {
+	public void setCategory(com.masonic.application.Category argCategory) {
 		getQuestionOpal().setCategoryOpal(argCategory == null ? null : ((CategoryImpl) argCategory).getCategoryOpal());
 		return;
 	}
@@ -248,31 +246,61 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public QuestionType getQuestionType() {
+	public com.masonic.application.QuestionType getQuestionType() {
 		QuestionTypeOpal lclQuestionTypeOpal = getQuestionOpal().getQuestionTypeOpal();
 		return lclQuestionTypeOpal == null ? null : lclQuestionTypeOpal.getUserFacing();
 	}
 
 	@Override
-	public void setQuestionType(QuestionType argQuestionType) {
+	public void setQuestionType(com.masonic.application.QuestionType argQuestionType) {
 		getQuestionOpal().setQuestionTypeOpal(argQuestionType == null ? null : ((QuestionTypeImpl) argQuestionType).getQuestionTypeOpal());
 		return;
 	}
 
+	/** @return the Account object created from question through reference question_writer_account_id_fkey */
+
+	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public Placement getPlacement() {
-		PlacementOpal lclO = getQuestionOpal().getPlacementOpal();
-		return lclO == null ? null : lclO.getUserFacing();
+	public com.masonic.application.Account getWriter() {
+		AccountOpal lclAccountOpal = getQuestionOpal().getWriterOpal();
+		return lclAccountOpal == null ? null : lclAccountOpal.getUserFacing();
 	}
 
 	@Override
-	public void setPlacement(Placement argPlacement) {
-		getQuestionOpal().setPlacementOpal(argPlacement == null ? null : ((PlacementImpl) argPlacement).getPlacementOpal());
+	public void setWriter(com.masonic.application.Account argAccount) {
+		getQuestionOpal().setWriterOpal(argAccount == null ? null : ((AccountImpl) argAccount).getAccountOpal());
 		return;
 	}
 
 	/* The following methods allow access to the user objects that have references
 	to this object. */
+
+	@Override
+	public void addPlacement(com.masonic.application.Placement argPlacement) {
+		getQuestionOpal().addPlacementOpal(((PlacementImpl) argPlacement).getPlacementOpal());
+		return;
+	}
+
+	@Override
+	public void removePlacement(com.masonic.application.Placement argPlacement) {
+		getQuestionOpal().removePlacementOpal(((PlacementImpl) argPlacement).getPlacementOpal());
+		return;
+	}
+
+	@Override
+	public int getPlacementCount() {
+		return getQuestionOpal().getPlacementOpalCount();
+	}
+
+	@Override
+	public java.util.stream.Stream<com.masonic.application.Placement> streamPlacement() {
+		return getQuestionOpal().streamPlacementOpal().map(com.opal.Opal::getUserFacing);
+	}
+
+	@Override
+	public java.util.Iterator<com.masonic.application.Placement> createPlacementIterator() {
+		return new com.opal.OpalIterator<> (getQuestionOpal().createPlacementOpalIterator());
+	}
 
 	@Override
 	public void unlink() {
@@ -285,7 +313,7 @@ public abstract class QuestionImpl extends com.opal.AbstractIdentityImpl<Questio
 	}
 
 	@Override
-	public Question copy() {
+	public com.masonic.application.Question copy() {
 		return getQuestionOpal().copy().getUserFacing();
 	}
 

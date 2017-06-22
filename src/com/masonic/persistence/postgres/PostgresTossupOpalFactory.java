@@ -9,7 +9,7 @@ import com.opal.OpalUtility;
 import com.opal.PersistenceException;
 
 import com.masonic.application.Tossup;
-import com.masonic.application.TossupImpl;
+import com.masonic.persistence.TossupImpl;
 import com.masonic.persistence.TossupOpal;
 import com.masonic.persistence.TossupOpalFactory;
 

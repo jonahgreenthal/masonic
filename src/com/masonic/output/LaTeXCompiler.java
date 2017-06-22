@@ -21,7 +21,7 @@ import org.apache.commons.exec.LogOutputStream;
 public class LaTeXCompiler {
 	private static final org.apache.log4j.Logger ourLogger = org.apache.log4j.Logger.getLogger(LaTeXCompiler.class);
 	
-	public static final String LATEX_PATH = "/usr/local/texlive/2014/bin/x86_64-linux/xelatex";
+	public static final String LATEX_PATH = "/usr/bin/xelatex";
 	public static final String TEX_MIME_TYPE = "application/x-tex";
 	public static final String PDF_MIME_TYPE = "application/pdf";
 	

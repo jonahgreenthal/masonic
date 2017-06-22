@@ -1,35 +1,35 @@
-package com.masonic.application;
+package com.masonic.persistence;
 
-import com.masonic.persistence.QuestionStatusOpal;
 
-public class QuestionStatusImpl extends com.opal.AbstractIdentityImpl<QuestionStatus, QuestionStatusOpal> implements QuestionStatus {
+public class QuestionStatusImpl extends com.opal.AbstractIdentityImpl<com.masonic.application.QuestionStatus, com.masonic.persistence.QuestionStatusOpal> implements com.masonic.application.QuestionStatus {
 
-	private final QuestionStatusOpal myQuestionStatusOpal;
+	private final com.masonic.persistence.QuestionStatusOpal myQuestionStatusOpal;
 
 	public QuestionStatusImpl(QuestionStatusOpal argQuestionStatusOpal) {
 		super();
 		myQuestionStatusOpal = org.apache.commons.lang3.Validate.notNull(argQuestionStatusOpal);
 	}
 
-	protected QuestionStatusOpal getQuestionStatusOpal() {
+	protected com.masonic.persistence.QuestionStatusOpal getQuestionStatusOpal() {
 		return myQuestionStatusOpal;
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends QuestionStatus> getOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.QuestionStatus> getOpal() {
 		return getQuestionStatusOpal();
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends QuestionStatus> getBottomOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.QuestionStatus> getBottomOpal() {
 		return getQuestionStatusOpal();
 	}
 
 	@Override
-	public int compareTo(QuestionStatus argSecond) {
+	public int compareTo(com.masonic.application.QuestionStatus argSecond) {
 		return this.getSequenceAsObject().compareTo(argSecond.getSequenceAsObject());
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -37,14 +37,16 @@ public class QuestionStatusImpl extends com.opal.AbstractIdentityImpl<QuestionSt
 		return getQuestionStatusOpal().getCode();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
-	public QuestionStatusImpl setCode(java.lang.String argCode) {
+	public com.masonic.persistence.QuestionStatusImpl setCode(java.lang.String argCode) {
 		getQuestionStatusOpal().setCode(argCode);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
@@ -52,14 +54,16 @@ public class QuestionStatusImpl extends com.opal.AbstractIdentityImpl<QuestionSt
 		return getQuestionStatusOpal().getName();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
-	public QuestionStatusImpl setName(java.lang.String argName) {
+	public com.masonic.persistence.QuestionStatusImpl setName(java.lang.String argName) {
 		getQuestionStatusOpal().setName(argName);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -67,29 +71,32 @@ public class QuestionStatusImpl extends com.opal.AbstractIdentityImpl<QuestionSt
 		return getQuestionStatusOpal().getShortName();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
-	public QuestionStatusImpl setShortName(java.lang.String argShortName) {
+	public com.masonic.persistence.QuestionStatusImpl setShortName(java.lang.String argShortName) {
 		getQuestionStatusOpal().setShortName(argShortName);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getSequenceAsObject() {
 		return getQuestionStatusOpal().getSequenceAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public QuestionStatusImpl setSequence(java.lang.Integer argSequence) {
+	public com.masonic.persistence.QuestionStatusImpl setSequence(java.lang.Integer argSequence) {
 		getQuestionStatusOpal().setSequence(argSequence);
 		return this;
 	}
 
 	@Override
-	public QuestionStatusImpl setSequence(int argSequence) {
+	public com.masonic.persistence.QuestionStatusImpl setSequence(int argSequence) {
 		getQuestionStatusOpal().setSequence(argSequence);
 		return this;
 	}
@@ -101,13 +108,13 @@ public class QuestionStatusImpl extends com.opal.AbstractIdentityImpl<QuestionSt
 	to this object. */
 
 	@Override
-	public com.masonic.application.QuestionStatus addQuestion(Question argQuestion) {
+	public com.masonic.application.QuestionStatus addQuestion(com.masonic.application.Question argQuestion) {
 		getQuestionStatusOpal().addQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
 		return this;
 	}
 
 	@Override
-	public com.masonic.application.QuestionStatus removeQuestion(Question argQuestion) {
+	public com.masonic.application.QuestionStatus removeQuestion(com.masonic.application.Question argQuestion) {
 		getQuestionStatusOpal().removeQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
 		return this;
 	}
@@ -118,12 +125,12 @@ public class QuestionStatusImpl extends com.opal.AbstractIdentityImpl<QuestionSt
 	}
 
 	@Override
-	public java.util.stream.Stream<Question> streamQuestion() {
+	public java.util.stream.Stream<com.masonic.application.Question> streamQuestion() {
 		return getQuestionStatusOpal().streamQuestionOpal().map(com.opal.Opal::getUserFacing);
 	}
 
 	@Override
-	public java.util.Iterator<Question> createQuestionIterator() {
+	public java.util.Iterator<com.masonic.application.Question> createQuestionIterator() {
 		return new com.opal.OpalIterator<> (getQuestionStatusOpal().createQuestionOpalIterator());
 	}
 
@@ -138,7 +145,7 @@ public class QuestionStatusImpl extends com.opal.AbstractIdentityImpl<QuestionSt
 	}
 
 	@Override
-	public QuestionStatus copy() {
+	public com.masonic.application.QuestionStatus copy() {
 		return getQuestionStatusOpal().copy().getUserFacing();
 	}
 

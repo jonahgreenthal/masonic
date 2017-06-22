@@ -1,49 +1,51 @@
-package com.masonic.application;
+package com.masonic.persistence;
 
-import com.masonic.persistence.AccountOpal;
 
-public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountOpal> implements Account {
+public class AccountImpl extends com.opal.AbstractIdentityImpl<com.masonic.application.Account, com.masonic.persistence.AccountOpal> implements com.masonic.application.Account {
 
-	private final AccountOpal myAccountOpal;
+	private final com.masonic.persistence.AccountOpal myAccountOpal;
 
 	public AccountImpl(AccountOpal argAccountOpal) {
 		super();
 		myAccountOpal = org.apache.commons.lang3.Validate.notNull(argAccountOpal);
 	}
 
-	protected AccountOpal getAccountOpal() {
+	protected com.masonic.persistence.AccountOpal getAccountOpal() {
 		return myAccountOpal;
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends Account> getOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.Account> getOpal() {
 		return getAccountOpal();
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends Account> getBottomOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.Account> getBottomOpal() {
 		return getAccountOpal();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getIdAsObject() {
 		return getAccountOpal().getIdAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public AccountImpl setId(java.lang.Integer argId) {
+	public com.masonic.persistence.AccountImpl setId(java.lang.Integer argId) {
 		getAccountOpal().setId(argId);
 		return this;
 	}
 
 	@Override
-	public AccountImpl setId(int argId) {
+	public com.masonic.persistence.AccountImpl setId(int argId) {
 		getAccountOpal().setId(argId);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
@@ -51,14 +53,16 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 		return getAccountOpal().getName();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
-	public AccountImpl setName(java.lang.String argName) {
+	public com.masonic.persistence.AccountImpl setName(java.lang.String argName) {
 		getAccountOpal().setName(argName);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
@@ -66,14 +70,16 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 		return getAccountOpal().getEmailAddress();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
-	public AccountImpl setEmailAddress(java.lang.String argEmailAddress) {
+	public com.masonic.persistence.AccountImpl setEmailAddress(java.lang.String argEmailAddress) {
 		getAccountOpal().setEmailAddress(argEmailAddress);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 64L)
 	@Override
@@ -81,14 +87,16 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 		return getAccountOpal().getUsername();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 64L)
 	@Override
-	public AccountImpl setUsername(java.lang.String argUsername) {
+	public com.masonic.persistence.AccountImpl setUsername(java.lang.String argUsername) {
 		getAccountOpal().setUsername(argUsername);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 60L)
 	@com.opal.annotation.Default(value = "$2a$16$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -97,15 +105,17 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 		return getAccountOpal().getPasswordHash();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 60L)
 	@com.opal.annotation.Default(value = "$2a$16$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	@Override
-	public AccountImpl setPasswordHash(java.lang.String argPasswordHash) {
+	public com.masonic.persistence.AccountImpl setPasswordHash(java.lang.String argPasswordHash) {
 		getAccountOpal().setPasswordHash(argPasswordHash);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Default(value = "false")
 	@Override
@@ -113,20 +123,22 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 		return getAccountOpal().isAdministratorAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Default(value = "false")
 	@Override
-	public AccountImpl setAdministrator(java.lang.Boolean argAdministrator) {
+	public com.masonic.persistence.AccountImpl setAdministrator(java.lang.Boolean argAdministrator) {
 		getAccountOpal().setAdministrator(argAdministrator);
 		return this;
 	}
 
 	@Override
-	public AccountImpl setAdministrator(boolean argAdministrator) {
+	public com.masonic.persistence.AccountImpl setAdministrator(boolean argAdministrator) {
 		getAccountOpal().setAdministrator(argAdministrator);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Default(value = "true")
 	@Override
@@ -134,16 +146,17 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 		return getAccountOpal().isActiveAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Default(value = "true")
 	@Override
-	public AccountImpl setActive(java.lang.Boolean argActive) {
+	public com.masonic.persistence.AccountImpl setActive(java.lang.Boolean argActive) {
 		getAccountOpal().setActive(argActive);
 		return this;
 	}
 
 	@Override
-	public AccountImpl setActive(boolean argActive) {
+	public com.masonic.persistence.AccountImpl setActive(boolean argActive) {
 		getAccountOpal().setActive(argActive);
 		return this;
 	}
@@ -155,13 +168,13 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 	to this object. */
 
 	@Override
-	public com.masonic.application.Account addWriterQuestion(Question argQuestion) {
+	public com.masonic.application.Account addWriterQuestion(com.masonic.application.Question argQuestion) {
 		getAccountOpal().addWriterQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
 		return this;
 	}
 
 	@Override
-	public com.masonic.application.Account removeWriterQuestion(Question argQuestion) {
+	public com.masonic.application.Account removeWriterQuestion(com.masonic.application.Question argQuestion) {
 		getAccountOpal().removeWriterQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
 		return this;
 	}
@@ -172,12 +185,12 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 	}
 
 	@Override
-	public java.util.stream.Stream<Question> streamWriterQuestion() {
+	public java.util.stream.Stream<com.masonic.application.Question> streamWriterQuestion() {
 		return getAccountOpal().streamWriterQuestionOpal().map(com.opal.Opal::getUserFacing);
 	}
 
 	@Override
-	public java.util.Iterator<Question> createWriterQuestionIterator() {
+	public java.util.Iterator<com.masonic.application.Question> createWriterQuestionIterator() {
 		return new com.opal.OpalIterator<> (getAccountOpal().createWriterQuestionOpalIterator());
 	}
 
@@ -192,7 +205,7 @@ public class AccountImpl extends com.opal.AbstractIdentityImpl<Account, AccountO
 	}
 
 	@Override
-	public Account copy() {
+	public com.masonic.application.Account copy() {
 		return getAccountOpal().copy().getUserFacing();
 	}
 

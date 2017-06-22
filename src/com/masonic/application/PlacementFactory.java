@@ -35,11 +35,6 @@ public class PlacementFactory extends com.opal.AbstractIdentityFactory<Placement
 		return (lclPlacementOpal == null) ? null : lclPlacementOpal.getUserFacing();
 	}
 
-	public Placement forQuestionId(java.lang.Integer argQuestionId) {
-		PlacementOpal lclPlacementOpal = getPlacementOpalFactory().forQuestionId(argQuestionId);
-		return (lclPlacementOpal == null) ? null : lclPlacementOpal.getUserFacing();
-	}
-
 	public Placement forSectionIdSequence(java.lang.Integer argSectionId, java.lang.Integer argSequence) {
 		PlacementOpal lclPlacementOpal = getPlacementOpalFactory().forSectionIdSequence(argSectionId, argSequence);
 		return (lclPlacementOpal == null) ? null : lclPlacementOpal.getUserFacing();

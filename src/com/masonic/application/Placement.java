@@ -12,7 +12,7 @@ import com.masonic.persistence.PlacementUserFacing;
 
 public interface Placement extends PlacementUserFacing {
 	default PacketSet getPacketSet() {
-		return getSection().getPacket().getPacketSet();
+		return getPacket().getPacketSet();
 	}
 	
 	default Packet getPacket() {

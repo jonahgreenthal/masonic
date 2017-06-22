@@ -12,6 +12,7 @@
 <%@ page import="com.opal.ImplicitTableDatabaseQuery" %>
 <%@ page import="com.masonic.application.PacketSet" %>
 <%@ page import="com.masonic.application.PacketSetFactory" %>
+<%@ page import="com.masonic.application.Placement" %>
 <%@ page import="com.masonic.application.Question" %>
 <%@ page import="com.masonic.application.QuestionStatus" %>
 <%@ page import="com.masonic.application.QuestionStatusFactory" %>
@@ -45,14 +46,14 @@ if (lclSelectedStatuses.isEmpty()) {
 
 
 List<Tossup> lclTUs = TossupFactory.getInstance().streamAll()
-	.filter(argQ -> argQ.isUnused() ? lclShowUnused : lclSelectedPacketSets.contains(argQ.getPlacement().getPacketSet()))
+	.filter(argQ -> argQ.isUnused() ? lclShowUnused : argQ.streamPlacement().anyMatch(argPL -> lclSelectedPacketSets.contains(argPL.getPacketSet())))
 	.filter(argQ -> lclSelectedStatuses.contains(argQ.getStatus()))
 	.sorted(Question.UpdatedComparator.getInstance().reversed().thenComparing(Question.PLACEMENT_COMPARATOR))
 	.collect(Collectors.toList());
 boolean lclAnyTUNote = lclTUs.stream().anyMatch(argTU -> argTU.getInternalNote() != null);
 
 List<TeamQuestion> lclTQs = TeamQuestionFactory.getInstance().streamAll()
-	.filter(argQ -> argQ.isUnused() ? lclShowUnused : lclSelectedPacketSets.contains(argQ.getPlacement().getPacketSet()))
+	.filter(argQ -> argQ.isUnused() ? lclShowUnused : argQ.streamPlacement().anyMatch(argPL -> lclSelectedPacketSets.contains(argPL.getPacketSet())))
 	.filter(argQ -> lclSelectedStatuses.contains(argQ.getStatus()))
 	.sorted(Question.UpdatedComparator.getInstance().reversed().thenComparing(Question.PLACEMENT_COMPARATOR))
 	.collect(Collectors.toList());
@@ -125,7 +126,7 @@ DateTimeFormatter lclUpdatedDTF = DateTimeFormatter.ofLocalizedDateTime(FormatSt
 							%><td><%= lclTU.getInternalNote() == null ? "&nbsp;" : "<span title=\"" + WebDataFilter.scrub(lclTU.getInternalNote()) + "\">Yes</span>" %></td><%
 						}
 						if (lclMultiplePacketSetsShown) {
-							%><td><%= lclTU.isUsed() ? lclTU.getPlacement().getPacketSet().getShortName() : "-" %></td><%
+							%><td><%= lclTU.isUsed() ? lclTU.getUsedPacketSetShortNames() : "-" %></td><%
 						}
 					%></tr><%
 				}
@@ -153,7 +154,7 @@ DateTimeFormatter lclUpdatedDTF = DateTimeFormatter.ofLocalizedDateTime(FormatSt
 							%><td><%= lclTQ.getInternalNote() == null ? "&nbsp;" : "<span title=\"" + WebDataFilter.scrub(lclTQ.getInternalNote()) + "\">Yes</span>" %></td><%
 						}
 						if (lclMultiplePacketSetsShown) {
-							%><td><%= lclTQ.isUsed() ? lclTQ.getPlacement().getPacketSet().getShortName() : "-" %></td><%
+							%><td><%= lclTQ.isUsed() ? lclTQ.getUsedPacketSetShortNames() : "-" %></td><%
 						}
 					%></tr><%
 				}

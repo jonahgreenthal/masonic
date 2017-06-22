@@ -14,6 +14,8 @@ package com.masonic.persistence;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
+	@com.opal.annotation.Creatability(creatable = true)
+	@com.opal.annotation.Updatability(updatable = true)
 public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Comparable<com.masonic.application.QuestionType> {
 
 	/* Accessors and mutators for internal data. */
@@ -24,6 +26,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 *
 	 * @return an object value of {@code Code} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getCode();
@@ -40,6 +43,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 * <p>The database column {@code code} is limited to 32 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.QuestionType setCode(java.lang.String argCode);
@@ -51,6 +55,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 *
 	 * @return an object value of {@code Name} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getName();
@@ -67,6 +72,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public com.masonic.application.QuestionType setName(java.lang.String argName);
@@ -78,6 +84,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 *
 	 * @return an object value of {@code ShortName} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getShortName();
@@ -94,6 +101,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 * <p>The database column {@code short_name} is limited to 32 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.QuestionType setShortName(java.lang.String argShortName);
@@ -107,6 +115,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 *
 	 * @return an object value of {@code Sequence} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public java.lang.Integer getSequenceAsObject();
 
@@ -133,6 +142,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argSequence is null
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	public com.masonic.application.QuestionType setSequence(java.lang.Integer argSequence);
 
@@ -151,6 +161,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 *
 	 * @return an object value of {@code TableName} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getTableName();
@@ -167,6 +178,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 * <p>The database column {@code table_name} is limited to 256 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public com.masonic.application.QuestionType setTableName(java.lang.String argTableName);
@@ -178,6 +190,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 *
 	 * @return an object value of {@code SectionHeader} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getSectionHeader();
@@ -207,6 +220,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 * <p>The database column {@code section_header} is limited to 256 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 256L)
 	public com.masonic.application.QuestionType setSectionHeader(java.lang.String argSectionHeader);
@@ -218,6 +232,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 *
 	 * @return an object value of {@code ScoringNote} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getScoringNote();
@@ -234,6 +249,7 @@ public interface QuestionTypeUserFacing extends com.opal.IdentityUserFacing, Com
 	 * <p>The database column {@code scoring_note} is limited to 256 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public com.masonic.application.QuestionType setScoringNote(java.lang.String argScoringNote);

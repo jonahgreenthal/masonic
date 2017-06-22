@@ -1,55 +1,56 @@
-package com.masonic.application;
+package com.masonic.persistence;
 
-import com.masonic.persistence.PacketOpal;
-import com.masonic.persistence.PacketSetOpal;
 
-public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal> implements Packet {
+public class PacketImpl extends com.opal.AbstractIdentityImpl<com.masonic.application.Packet, com.masonic.persistence.PacketOpal> implements com.masonic.application.Packet {
 
-	private final PacketOpal myPacketOpal;
+	private final com.masonic.persistence.PacketOpal myPacketOpal;
 
 	public PacketImpl(PacketOpal argPacketOpal) {
 		super();
 		myPacketOpal = org.apache.commons.lang3.Validate.notNull(argPacketOpal);
 	}
 
-	protected PacketOpal getPacketOpal() {
+	protected com.masonic.persistence.PacketOpal getPacketOpal() {
 		return myPacketOpal;
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends Packet> getOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.Packet> getOpal() {
 		return getPacketOpal();
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends Packet> getBottomOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.Packet> getBottomOpal() {
 		return getPacketOpal();
 	}
 
 	@Override
-	public int compareTo(Packet argSecond) {
+	public int compareTo(com.masonic.application.Packet argSecond) {
 		return this.getSequenceAsObject().compareTo(argSecond.getSequenceAsObject());
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getIdAsObject() {
 		return getPacketOpal().getIdAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public PacketImpl setId(java.lang.Integer argId) {
+	public com.masonic.persistence.PacketImpl setId(java.lang.Integer argId) {
 		getPacketOpal().setId(argId);
 		return this;
 	}
 
 	@Override
-	public PacketImpl setId(int argId) {
+	public com.masonic.persistence.PacketImpl setId(int argId) {
 		getPacketOpal().setId(argId);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -57,14 +58,16 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 		return getPacketOpal().getPacketSetCode();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
-	public PacketImpl setPacketSetCode(java.lang.String argPacketSetCode) {
+	public com.masonic.persistence.PacketImpl setPacketSetCode(java.lang.String argPacketSetCode) {
 		getPacketOpal().setPacketSetCode(argPacketSetCode);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
@@ -72,14 +75,16 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 		return getPacketOpal().getName();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
-	public PacketImpl setName(java.lang.String argName) {
+	public com.masonic.persistence.PacketImpl setName(java.lang.String argName) {
 		getPacketOpal().setName(argName);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -87,29 +92,32 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 		return getPacketOpal().getShortName();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
-	public PacketImpl setShortName(java.lang.String argShortName) {
+	public com.masonic.persistence.PacketImpl setShortName(java.lang.String argShortName) {
 		getPacketOpal().setShortName(argShortName);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getSequenceAsObject() {
 		return getPacketOpal().getSequenceAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public PacketImpl setSequence(java.lang.Integer argSequence) {
+	public com.masonic.persistence.PacketImpl setSequence(java.lang.Integer argSequence) {
 		getPacketOpal().setSequence(argSequence);
 		return this;
 	}
 
 	@Override
-	public PacketImpl setSequence(int argSequence) {
+	public com.masonic.persistence.PacketImpl setSequence(int argSequence) {
 		getPacketOpal().setSequence(argSequence);
 		return this;
 	}
@@ -121,13 +129,13 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public PacketSet getPacketSet() {
+	public com.masonic.application.PacketSet getPacketSet() {
 		PacketSetOpal lclPacketSetOpal = getPacketOpal().getPacketSetOpal();
 		return lclPacketSetOpal == null ? null : lclPacketSetOpal.getUserFacing();
 	}
 
 	@Override
-	public Packet setPacketSet(PacketSet argPacketSet) {
+	public com.masonic.application.Packet setPacketSet(com.masonic.application.PacketSet argPacketSet) {
 		getPacketOpal().setPacketSetOpal(argPacketSet == null ? null : ((PacketSetImpl) argPacketSet).getPacketSetOpal());
 		return this;
 	}
@@ -136,13 +144,13 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 	to this object. */
 
 	@Override
-	public com.masonic.application.Packet addSection(Section argSection) {
+	public com.masonic.application.Packet addSection(com.masonic.application.Section argSection) {
 		getPacketOpal().addSectionOpal(((SectionImpl) argSection).getSectionOpal());
 		return this;
 	}
 
 	@Override
-	public com.masonic.application.Packet removeSection(Section argSection) {
+	public com.masonic.application.Packet removeSection(com.masonic.application.Section argSection) {
 		getPacketOpal().removeSectionOpal(((SectionImpl) argSection).getSectionOpal());
 		return this;
 	}
@@ -153,12 +161,12 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 	}
 
 	@Override
-	public java.util.stream.Stream<Section> streamSection() {
+	public java.util.stream.Stream<com.masonic.application.Section> streamSection() {
 		return getPacketOpal().streamSectionOpal().map(com.opal.Opal::getUserFacing);
 	}
 
 	@Override
-	public java.util.Iterator<Section> createSectionIterator() {
+	public java.util.Iterator<com.masonic.application.Section> createSectionIterator() {
 		return new com.opal.OpalIterator<> (getPacketOpal().createSectionOpalIterator());
 	}
 
@@ -173,7 +181,7 @@ public class PacketImpl extends com.opal.AbstractIdentityImpl<Packet, PacketOpal
 	}
 
 	@Override
-	public Packet copy() {
+	public com.masonic.application.Packet copy() {
 		return getPacketOpal().copy().getUserFacing();
 	}
 

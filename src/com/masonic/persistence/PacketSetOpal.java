@@ -5,6 +5,7 @@ import com.masonic.application.PacketSet;
 public final class PacketSetOpal extends com.opal.UpdatableOpal<PacketSet> {
 
 	public static final java.lang.Boolean ourDefaultCompleted = java.lang.Boolean.FALSE;
+	public static final java.lang.Boolean ourDefaultReusesQuestions = java.lang.Boolean.FALSE;
 
 	private PacketSetOpal() {
 		super();
@@ -19,6 +20,7 @@ public final class PacketSetOpal extends com.opal.UpdatableOpal<PacketSet> {
 	protected void applyDefaults() {
 		/* Initialize fields with their default values. */
 		getNewValues()[5] = ourDefaultCompleted;
+		getNewValues()[6] = ourDefaultReusesQuestions;
 
 
 		/* Initialize the back Collections to empty sets. */
@@ -36,6 +38,7 @@ public final class PacketSetOpal extends com.opal.UpdatableOpal<PacketSet> {
 		"Deadline",
 		"Note",
 		"Completed",
+		"ReusesQuestions",
 	};
 
 	/* package */ static final Class<?>[] ourFieldTypes = new Class<?>[] {
@@ -44,6 +47,7 @@ public final class PacketSetOpal extends com.opal.UpdatableOpal<PacketSet> {
 		java.lang.String.class,
 		java.time.LocalDate.class,
 		java.lang.String.class,
+		java.lang.Boolean.class,
 		java.lang.Boolean.class,
 	};
 
@@ -54,9 +58,11 @@ public final class PacketSetOpal extends com.opal.UpdatableOpal<PacketSet> {
 		true,
 		true,
 		false,
+		false,
 	};
 
 	/* package */ static final com.opal.FieldValidator[] ourFieldValidators = new com.opal.FieldValidator[] {
+		null,
 		null,
 		null,
 		null,
@@ -107,6 +113,10 @@ public final class PacketSetOpal extends com.opal.UpdatableOpal<PacketSet> {
 
 	public synchronized java.lang.Boolean isCompletedAsObject() {
 		return (java.lang.Boolean) getReadValueSet()[5];
+	}
+
+	public synchronized java.lang.Boolean isReusesQuestionsAsObject() {
+		return (java.lang.Boolean) getReadValueSet()[6];
 	}
 
 	public synchronized PacketSetOpal setCode(final java.lang.String argCode) {
@@ -168,6 +178,20 @@ public final class PacketSetOpal extends com.opal.UpdatableOpal<PacketSet> {
 
 	public PacketSetOpal setCompleted(final boolean argCompleted) {
 		setCompleted(argCompleted ? Boolean.TRUE : Boolean.FALSE);
+		return this;
+	}
+
+	public synchronized PacketSetOpal setReusesQuestions(final java.lang.Boolean argReusesQuestions) {
+		tryMutate();
+		if (argReusesQuestions == null) {
+			throw new com.opal.IllegalNullArgumentException("Cannot set myReusesQuestions on " + this + " to null.");
+		}
+		getNewValues()[6] = argReusesQuestions;
+		return this;
+	}
+
+	public PacketSetOpal setReusesQuestions(final boolean argReusesQuestions) {
+		setReusesQuestions(argReusesQuestions ? Boolean.TRUE : Boolean.FALSE);
 		return this;
 	}
 
@@ -251,6 +275,7 @@ public final class PacketSetOpal extends com.opal.UpdatableOpal<PacketSet> {
 		lclTargetNewValues[3] = lclValues[3]; /* Deadline (immutable) */
 		lclTargetNewValues[4] = lclValues[4]; /* Note (immutable) */
 		lclTargetNewValues[5] = lclValues[5]; /* Completed (immutable) */
+		lclTargetNewValues[6] = lclValues[6]; /* ReusesQuestions (immutable) */
 
 		return;
 	}
@@ -291,6 +316,7 @@ public final class PacketSetOpal extends com.opal.UpdatableOpal<PacketSet> {
 		argOutput.println("Deadline = " + getDeadline());
 		argOutput.println("Note = " + getNote());
 		argOutput.println("Completed = " + isCompletedAsObject());
+		argOutput.println("ReusesQuestions = " + isReusesQuestionsAsObject());
 	}
 
 	@Override
@@ -301,6 +327,7 @@ public final class PacketSetOpal extends com.opal.UpdatableOpal<PacketSet> {
 		argOutput.println("Deadline = " + getDeadline());
 		argOutput.println("Note = " + getNote());
 		argOutput.println("Completed = " + isCompletedAsObject());
+		argOutput.println("ReusesQuestions = " + isReusesQuestionsAsObject());
 	}
 
 	private java.util.Set<QuestionOpal> myOldIntendedQuestionOpalHashSet = null;

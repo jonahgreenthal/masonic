@@ -14,6 +14,8 @@ package com.masonic.persistence;
  *
  * @author		<a href="mailto:jonah@jonahgreenthal.com">Jonah Greenthal</a>
  */
+	@com.opal.annotation.Creatability(creatable = true)
+	@com.opal.annotation.Updatability(updatable = true)
 public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 
 	/* Accessors and mutators for internal data. */
@@ -24,6 +26,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Code} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getCode();
@@ -40,6 +43,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code code} is limited to 32 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.PacketSet setCode(java.lang.String argCode);
@@ -51,6 +55,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Name} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public java.lang.String getName();
@@ -67,6 +72,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code name} is limited to 256 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	public com.masonic.application.PacketSet setName(java.lang.String argName);
@@ -78,6 +84,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code ShortName} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public java.lang.String getShortName();
@@ -94,6 +101,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code short_name} is limited to 32 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	public com.masonic.application.PacketSet setShortName(java.lang.String argShortName);
@@ -105,6 +113,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Deadline} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	public java.time.LocalDate getDeadline();
 
@@ -130,6 +139,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 * @param argDeadline the new value of {@code Deadline}.  May be <code>null</code>.
 	 * @return itself, so that mutator calls can be chained fluently
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	public com.masonic.application.PacketSet setDeadline(java.time.LocalDate argDeadline);
 
@@ -140,6 +150,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Note} (of the current {@link com.opal.TransactionContext})  May be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public java.lang.String getNote();
@@ -169,6 +180,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 * <p>The database column {@code note} is limited to 2147483647 characters.</p>
 	 *
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = true)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	public com.masonic.application.PacketSet setNote(java.lang.String argNote);
@@ -182,6 +194,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @return an object value of {@code Completed} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Default(value = "false")
 	public java.lang.Boolean isCompletedAsObject();
@@ -218,6 +231,7 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 *
 	 * @throws com.opal.IllegalNullArgumentException if argCompleted is null
 	 */
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Default(value = "false")
 	public com.masonic.application.PacketSet setCompleted(java.lang.Boolean argCompleted);
@@ -229,6 +243,56 @@ public interface PacketSetUserFacing extends com.opal.IdentityUserFacing {
 	 * @return itself, so that mutators may be chained fluently
 	 */
 	public com.masonic.application.PacketSet setCompleted(boolean argCompleted);
+
+	/**
+	 * object accessor for the {@code ReusesQuestions}
+	 *
+	 * <p>The {@code ReusesQuestions} field is a direct mapping of the {@code reuses_questions} field in {@code packet_set}.</p>
+	 *
+	 * <p>This method returns the current value as an Object.  To retrieve the value as a primitive, use the isReusesQuestions() method.</p>
+	 *
+	 * @return an object value of {@code ReusesQuestions} (of the current {@link com.opal.TransactionContext})  Will not be <code>null</code>.
+	 */
+	@com.opal.annotation.Updatability(updatable = true)
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "false")
+	public java.lang.Boolean isReusesQuestionsAsObject();
+
+	/**
+	 * primitive accessor for the {@code ReusesQuestions}
+	 *
+	 * <p>The {@code ReusesQuestions} field is a direct mapping of the {@code reuses_questions} database column in the table {@code packet_set}.</p>
+	 *
+	 * <p>This method returns the value as a primitive (for example, as an {@code int} rather than an {@code Integer}; to retrieve the value as an object, use the isReusesQuestionsAsObject() method.</p>
+	 *
+	 * @return the primitive value of {@code ReusesQuestions} (of the current {@link com.opal.TransactionContext})
+	 */
+	default public boolean isReusesQuestions() {
+		java.lang.Boolean lclO = isReusesQuestionsAsObject();
+		return lclO.booleanValue();
+	}
+
+	/**
+	 * sets the {@code ReusesQuestions} to the value of {@code argReusesQuestions}
+	 *
+	 * @param argReusesQuestions the new value of {@code ReusesQuestions}.  May not be <code>null</code>.
+	 * @return itself, so that mutator calls can be chained fluently
+	 * <p>The database column {@code reuses_questions} to which this field is mapped is {@code NOT NULL}.</p>
+	 *
+	 * @throws com.opal.IllegalNullArgumentException if argReusesQuestions is null
+	 */
+	@com.opal.annotation.Updatability(updatable = true)
+	@com.opal.annotation.Nullability(nullable = false)
+	@com.opal.annotation.Default(value = "false")
+	public com.masonic.application.PacketSet setReusesQuestions(java.lang.Boolean argReusesQuestions);
+
+	/**
+	 * sets the {@code ReusesQuestions} to the value of {@code argReusesQuestions}
+	 *
+	 * @param argReusesQuestions the new value of {@code ReusesQuestions}
+	 * @return itself, so that mutators may be chained fluently
+	 */
+	public com.masonic.application.PacketSet setReusesQuestions(boolean argReusesQuestions);
 
 	public int getIntendedQuestionCount();
 	public java.util.Iterator<com.masonic.application.Question> createIntendedQuestionIterator();

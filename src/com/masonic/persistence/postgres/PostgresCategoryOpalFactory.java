@@ -9,7 +9,7 @@ import com.opal.OpalUtility;
 import com.opal.PersistenceException;
 
 import com.masonic.application.Category;
-import com.masonic.application.CategoryImpl;
+import com.masonic.persistence.CategoryImpl;
 import com.masonic.persistence.CategoryOpal;
 import com.masonic.persistence.CategoryOpalFactory;
 

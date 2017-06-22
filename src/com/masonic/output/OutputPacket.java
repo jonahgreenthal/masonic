@@ -9,12 +9,14 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 
 import com.siliconage.util.Fast3Set;
@@ -60,9 +62,24 @@ public class OutputPacket extends DownloadServlet {
 			}
 		}
 		
+		String lclOutputStyle = StringUtils.trimToNull(argRequest.getParameter("output_style"));
+		Function<Packet, PacketOutputter> lclOutputterCreator;
+		switch (lclOutputStyle) {
+			case "masonic":
+				lclOutputterCreator = MasonicOutputter::new;
+				break;
+			case "tossup_bonus":
+				lclOutputterCreator = TossupBonusOutputter::new;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown output style " + lclOutputStyle);
+		}
+		Validate.notNull(lclOutputterCreator);
+		
+		
 		List<LaTeXOutputter> lclOutputters = lclPackets.stream()
 			.sorted(Packet.StandardComparator.getInstance())
-			.map(argP -> new PacketOutputter(argP))
+			.map(lclOutputterCreator)
 			.collect(Collectors.toList());
 		
 		final List<File> lclFiles = new ArrayList<>(lclOutputters.size());

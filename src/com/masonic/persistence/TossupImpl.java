@@ -1,18 +1,16 @@
-package com.masonic.application;
+package com.masonic.persistence;
 
-import com.masonic.persistence.TossupOpal;
-import com.masonic.persistence.QuestionOpal;
 
-public class TossupImpl extends QuestionImpl implements Tossup {
+public class TossupImpl extends QuestionImpl implements com.masonic.application.Tossup {
 
-	private final TossupOpal myTossupOpal;
+	private final com.masonic.persistence.TossupOpal myTossupOpal;
 
 	public TossupImpl(TossupOpal argTossupOpal) {
 		super();
 		myTossupOpal = org.apache.commons.lang3.Validate.notNull(argTossupOpal);
 	}
 
-	protected TossupOpal getTossupOpal() {
+	protected com.masonic.persistence.TossupOpal getTossupOpal() {
 		return myTossupOpal;
 	}
 
@@ -22,7 +20,7 @@ public class TossupImpl extends QuestionImpl implements Tossup {
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends Tossup> getOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.Tossup> getOpal() {
 		return getTossupOpal();
 	}
 
@@ -41,29 +39,32 @@ public class TossupImpl extends QuestionImpl implements Tossup {
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends Tossup> getBottomOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.Tossup> getBottomOpal() {
 		return getTossupOpal();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getQuestionIdAsObject() {
 		return getTossupOpal().getQuestionIdAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public TossupImpl setQuestionId(java.lang.Integer argQuestionId) {
+	public com.masonic.persistence.TossupImpl setQuestionId(java.lang.Integer argQuestionId) {
 		getTossupOpal().setQuestionId(argQuestionId);
 		return this;
 	}
 
 	@Override
-	public TossupImpl setQuestionId(int argQuestionId) {
+	public com.masonic.persistence.TossupImpl setQuestionId(int argQuestionId) {
 		getTossupOpal().setQuestionId(argQuestionId);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -71,14 +72,16 @@ public class TossupImpl extends QuestionImpl implements Tossup {
 		return getTossupOpal().getText();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
-	public TossupImpl setText(java.lang.String argText) {
+	public com.masonic.persistence.TossupImpl setText(java.lang.String argText) {
 		getTossupOpal().setText(argText);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
@@ -86,10 +89,11 @@ public class TossupImpl extends QuestionImpl implements Tossup {
 		return getTossupOpal().getAnswer();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 2147483647L)
 	@Override
-	public TossupImpl setAnswer(java.lang.String argAnswer) {
+	public com.masonic.persistence.TossupImpl setAnswer(java.lang.String argAnswer) {
 		getTossupOpal().setAnswer(argAnswer);
 		return this;
 	}
@@ -113,7 +117,7 @@ public class TossupImpl extends QuestionImpl implements Tossup {
 	}
 
 	@Override
-	public Tossup copy() {
+	public com.masonic.application.Tossup copy() {
 		throw new com.siliconage.util.UnimplementedOperationException();
 	}
 

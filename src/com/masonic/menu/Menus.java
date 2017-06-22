@@ -33,8 +33,4 @@ public final class Menus {
 	public static Menus getInstance() {
 		return ourInstance;
 	}
-	
-	public static final MenuType getDefaultMenuType() {
-		return MenuType.FOUNDATION;
-	}
 }

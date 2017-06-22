@@ -1,13 +1,18 @@
 ﻿<%@ page import="java.util.Comparator" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.stream.Collectors" %>
+<%@ page import="org.apache.commons.lang3.StringUtils" %>
 <%@ page import="org.apache.commons.lang3.Validate" %>
+<%@ page import="com.siliconage.web.form.FunctionalNameCodeExtractor" %>
+<%@ page import="com.siliconage.web.form.NullSafeNameCodeExtractor" %>
 <%@ page import="com.opal.DatabaseQuery" %>
 <%@ page import="com.opal.cma.OpalForm" %>
 <%@ page import="com.opal.cma.OpalMainForm" %>
 <%@ page import="com.masonic.application.Category" %>
 <%@ page import="com.masonic.application.Packet" %>
 <%@ page import="com.masonic.application.PacketFactory" %>
+<%@ page import="com.masonic.application.PacketSet" %>
 <%@ page import="com.masonic.application.Placement" %>
 <%@ page import="com.masonic.application.PlacementFactory" %>
 <%@ page import="com.masonic.application.Question" %>
@@ -31,6 +36,7 @@ OpalMainForm<Packet> lclOF = OpalForm.create(
 );
 lclOF.setDeleteURI("/masonic/packet-delete-confirmation.jsp");
 Packet lclP = Validate.notNull(lclOF.getUserFacing());
+PacketSet lclPS = lclP.getPacketSet();
 
 String lclTitle = "Edit " + lclP.getNameWithPacketSet();
 %>
@@ -49,6 +55,23 @@ if (lclOF.hasErrors()) {
 		<div class="form-errors alert"><%= lclOF.errors() %></div>
 	</div><%
 }
+
+final NullSafeNameCodeExtractor<Question> lclExclusionaryNCE = new FunctionalNameCodeExtractor<>(
+	argQ -> {
+		String lclOtherSets = argQ.streamPlacement()
+			.map(Placement::getPacketSet)
+			.filter(argPS -> argPS != lclPS)
+			.sorted()
+			.map(PacketSet::getShortName)
+			.collect(Collectors.joining(", "));
+		if (StringUtils.isBlank(lclOtherSets)) {
+			return argQ.getLabel();
+		} else {
+			return argQ.getLabel() + " (used in " + lclOtherSets + ")";
+		}
+	},
+	argQ -> argQ.getIdAsObject().toString()
+);
 
 %><div class="row">
 	<div class="small-2 columns">
@@ -170,12 +193,19 @@ if (lclOF.hasErrors()) {
 												lclCandidates.add(lclPL.getQuestion());
 											}
 											
-											QuestionFactory.getInstance().acquireForQuery(
-												lclCandidates,
-												new DatabaseQuery("SELECT Q.* FROM Question Q WHERE NOT EXISTS (SELECT * FROM Placement PL WHERE PL.question_id = Q.id) AND Q.category_code = ? AND Q.question_type_code = ? ORDER BY Q.label", lclPL.getCategory().getCode(), lclPL.getSection().getQuestionType().getCode())
-											);
+											if (lclPS.isReusesQuestions()) {
+												QuestionFactory.getInstance().acquireForQuery(
+													lclCandidates,
+													new DatabaseQuery("SELECT Q.* FROM Question Q WHERE Q.category_code = ? AND Q.question_type_code = ? ORDER BY Q.label", lclPL.getCategory().getCode(), lclPL.getSection().getQuestionType().getCode())
+												);
+											} else {
+												QuestionFactory.getInstance().acquireForQuery(
+													lclCandidates,
+													new DatabaseQuery("SELECT Q.* FROM Question Q WHERE id NOT IN (SELECT question_id FROM Placement PL WHERE question_id IS NOT NULL) AND Q.category_code = ? AND Q.question_type_code = ? ORDER BY Q.label", lclPL.getCategory().getCode(), lclPL.getSection().getQuestionType().getCode())
+												);
+											}
 											
-											%><%= lclPLOF.dropdown("Question", Comparator.comparing(Question::getLabel)).namer(Question.NCE).choices(lclCandidates) %><%
+											%><%= lclPLOF.dropdown("Question", Comparator.comparing(Question::getLabel)).namer(lclExclusionaryNCE).choices(lclCandidates) %><%
 										}
 									%></td>
 									<td><%= lclPLOF.delete() %></td>

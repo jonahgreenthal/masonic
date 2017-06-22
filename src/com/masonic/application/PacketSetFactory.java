@@ -33,6 +33,11 @@ public class PacketSetFactory extends com.opal.AbstractIdentityFactory<PacketSet
 	public static final PacketSet _2015_SECTIONALS() { return getInstance().forCode("2015_SECTIONALS"); }
 	public static final PacketSet _2016_SECTIONALS() { return getInstance().forCode("2016_SECTIONALS"); }
 	public static final PacketSet _2016_STATE() { return getInstance().forCode("2016_STATE"); }
+	public static final PacketSet _2017_SECTIONALS() { return getInstance().forCode("2017_SECTIONALS"); }
+	public static final PacketSet _2017_STATE() { return getInstance().forCode("2017_STATE"); }
+	public static final PacketSet _2018_SECTIONALS() { return getInstance().forCode("2018_SECTIONALS"); }
+	public static final PacketSet _2018_STATE() { return getInstance().forCode("2018_STATE"); }
+	public static final PacketSet TU_B_TEST() { return getInstance().forCode("TU_B_TEST"); }
 
 	@Override
 	public PacketSet create() {

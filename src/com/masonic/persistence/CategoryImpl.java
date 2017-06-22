@@ -1,36 +1,35 @@
-package com.masonic.application;
+package com.masonic.persistence;
 
-import com.masonic.persistence.CategoryOpal;
-import com.masonic.persistence.CategoryGroupOpal;
 
-public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, CategoryOpal> implements Category {
+public class CategoryImpl extends com.opal.AbstractIdentityImpl<com.masonic.application.Category, com.masonic.persistence.CategoryOpal> implements com.masonic.application.Category {
 
-	private final CategoryOpal myCategoryOpal;
+	private final com.masonic.persistence.CategoryOpal myCategoryOpal;
 
 	public CategoryImpl(CategoryOpal argCategoryOpal) {
 		super();
 		myCategoryOpal = org.apache.commons.lang3.Validate.notNull(argCategoryOpal);
 	}
 
-	protected CategoryOpal getCategoryOpal() {
+	protected com.masonic.persistence.CategoryOpal getCategoryOpal() {
 		return myCategoryOpal;
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends Category> getOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.Category> getOpal() {
 		return getCategoryOpal();
 	}
 
 	@Override
-	protected com.opal.IdentityOpal<? extends Category> getBottomOpal() {
+	protected com.opal.IdentityOpal<? extends com.masonic.application.Category> getBottomOpal() {
 		return getCategoryOpal();
 	}
 
 	@Override
-	public int compareTo(Category argSecond) {
+	public int compareTo(com.masonic.application.Category argSecond) {
 		return this.getSequenceAsObject().compareTo(argSecond.getSequenceAsObject());
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -38,14 +37,16 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 		return getCategoryOpal().getCode();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
-	public CategoryImpl setCode(java.lang.String argCode) {
+	public com.masonic.persistence.CategoryImpl setCode(java.lang.String argCode) {
 		getCategoryOpal().setCode(argCode);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
@@ -53,14 +54,16 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 		return getCategoryOpal().getName();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 256L)
 	@Override
-	public CategoryImpl setName(java.lang.String argName) {
+	public com.masonic.persistence.CategoryImpl setName(java.lang.String argName) {
 		getCategoryOpal().setName(argName);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -68,33 +71,37 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 		return getCategoryOpal().getShortName();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
-	public CategoryImpl setShortName(java.lang.String argShortName) {
+	public com.masonic.persistence.CategoryImpl setShortName(java.lang.String argShortName) {
 		getCategoryOpal().setShortName(argShortName);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
 	public java.lang.Integer getSequenceAsObject() {
 		return getCategoryOpal().getSequenceAsObject();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public CategoryImpl setSequence(java.lang.Integer argSequence) {
+	public com.masonic.persistence.CategoryImpl setSequence(java.lang.Integer argSequence) {
 		getCategoryOpal().setSequence(argSequence);
 		return this;
 	}
 
 	@Override
-	public CategoryImpl setSequence(int argSequence) {
+	public com.masonic.persistence.CategoryImpl setSequence(int argSequence) {
 		getCategoryOpal().setSequence(argSequence);
 		return this;
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
@@ -102,10 +109,11 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 		return getCategoryOpal().getCategoryGroupCode();
 	}
 
+	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@com.opal.annotation.Length(maximum = 32L)
 	@Override
-	public CategoryImpl setCategoryGroupCode(java.lang.String argCategoryGroupCode) {
+	public com.masonic.persistence.CategoryImpl setCategoryGroupCode(java.lang.String argCategoryGroupCode) {
 		getCategoryOpal().setCategoryGroupCode(argCategoryGroupCode);
 		return this;
 	}
@@ -117,13 +125,13 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override
-	public CategoryGroup getCategoryGroup() {
+	public com.masonic.application.CategoryGroup getCategoryGroup() {
 		CategoryGroupOpal lclCategoryGroupOpal = getCategoryOpal().getCategoryGroupOpal();
 		return lclCategoryGroupOpal == null ? null : lclCategoryGroupOpal.getUserFacing();
 	}
 
 	@Override
-	public Category setCategoryGroup(CategoryGroup argCategoryGroup) {
+	public com.masonic.application.Category setCategoryGroup(com.masonic.application.CategoryGroup argCategoryGroup) {
 		getCategoryOpal().setCategoryGroupOpal(argCategoryGroup == null ? null : ((CategoryGroupImpl) argCategoryGroup).getCategoryGroupOpal());
 		return this;
 	}
@@ -132,13 +140,13 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 	to this object. */
 
 	@Override
-	public com.masonic.application.Category addQuestion(Question argQuestion) {
+	public com.masonic.application.Category addQuestion(com.masonic.application.Question argQuestion) {
 		getCategoryOpal().addQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
 		return this;
 	}
 
 	@Override
-	public com.masonic.application.Category removeQuestion(Question argQuestion) {
+	public com.masonic.application.Category removeQuestion(com.masonic.application.Question argQuestion) {
 		getCategoryOpal().removeQuestionOpal(((QuestionImpl) argQuestion).getQuestionOpal());
 		return this;
 	}
@@ -149,23 +157,23 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 	}
 
 	@Override
-	public java.util.stream.Stream<Question> streamQuestion() {
+	public java.util.stream.Stream<com.masonic.application.Question> streamQuestion() {
 		return getCategoryOpal().streamQuestionOpal().map(com.opal.Opal::getUserFacing);
 	}
 
 	@Override
-	public java.util.Iterator<Question> createQuestionIterator() {
+	public java.util.Iterator<com.masonic.application.Question> createQuestionIterator() {
 		return new com.opal.OpalIterator<> (getCategoryOpal().createQuestionOpalIterator());
 	}
 
 	@Override
-	public com.masonic.application.Category addPlacement(Placement argPlacement) {
+	public com.masonic.application.Category addPlacement(com.masonic.application.Placement argPlacement) {
 		getCategoryOpal().addPlacementOpal(((PlacementImpl) argPlacement).getPlacementOpal());
 		return this;
 	}
 
 	@Override
-	public com.masonic.application.Category removePlacement(Placement argPlacement) {
+	public com.masonic.application.Category removePlacement(com.masonic.application.Placement argPlacement) {
 		getCategoryOpal().removePlacementOpal(((PlacementImpl) argPlacement).getPlacementOpal());
 		return this;
 	}
@@ -176,12 +184,12 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 	}
 
 	@Override
-	public java.util.stream.Stream<Placement> streamPlacement() {
+	public java.util.stream.Stream<com.masonic.application.Placement> streamPlacement() {
 		return getCategoryOpal().streamPlacementOpal().map(com.opal.Opal::getUserFacing);
 	}
 
 	@Override
-	public java.util.Iterator<Placement> createPlacementIterator() {
+	public java.util.Iterator<com.masonic.application.Placement> createPlacementIterator() {
 		return new com.opal.OpalIterator<> (getCategoryOpal().createPlacementOpalIterator());
 	}
 
@@ -196,7 +204,7 @@ public class CategoryImpl extends com.opal.AbstractIdentityImpl<Category, Catego
 	}
 
 	@Override
-	public Category copy() {
+	public com.masonic.application.Category copy() {
 		return getCategoryOpal().copy().getUserFacing();
 	}
 
