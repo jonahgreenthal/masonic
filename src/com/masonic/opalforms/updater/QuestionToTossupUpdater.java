@@ -31,9 +31,20 @@ public class QuestionToTossupUpdater extends OpalFormUpdater<Tossup> {
 	protected void processSpecial() {
 		final Tossup lclTU = Validate.notNull(getUserFacing());
 		
-		if (lclTU.isNew() && lclTU.getWriter() == null) {
-			lclTU.setWriter(Account.demand(getRequest()));
+		if (lclTU.isNew()) {
 			lclTU.setQuestionType(QuestionTypeFactory.TOSSUP());
+			
+			if (lclTU.getWriter() == null) {
+				lclTU.setWriter(Account.demand(getRequest()));
+			}
+			
+			if (lclTU.getStatus() == null) {
+				if (lclTU.getText() == null) {
+					lclTU.setStatus(QuestionStatusFactory.ANSWER_CHOSEN());
+				} else {
+					lclTU.setStatus(QuestionStatusFactory.DRAFTED()); // This is the database column's default, so this line isn't necessary. But I like being clear.
+				}
+			}
 		}
 		
 		if (lclTU.getLabel() == null) {
@@ -42,14 +53,6 @@ public class QuestionToTossupUpdater extends OpalFormUpdater<Tossup> {
 		
 		if (lclTU.getCategory() == null) {
 			addError("Category", "You must specify a category.");
-		}
-		
-		if (lclTU.isNew() && lclTU.getStatus() == null) {
-			if (lclTU.getText() == null) {
-				lclTU.setStatus(QuestionStatusFactory.ANSWER_CHOSEN());
-			} else {
-				lclTU.setStatus(QuestionStatusFactory.DRAFTED()); // This is the database column's default, so this line isn't necessary. But I like being clear.
-			}
 		}
 		
 		if (lclTU.getText() == null && lclTU.getStatus() == QuestionStatusFactory.ANSWER_CHOSEN()) {

@@ -31,8 +31,19 @@ public class QuestionToTeamQuestionUpdater extends OpalFormUpdater<TeamQuestion>
 		final TeamQuestion lclTQ = Validate.notNull(getUserFacing());
 		
 		if (lclTQ.isNew()) {
-			lclTQ.setWriter(Account.demand(getRequest()));
 			lclTQ.setQuestionType(QuestionTypeFactory.TEAM_QUESTION());
+			
+			if (lclTQ.getWriter() == null) {
+				lclTQ.setWriter(Account.demand(getRequest()));
+			}
+			
+			if (lclTQ.getStatus() == null) {
+				if (lclTQ.getIntroduction() == null || lclTQ.getPart1Text() == null || lclTQ.getPart2Text() == null || lclTQ.getPart3Text() == null) {
+					lclTQ.setStatus(QuestionStatusFactory.ANSWER_CHOSEN());
+				} else {
+					lclTQ.setStatus(QuestionStatusFactory.DRAFTED()); // This is the database column's default, so this line isn't necessary. But I like being clear.
+				}
+			}
 		}
 		
 		if (lclTQ.getLabel() == null) {
@@ -41,14 +52,6 @@ public class QuestionToTeamQuestionUpdater extends OpalFormUpdater<TeamQuestion>
 		
 		if (lclTQ.getCategory() == null) {
 			addError("Category", "You must specify a category.");
-		}
-		
-		if (lclTQ.isNew() && lclTQ.getStatus() == null) {
-			if (lclTQ.getIntroduction() == null || lclTQ.getPart1Text() == null || lclTQ.getPart2Text() == null || lclTQ.getPart3Text() == null) {
-				lclTQ.setStatus(QuestionStatusFactory.ANSWER_CHOSEN());
-			} else {
-				lclTQ.setStatus(QuestionStatusFactory.DRAFTED()); // This is the database column's default, so this line isn't necessary. But I like being clear.
-			}
 		}
 		
 		if (lclTQ.getIntroduction() == null && lclTQ.getStatus() == QuestionStatusFactory.ANSWER_CHOSEN()) {
