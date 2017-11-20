@@ -77,7 +77,7 @@ public class MasonicOutputter extends PacketOutputter {
 					} else {
 						lclQ1Latex =
 							"\\tossup{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL1.getSequence() + ": " +
-							escape(lclTU1.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTU1.getCategory().getName()) +
+							escape(lclTU1.getCategory().getCategoryGroup().getName()) +
 							"}{" + escape(lclTU1.getQuestionType().getScoringNote()) + "}{\n" +
 								questionTextToLatex(lclTU1.getText()) +
 							"\n}{\n" +
@@ -91,7 +91,7 @@ public class MasonicOutputter extends PacketOutputter {
 					} else {
 						lclQ2Latex =
 							"\\tossup{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL2.getSequence() + ": " +
-							escape(lclTU2.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTU2.getCategory().getName()) +
+							escape(lclTU2.getCategory().getCategoryGroup().getName()) +
 							"}{" + escape(lclTU2.getQuestionType().getScoringNote()) + "}{\n" +
 								questionTextToLatex(lclTU2.getText()) +
 							"\n}{\n" +
@@ -105,8 +105,7 @@ public class MasonicOutputter extends PacketOutputter {
 					} else {
 						lclQ1Latex =
 							"\\teamquestion{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL1.getSequence() + ": " +
-							escape(lclTQ1.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTQ1.getCategory().getName()) +
-							"}{" + escape(lclTQ1.getQuestionType().getScoringNote()) + "}{\n" +
+							escape(lclTQ1.getCategory().getCategoryGroup().getName()) + "}{" + escape(lclTQ1.getQuestionType().getScoringNote()) + "}{\n" +
 								questionTextToLatex(lclTQ1.getIntroduction()) +
 							"\n}{\n" +
 								questionTextToLatex(lclTQ1.getPart1Text()) +
@@ -129,7 +128,7 @@ public class MasonicOutputter extends PacketOutputter {
 					} else {
 						lclQ2Latex =
 							"\\teamquestion{" + (lclSection.isExtras() ? "Extra Question" : "Question") + " \\#" + lclPL2.getSequence() + ": " +
-							escape(lclTQ2.getCategory().getCategoryGroup().getName()) + " -- " + escape(lclTQ2.getCategory().getName()) +
+							escape(lclTQ2.getCategory().getCategoryGroup().getName()) +
 							"}{" + escape(lclTQ2.getQuestionType().getScoringNote()) + "}{\n" +
 								questionTextToLatex(lclTQ2.getIntroduction()) +
 							"\n}{\n" +
