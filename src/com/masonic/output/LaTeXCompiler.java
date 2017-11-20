@@ -26,6 +26,7 @@ public class LaTeXCompiler {
 	public static final String PDF_MIME_TYPE = "application/pdf";
 	
 	public static final long TIMEOUT = 15000L; // 15000 ms, or 15 seconds
+	public static final long MILLISECONDS_TO_SLEEP_BETWEEN_COMPILATION_PASSES = 500L;
 	
 	protected static final int DEFAULT_COMPILATION_PASSES = 2;
 	
@@ -76,6 +77,14 @@ public class LaTeXCompiler {
 						ourLogger.error(lclS);
 					}
 					throw new IllegalArgumentException("Couldn't compile LaTeX: " + StringUtils.join(lclErrors, '\n'), lclIOE);
+				}
+			}
+			
+			if (lclPass < argPasses) {
+				try {
+					Thread.sleep(MILLISECONDS_TO_SLEEP_BETWEEN_COMPILATION_PASSES);
+				} catch (InterruptedException lclE) {
+					throw new RuntimeException(lclE);
 				}
 			}
 		}
