@@ -37,6 +37,7 @@ public abstract class LaTeXOutputter {
 			outputInternal();
 			
 			getWriter().flush();
+			getWriter().close();
 		} catch (IOException lclIOE) {
 			ourLogger.error(lclIOE);
 			throw new RuntimeException(lclIOE);
