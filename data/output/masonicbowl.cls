@@ -45,10 +45,10 @@
 \newlength{\interquestionskip} \setlength\interquestionskip{0.4in}
 
 \RequirePackage{mathspec} % Includes fontspec
-	\setmainfont[Ligatures=TeX]{TeX Gyre Termes} % Similar to Times New Roman
-	\setmathrm[Ligatures=TeX]{TeX Gyre Termes}
-	\setmathfont(Digits,Latin){TeX Gyre Termes}
-	\setmathfont[bold-style=TeX]{TG Termes Math}
+	% \setmainfont[Ligatures=TeX]{TeX Gyre Termes} % Similar to Times New Roman
+	% \setmathrm[Ligatures=TeX]{TeX Gyre Termes}
+	% \setmathfont(Digits,Latin){TeX Gyre Termes}
+	% \setmathfont[bold-style=TeX]{TG Termes Math}
 	\setsansfont[Ligatures=TeX]{TeX Gyre Heros} % Similar to Helvetica/Arial
 
 \newcommand{\header}[4]{
