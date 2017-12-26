@@ -42,7 +42,7 @@ public class TossupBonusOutputter extends PacketOutputter {
 			Arrays.sort(lclPLs, Placement.StandardComparator.getInstance());
 			
 			for (Placement lclPL : lclPLs) {
-				Question lclQ = Validate.notNull(lclPL.getQuestion());
+				Question lclQ = Validate.notNull(lclPL.getQuestion(), "No placement for " + lclPL + " in " + getPacket().getName());
 				
 				String lclQuestionLatex;
 				if (lclQ.getType() == QuestionTypeFactory.TOSSUP()) {
