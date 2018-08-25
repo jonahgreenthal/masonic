@@ -58,16 +58,26 @@ if (lclOF.hasErrors()) {
 
 final NullSafeNameCodeExtractor<Question> lclExclusionaryNCE = new FunctionalNameCodeExtractor<>(
 	argQ -> {
+		List<String> lclAnnotations = new ArrayList<>(2);
+		
+		if (argQ.getIntendedPacketSet() != null && argQ.getIntendedPacketSet() != lclPS) {
+			lclAnnotations.add("intended for " + argQ.getIntendedPacketSet().getShortName());
+		}
+		
 		String lclOtherSets = argQ.streamPlacement()
 			.map(Placement::getPacketSet)
 			.filter(argPS -> argPS != lclPS)
 			.sorted()
 			.map(PacketSet::getShortName)
 			.collect(Collectors.joining(", "));
-		if (StringUtils.isBlank(lclOtherSets)) {
+		if (StringUtils.isNotBlank(lclOtherSets)) {
+			lclAnnotations.add("used in " + lclOtherSets);
+		}
+		
+		if (lclAnnotations.isEmpty()) {
 			return argQ.getLabel();
 		} else {
-			return argQ.getLabel() + " (used in " + lclOtherSets + ")";
+			return argQ.getLabel() + " (" + StringUtils.join(lclAnnotations, "; ") + ")";
 		}
 	},
 	argQ -> argQ.getIdAsObject().toString()
