@@ -110,6 +110,14 @@ public abstract class PacketOutputter extends LaTeXOutputter {
 					}
 					break;
 				
+				case '>': // Non-breaking space
+					if (lclInMath) {
+						lclSB.append('>');
+					} else {
+						lclSB.append('~');
+					}
+					break;
+				
 				default:
 					lclSB.append(lclC);
 			}

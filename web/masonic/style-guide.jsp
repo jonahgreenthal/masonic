@@ -15,7 +15,9 @@
 		<p>Write pronunciation guides as follows: <code class="success">\pg{Jonah Greenthal}{JOH-nuh "GREEN"-thawl}</code>. That is: a backslash, the letters <code>pg</code>, the text for which a pronunciation guide is being provided enclosed in <code>{</code>curly braces<code>}</code>, and the actual pronunciation guide enclosed in <code>curly braces</code>. The pronunciation guide itself should be written according to NAQT's style; <a href="mailto:jonah@jonahgreenthal.com">ask Jonah</a> if you have any questions about that.</p>
 		
 		<h2>Special characters</h2>
-		<p>Use LaTeX coding. Information on diacritics is <a href="http://en.wikibooks.org/wiki/LaTeX/Special_Characters#Escaped_codes">here</a>. Some <a href="http://en.wikibooks.org/wiki/LaTeX/Special_Characters#Other_symbols">other symbols</a> also need to be escaped in special ways (notably including <code>%</code> and <code>$</code>, which you must write as <code class="success">\%</code> and <code class="success">\$</code>, respectively). <a href="mailto:jonah@jonahgreenthal.com">Ask Jonah</a> if you have any questions.</p>
+		<p>In general, use LaTeX coding. Information on diacritics is <a href="http://en.wikibooks.org/wiki/LaTeX/Special_Characters#Escaped_codes">here</a>. Some <a href="http://en.wikibooks.org/wiki/LaTeX/Special_Characters#Other_symbols">other symbols</a> also need to be escaped in special ways (notably including <code>%</code> and <code>$</code>, which you must write as <code class="success">\%</code> and <code class="success">\$</code>, respectively). <a href="mailto:jonah@jonahgreenthal.com">Ask Jonah</a> if you have any questions.</p>
+		
+		<p>Use <code>&gt;</code> for a non-breaking space. This doesn't work in math mode.</p>
 		
 		<h2>Math and chemical formulae</h2>
 		<p>Use LaTeX coding and enclose the math/formula in dollar signs (<code>$</code>). You can read about how to write formulae in LaTeX <a href="http://en.wikibooks.org/wiki/LaTeX/Mathematics">here</a>, though it's probably easier to just <a href="mailto:jonah@jonahgreenthal.com">ask Jonah</a>.</p>
