@@ -17,6 +17,8 @@
 		<h2>Special characters</h2>
 		<p>In general, use LaTeX coding. Information on diacritics is <a href="http://en.wikibooks.org/wiki/LaTeX/Special_Characters#Escaped_codes">here</a>. Some <a href="http://en.wikibooks.org/wiki/LaTeX/Special_Characters#Other_symbols">other symbols</a> also need to be escaped in special ways (notably including <code>%</code> and <code>$</code>, which you must write as <code class="success">\%</code> and <code class="success">\$</code>, respectively). <a href="mailto:jonah@jonahgreenthal.com">Ask Jonah</a> if you have any questions.</p>
 		
+		<p>Use <code>*</code> to separate syllables of long words that are easily breakable into syllables, like <code class="succes">tri*nitro*toluene</code>. This doesn't work in math mode.</p>
+		
 		<p>Use <code>&gt;</code> for a non-breaking space. This doesn't work in math mode.</p>
 		
 		<h2>Math and chemical formulae</h2>

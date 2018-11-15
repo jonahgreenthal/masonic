@@ -118,6 +118,14 @@ public abstract class PacketOutputter extends LaTeXOutputter {
 					}
 					break;
 				
+				case '*': // Syllable marker
+					if (lclInMath) {
+						lclSB.append('*');
+					} else {
+						lclSB.append("{\\syl}");
+					}
+					break;
+				
 				default:
 					lclSB.append(lclC);
 			}
