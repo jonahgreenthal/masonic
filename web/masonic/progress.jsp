@@ -1,4 +1,4 @@
-<%@ page import="java.text.NumberFormat" %>
+﻿<%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.time.format.FormatStyle" %>
@@ -51,7 +51,7 @@ if (lclIncompleteSets.isEmpty()) {
 		<div class="small-12 columns text-center">
 			<form action="progress.jsp" method="get">
 				<p>
-					Consider questions whose status is...
+					Consider questions whose status is…
 					&nbsp;&nbsp;&nbsp;&nbsp;<%
 					for (QuestionStatus lclS : lclAllStatuses) {
 						%><label class="my-inline">

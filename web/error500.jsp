@@ -1,4 +1,4 @@
-<%@ page import="java.io.PrintWriter" %>
+﻿<%@ page import="java.io.PrintWriter" %>
 <%@ page import="com.masonic.application.Account" %>
 <%@ page import="com.masonic.menu.Menus" %>
 <%@ page import="com.masonic.Utility" %>

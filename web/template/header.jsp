@@ -43,9 +43,6 @@ if (argDescriptionParameter == null) {
 	<!-- Tablesorter -->
 	<script src="/template/tablesorter/jquery.tablesorter.min.js"></script>
 	
-	<!-- Automatic smart quotes -->
-	<script src="/template/js/smartquotes.min.js"></script>
-	
 	<!-- Foundation -->
 	<link rel="stylesheet" href="/template/style.css">
 	<script src="/template/foundation/js/foundation.min.js"></script>
