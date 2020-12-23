@@ -86,6 +86,7 @@ public class OutputPacket extends DownloadServlet {
 		
 		for (LaTeXOutputter lclO : lclOutputters) {
 			lclO.output();
+			lclFiles.add(lclO.getFile());
 			
 			final LaTeXCompiler lclC = new LaTeXCompiler(lclO);
 			final File lclPDF = lclC.compile();
