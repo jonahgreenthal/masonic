@@ -48,6 +48,7 @@
 			</Mapping>
 			
 			<Mapping Table="Section">
+				<Column Name="sequence" Ordering="True" />
 				<Comparator Name="StandardComparator">
 					<Child Name="Packet" Comparator="SequenceComparator" />
 					<Column Name="sequence" />

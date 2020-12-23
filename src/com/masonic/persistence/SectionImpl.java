@@ -24,6 +24,11 @@ public class SectionImpl extends com.opal.AbstractIdentityImpl<com.masonic.appli
 		return getSectionOpal();
 	}
 
+	@Override
+	public int compareTo(com.masonic.application.Section argSecond) {
+		return this.getSequenceAsObject().compareTo(argSecond.getSequenceAsObject());
+	}
+
 	@com.opal.annotation.Updatability(updatable = true)
 	@com.opal.annotation.Nullability(nullable = false)
 	@Override

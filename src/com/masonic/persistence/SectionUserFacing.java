@@ -16,7 +16,7 @@ package com.masonic.persistence;
  */
 	@com.opal.annotation.Creatability(creatable = true)
 	@com.opal.annotation.Updatability(updatable = true)
-public interface SectionUserFacing extends com.opal.IdentityUserFacing {
+public interface SectionUserFacing extends com.opal.IdentityUserFacing, Comparable<com.masonic.application.Section> {
 
 	/* Accessors and mutators for internal data. */
 	/**
