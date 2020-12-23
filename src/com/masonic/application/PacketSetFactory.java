@@ -37,6 +37,16 @@ public class PacketSetFactory extends com.opal.AbstractIdentityFactory<PacketSet
 	public static final PacketSet _2017_STATE() { return getInstance().forCode("2017_STATE"); }
 	public static final PacketSet _2018_SECTIONALS() { return getInstance().forCode("2018_SECTIONALS"); }
 	public static final PacketSet _2018_STATE() { return getInstance().forCode("2018_STATE"); }
+	public static final PacketSet _2018_TOSSUP_BONUS() { return getInstance().forCode("2018_TOSSUP_BONUS"); }
+	public static final PacketSet _2019_SECTIONALS() { return getInstance().forCode("2019_SECTIONALS"); }
+	public static final PacketSet _2019_STATE() { return getInstance().forCode("2019_STATE"); }
+	public static final PacketSet _2019_TOSSUP_BONUS() { return getInstance().forCode("2019_TOSSUP_BONUS"); }
+	public static final PacketSet _2020_SECTIONALS() { return getInstance().forCode("2020_SECTIONALS"); }
+	public static final PacketSet _2020_STATE() { return getInstance().forCode("2020_STATE"); }
+	public static final PacketSet _2020_TOSSUP_BONUS() { return getInstance().forCode("2020_TOSSUP_BONUS"); }
+	public static final PacketSet _2022_SECTIONALS() { return getInstance().forCode("2022_SECTIONALS"); }
+	public static final PacketSet _2022_STATE() { return getInstance().forCode("2022_STATE"); }
+	public static final PacketSet _2022_TOSSUP_BONUS() { return getInstance().forCode("2022_TOSSUP_BONUS"); }
 	public static final PacketSet TU_B_TEST() { return getInstance().forCode("TU_B_TEST"); }
 
 	@Override
